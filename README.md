@@ -1,6 +1,8 @@
 # Software Engineering Final Term Project
 ## a.y. 2019/2020
 
+
+## Product Backlog
 | Priority | User Story # | User Story                                                                                                                                                                        | Story Points  |
 |----------|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|
 | 1        | 1            | As a player, I want to move in every direction (up, down, left, right) in order to explore the areas.                                                                             | 2             |
