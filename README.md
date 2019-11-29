@@ -37,3 +37,4 @@
 | 30       | 19           | As a product owner, I want my game to be served in different languages (e.g. IT, EN) so that it is more usable.                                                                   | 8             |
 
 ![](https://github.com/BenedettoGinestra/se2019/blob/master/doc/LayersArchitecture.png) 
+
