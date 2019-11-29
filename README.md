@@ -35,3 +35,5 @@
 | 28       | 29           | As a player, I want to mute background music in order to play without distractions.                                                                                               | 1             |
 | 29       | 16           | As a player, I want different degrees of difficulty in order to have a more challenging game experience.                                                                          | 13            |
 | 30       | 19           | As a product owner, I want my game to be served in different languages (e.g. IT, EN) so that it is more usable.                                                                   | 8             |
+
+![](https://github.com/BenedettoGinestra/se2019/blob/master/doc/LayersArchitecture.png) 
