@@ -3,29 +3,39 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tutorial2dprogramming.gui;
+package gamegui;
 
+import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Polygon;
+import java.awt.geom.GeneralPath;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Observable;
-import tutorial2dprogramming.gfx.ImageLoader;
+import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 /**
  *
  * @author bened
  */
 public class ManaBar extends ObservingPanel {
-
-    private BufferedImage manaTrapeze, heartIcon;
+    
+    private BufferedImage manaTrapeze;
     /**
      * These fields.
      */
     public int value, max;
+    private boolean isManaEnabled;
     private final int barWidth, barHeight;
     private final Color barColor, barBorderColor;
-
+    
     public ManaBar() throws IOException {
         /**
          * This field.
@@ -34,38 +44,45 @@ public class ManaBar extends ObservingPanel {
         this.barHeight = 23;
         this.max = 120;
         this.value = 60;
-        this.barColor = new Color(22, 117, 153);
-        this.barBorderColor = new Color(232, 142, 0);
-
-        manaTrapeze = ImageLoader.loadImage("/gui/healthbg.png");
-        heartIcon = ImageLoader.loadImage("/gui/heart_icon.png");
-
+        this.barColor = new Color(22,117,153);
+        this.barBorderColor = new Color(232,142,0);
+        this.isManaEnabled = false;
+        
+        manaTrapeze = ImageIO.read(this.getClass().getResource("/res/gui/healthbg.png"));
+       
     }
-
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-
+        
         // Drawing bar filling according to actual left mana 
         g.setColor(this.barColor);
-        int health = (int) Math.floor((double) this.barWidth / (double) max * (double) value);
-        g.fillRect(10, 18, health, 23);
-
+        int health = (int)Math.floor((double)this.barWidth/(double)max * (double)value);
+        g.fillRect(10,18,health,23);
+        
         // Drawing bar contours... Just graphics
         g.setColor(this.barBorderColor);
         g.drawRect(10, 18, this.barWidth, this.barHeight);
-
+        
         // Drawing text information of the remaining mana
-        g.drawImage(manaTrapeze, 10, 41, null);
+        g.drawImage(manaTrapeze, 10,41, null);
         g.setColor(Color.white);
-        String remainingLife = String.format("%1$" + 10 + "s", this.value + "/120 MP");
+        String remainingLife = String.format("%1$"+10+ "s", this.value + "/" + this.max + " MP");
         g.drawString(remainingLife, 21, 53);
+        
 
+        
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Mana m = (Mana) arg;
+        this.value = m.getMana();
+        this.max = m.getMaxMana();
+        this.isManaEnabled = m.isEnabled();
+        this.repaint();
     }
 
+   
+    
 }
