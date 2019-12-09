@@ -45,7 +45,6 @@ public class Portal extends StaticEntity{
     @Override
     public void actionOnCollision(Entity e){
         System.out.println("Collisione con portale");
-        
     }
     
    
