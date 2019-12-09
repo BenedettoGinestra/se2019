@@ -201,4 +201,26 @@ public abstract class Creature extends Entity {
         this.attackCooldown = attackCooldown;
     }
 
+    public MovementState getState() {
+        return state;
+    }
+
+    public MovementState getUpState() {
+        return upState;
+    }
+
+    public MovementState getDownState() {
+        return downState;
+    }
+
+    public MovementState getLeftState() {
+        return leftState;
+    }
+
+    public MovementState getRightState() {
+        return rightState;
+    }
+    
+    
+
 }

@@ -24,6 +24,7 @@ import tutorial2dprogramming.gfx.Boss2Assets;
 import tutorial2dprogramming.gfx.PlayerAssets;
 import tutorial2dprogramming.gui.HealthBar;
 import tutorial2dprogramming.gui.StarsPanel;
+import tutorial2dprogramming.policy.VerticalPolicy;
 import tutorial2dprogramming.staticentities.grabbable.GrabbableHealthPotion;
 import tutorial2dprogramming.staticentities.grabbable.GrabbableStar;
 import tutorial2dprogramming.utils.GrabbableStarCollection;
@@ -85,9 +86,11 @@ public class World {
         entityManager.addEntity(star1);
         entityManager.addEntity(star2);
         
-        entityManager.addEntity(new GrabbableHealthPotion(handler, 100, 500, 32, 32));
+        entityManager.addEntity(new GrabbableHealthPotion(handler, 150, 500, 32, 32));
+        Bat bat1 = new Bat(handler, 500, 400, 32, 32, new BatAssets());
+        bat1.setMovementPolicy(new VerticalPolicy(bat1,(int)(bat1.getY()-100),(int)(bat1.getY() + 100)));
         entityManager.addEntity(new Boss1(handler, 1000, 200,new Boss2Assets()));
-        entityManager.addEntity(new Bat(handler, 500, 400, 32, 32, new BatAssets()));
+        entityManager.addEntity(bat1);
         entityManager.addEntity(new Bat(handler, 1200, 600, 32, 32, new BatAssets()));
         entityManager.addEntity(new Bat(handler, 1800, 2000, 32, 32, new BatAssets()));
         System.out.println("Initiating world from... " + path);

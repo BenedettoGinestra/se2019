@@ -6,7 +6,9 @@
 package tutorial2dprogramming.policy;
 
 import tutorial2dprogramming.entities.Creature;
+import tutorial2dprogramming.entities.state.DownMovementState;
 import tutorial2dprogramming.entities.state.MovementState;
+import tutorial2dprogramming.entities.state.UpMovementState;
 
 /**
  *
@@ -19,12 +21,13 @@ public class VerticalPolicy extends Policy{
     int startY;
     int endY;
     
-    public VerticalPolicy(Creature c, MovementState downState, MovementState upState, int startY, int endY){
+    public VerticalPolicy(Creature c, int startY, int endY){
         this.c=c;
-        this.downState=downState;
-        this.upState=upState;
+        this.downState=c.getDownState();
+        this.upState=c.getUpState();
         this.startY=startY;
         this.endY=endY;
+        c.setState(downState);
     }
 
     @Override

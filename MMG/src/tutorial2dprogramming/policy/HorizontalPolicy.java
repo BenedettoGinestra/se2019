@@ -23,12 +23,13 @@ public class HorizontalPolicy extends Policy{
     int startX;
     int endX;
     
-    public HorizontalPolicy(Creature c, MovementState leftState, MovementState rightState, int startX, int endX){
+    public HorizontalPolicy(Creature c, int startX, int endX){
         this.c=c;
-        this.leftState=leftState;
-        this.rightState=rightState;
+        this.leftState=c.getLeftState();
+        this.rightState=c.getRightState();
         this.startX=startX;
         this.endX=endX;
+        c.setState(leftState);
     }
 
     @Override

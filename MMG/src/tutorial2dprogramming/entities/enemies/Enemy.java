@@ -22,7 +22,7 @@ public abstract class Enemy extends Creature{
     
     public Enemy(Handler handler, float x, float y, int width, int height, EntityAssets entityAssets) {
         super(handler, x, y, width, height, entityAssets);
-        setMovementPolicy(new HorizontalPolicy(this, leftState, rightState,(int) (x-300), (int)(x+300)));
+        setMovementPolicy(new HorizontalPolicy(this,(int) (x-300), (int)(x+300)));
     }
     /***
     * Policy to obtain the movement of the enemy
