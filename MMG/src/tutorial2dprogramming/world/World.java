@@ -18,8 +18,6 @@ import tutorial2dprogramming.RenderableLayers;
 import tutorial2dprogramming.entities.enemy.level1.Boss1;
 import tutorial2dprogramming.entities.EntityManager;
 import tutorial2dprogramming.entities.Player;
-import tutorial2dprogramming.entities.enchanted.EnchantedLeftLeaf;
-import tutorial2dprogramming.entities.enchanted.EnchantedRightLeaf;
 import tutorial2dprogramming.entities.enchanted.EnchantedTree;
 import tutorial2dprogramming.entities.enemy.level1.Bat;
 import tutorial2dprogramming.gfx.BatAssets;
