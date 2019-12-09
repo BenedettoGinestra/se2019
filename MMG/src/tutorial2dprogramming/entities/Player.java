@@ -8,6 +8,7 @@ package tutorial2dprogramming.entities;
 import java.awt.Graphics;
 import tutorial2dprogramming.Handler;
 import tutorial2dprogramming.gfx.PlayerAssets;
+import tutorial2dprogramming.gui.Health;
 
 /**
  *
@@ -15,7 +16,8 @@ import tutorial2dprogramming.gfx.PlayerAssets;
  */
 public class Player extends Creature {
 
-    private int numLives;
+    //private int numLives;
+    
     
 
     public Player(Handler handler, float x, float y, PlayerAssets pAssets) {
@@ -24,9 +26,14 @@ public class Player extends Creature {
         bounds.y = 30;
         bounds.width = 15;
         bounds.height = 22;
-        health = 100;
-        maxHealth = health;
-        numLives = 3;
+        //life = new Life(10,3);
+        //health = 100;
+        life.setHealthPoints(10);
+        //maxHealth = life.getMaxHealthPoints();
+        life.setLives(3);
+        life.setMaxHealthPoints(10);
+        System.out.println("========== Player COSTRUCTOR =================\n"+life.getHealthPoints());
+        //numLives = 3;
 
         setState(downState);
 
@@ -42,13 +49,14 @@ public class Player extends Creature {
     }
 
     public int getNumLives() {
-        return numLives;
+        return life.getLives();
     }
 
     public void setNumLives(int numLives) {
-        this.numLives = numLives;
-        setChanged();
-        notifyObservers();
+        //this.numLives = numLives;
+        life.setLives(numLives);
+        //setChanged();
+        //notifyObservers();
     }
 
     @Override
@@ -95,6 +103,7 @@ public class Player extends Creature {
                 setState(state);
                 state.attack();
                 checkAttacks();
+                
             }
 
         } else {
@@ -115,12 +124,20 @@ public class Player extends Creature {
 
     @Override
     public void die() {
-
-        if (numLives > 0) {
+        System.out.println("=============== \n n. vite \n============: "+getNumLives());
+        if (getNumLives() > 0) {
             isActive = true;
-            setNumLives(numLives - 1);
-            setHealth(maxHealth);
+            setNumLives(getNumLives()-1);
+            setHealth(getMaxHealth());
+            //setNumLives(numLives - 1);
+            //setHealth(maxHealth);
         }
+        if(getNumLives()==0){
+            isActive=false;
+            setHealth(0);
+        }
+            
+        System.out.println("n. vite: "+getNumLives());
     }
 
     @Override
@@ -128,11 +145,19 @@ public class Player extends Creature {
         e.isActive = false;
         e.actionOnCollision(this);
     }
+    
+    public Health getLifeObservable(){
+        return life;
+    }
 
-    @Override
+    /*@Override
     public void setHealth(int newHealth) {
         super.setHealth(newHealth);
-        setChanged();
-        notifyObservers();;
-    }
+        //setChanged();
+        //notifyObservers();;
+        //life.setHealth(newHealth);
+        System.out.println("Vita: "+life.getHealth()+" Num. Vite: "+life.getLifes());
+    }*/
+    
+
 }

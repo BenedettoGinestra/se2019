@@ -263,6 +263,12 @@ public class GameGUI {
 
     }
 
+    public StarsPanel getStarsPanel() {
+        return starsPanel;
+    }
+    
+    
+
     public static void main(String[] args) throws IOException {
 
         new GameGUI();

@@ -6,8 +6,11 @@
 package tutorial2dprogramming.world;
 
 import java.awt.Graphics;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import tutorial2dprogramming.Game;
 import tutorial2dprogramming.Handler;
 import tutorial2dprogramming.Layer;
@@ -15,8 +18,12 @@ import tutorial2dprogramming.RenderableLayers;
 import tutorial2dprogramming.entities.enemy.level1.Boss1;
 import tutorial2dprogramming.entities.EntityManager;
 import tutorial2dprogramming.entities.Player;
+import tutorial2dprogramming.entities.enemy.level1.Bat;
+import tutorial2dprogramming.gfx.BatAssets;
 import tutorial2dprogramming.gfx.Boss2Assets;
 import tutorial2dprogramming.gfx.PlayerAssets;
+import tutorial2dprogramming.gui.HealthBar;
+import tutorial2dprogramming.gui.StarsPanel;
 import tutorial2dprogramming.staticentities.grabbable.GrabbableHealthPotion;
 import tutorial2dprogramming.staticentities.grabbable.GrabbableStar;
 import tutorial2dprogramming.utils.GrabbableStarCollection;
@@ -67,10 +74,11 @@ public class World {
     
     public void init(){
         starCollection = new GrabbableStarCollection();
-        entityManager = new EntityManager(handler, new Player(handler, 288, 320,new PlayerAssets()));
+        Player player = new Player(handler, 288, 320,new PlayerAssets());
+        entityManager = new EntityManager(handler, player);
         
-        GrabbableStar star1=new GrabbableStar(handler, 100, 150, 32, 32);
-        GrabbableStar star2=new GrabbableStar(handler, 150, 150, 32, 32);
+        GrabbableStar star1=new GrabbableStar(handler, 300, 250, 32, 32);
+        GrabbableStar star2=new GrabbableStar(handler, 350, 250, 32, 32);
         star1.addObserver(starCollection);
         star2.addObserver(starCollection);
         
@@ -79,16 +87,20 @@ public class World {
         
         entityManager.addEntity(new GrabbableHealthPotion(handler, 100, 500, 32, 32));
         entityManager.addEntity(new Boss1(handler, 1000, 200,new Boss2Assets()));
-                System.out.println("Initiating world from... " + path);
+        entityManager.addEntity(new Bat(handler, 500, 400, 32, 32, new BatAssets()));
+        entityManager.addEntity(new Bat(handler, 1200, 600, 32, 32, new BatAssets()));
+        entityManager.addEntity(new Bat(handler, 1800, 2000, 32, 32, new BatAssets()));
+        System.out.println("Initiating world from... " + path);
 
         loadWorld(path);
         rl = new RenderableLayers(this.tiles[0].length, this.tiles.length, handler, path);
         rl.loadLayers();
-        //entityManager.getPlayer().setX(spawnX);
-        //entityManager.getPlayer().setY(spawnY);
         
-        lifeObserver=new LifeObserver();
-        entityManager.getPlayer().addObserver(lifeObserver);
+        HealthBar healthBar = handler.getGame().getGui().getHealthBar();
+        player.getLifeObservable().addObserver(healthBar);
+        StarsPanel starsPanel = handler.getGame().getGui().getStarsPanel();
+        starCollection.addObserver(starsPanel);
+        
     
     }
 

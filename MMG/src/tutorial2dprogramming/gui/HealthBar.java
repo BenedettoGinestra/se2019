@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gamegui;
+package tutorial2dprogramming.gui;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -42,8 +42,8 @@ public class HealthBar extends ObservingPanel {
         this.barColor = new Color(137,0,0);
         this.barBorderColor = new Color(232,142,0);
         
-        healthTrapeze = ImageIO.read(this.getClass().getResource("/res/gui/healthbg.png"));
-        heartIcon = ImageIO.read(this.getClass().getResource("/res/gui/heart_icon.png"));
+        healthTrapeze = ImageIO.read(this.getClass().getResource("/gui/healthbg.png"));
+        heartIcon = ImageIO.read(this.getClass().getResource("/gui/heart_icon.png"));
 
     }
     

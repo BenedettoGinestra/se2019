@@ -32,10 +32,12 @@ public class Boss1 extends Enemy {
         bounds.y = 30;
         bounds.width = 15;
         bounds.height = 22;
-        health = 2;
         setState(leftState);
+        life.setHealthPoints(2);
+        life.setLives(1);
+        //maxHealth=life.getHealthPoints();
         //setAttackCooldown(3000);
-        timer = new UtilityTimer(2000);
+        timer = new UtilityTimer(500);
 
     }
 
@@ -53,10 +55,10 @@ public class Boss1 extends Enemy {
 
     @Override
     public void die() {
-        System.out.println("Samurai ha attaccato!!");
+        System.out.println("Boss1 è morto!!");
     }
 
-    @Override
+    /*@Override
     public void getMovement() {
 
         checkAttacks();
@@ -70,7 +72,7 @@ public class Boss1 extends Enemy {
         }
 
         //state.attack();
-    }
+    }*/
 
     @Override
     public void render(Graphics g) {

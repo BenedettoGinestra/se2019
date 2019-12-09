@@ -8,8 +8,8 @@ package tutorial2dprogramming.entities;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Observable;
-import tutorial2dprogramming.Game;
 import tutorial2dprogramming.Handler;
+import tutorial2dprogramming.gui.Health;
 
 /**
  *
@@ -25,8 +25,9 @@ public abstract class Entity  extends Observable {
     protected Rectangle bounds;
     protected boolean isActive=true;
     protected boolean isGrabbable=false;
-    protected int health;
-    protected int maxHealth;
+    //protected int health;
+    //protected int maxHealth;
+    protected Health life;
     
     public Entity(Handler handler, float x, float y, int width, int height) {
         this.x = x;
@@ -35,17 +36,18 @@ public abstract class Entity  extends Observable {
         this.height = height;
         this.handler = handler;
         bounds = new Rectangle(0, 0, width, height);
-        
+        this.life = new Health();
+        //maxHealth = life.getHealthPoints();
+        System.out.println(life.getHealthPoints() +" "+this);
     }
     
     public void hurt(int amt){
         //System.out.println(health);
-        setHealth(health - amt);
-        //System.out.println(health);
-        if(health <=0){
+        setHealth(getHealth() - amt);
+        System.out.println(getHealth()+" "+this);
+        if(getHealth() <=0){
             isActive=false;
             die();
-            
         }
     }
     
@@ -125,15 +127,15 @@ public abstract class Entity  extends Observable {
     public abstract void render(Graphics g);
 
     public int getHealth() {
-        return health;
+        return life.getHealthPoints();
     }
 
     public void setHealth(int health) {
-        this.health = health;
+        life.setHealthPoints(health);
     }
 
     public int getMaxHealth() {
-        return maxHealth;
+        return life.getMaxHealthPoints();
     }
     
     

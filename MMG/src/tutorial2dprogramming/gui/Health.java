@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gamegui;
+package tutorial2dprogramming.gui;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -37,6 +37,7 @@ public class Health extends Observable {
     public void setHealthPoints(int healthPoints) {
         
         this.healthPoints = Math.max(0, Math.min(healthPoints, this.maxHealthPoints));
+        //this.healthPoints = healthPoints;
         for (Observer o : observers) 
             o.update(this, this);   
     }

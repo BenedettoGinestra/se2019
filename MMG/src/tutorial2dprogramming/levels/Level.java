@@ -29,11 +29,11 @@ public abstract class Level {
     public void init(int life) {
         handler.setWorld(this.world);
         world.init();
-        world.getEntityManager().getPlayer().setNumLives(life);
+        //world.getEntityManager().getPlayer().setNumLives(life);
         /* Le prossime righe di codice sono tutte pezzotte */
-        world.getEntityManager().getPlayer().setHealth(100);
-        lifeBar = world.getEntityManager().getPlayer().getHealth();
-        this.life = life;
+        //world.getEntityManager().getPlayer().setHealth(100);
+        //lifeBar = world.getEntityManager().getPlayer().getHealth();
+        //this.life = life;
         checkpoint = new Checkpoint(life, lifeBar, ID);
         checkpoint.saveCheckpoint();
         // checkpoint.saveCheckpoint();

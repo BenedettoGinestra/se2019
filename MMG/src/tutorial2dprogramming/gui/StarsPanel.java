@@ -32,7 +32,6 @@ public class StarsPanel extends ObservingPanel {
         g.drawImage(img, 0, 0, null);
         g.setColor(new Color(255, 222, 45));
         g.drawString(stars + "/3", 18, 55);
-
     }
 
     @Override

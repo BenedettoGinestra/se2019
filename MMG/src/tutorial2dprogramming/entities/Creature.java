@@ -25,7 +25,7 @@ import tutorial2dprogramming.world.World;
  */
 public abstract class Creature extends Entity {
 
-    public static final int DEFAULT_HEALTH = 10;
+    //public static final int DEFAULT_HEALTH = 10;
     public static final float DEFAULT_SPEED = 3.0f;
     //protected int health;
     protected float speed;
@@ -45,11 +45,11 @@ public abstract class Creature extends Entity {
     public Creature(Handler handler, float x, float y, int width, int height, EntityAssets entityAssets) {
         super(handler, x, y, width, height);
         speed = DEFAULT_SPEED;
-        health = DEFAULT_HEALTH;
-        maxHealth = health;
+        //health = DEFAULT_HEALTH;
+        //maxHealth = health;
         //this.entityAssets=entityAssets;
         entityAssets.init();
-        timerAttack = new UtilityTimer(5000);
+        timerAttack = new UtilityTimer(500);
 
         upState = new UpMovementState(this, entityAssets);
         downState = new DownMovementState(this, entityAssets);
@@ -80,7 +80,7 @@ public abstract class Creature extends Entity {
             }
             if (e.getCollisionBounds(0, 0).intersects(ar)) {
                 e.hurt(this.damageAttack);
-
+                System.out.println("Ha attaccato "+this);
                 return;
             }
 
@@ -183,14 +183,6 @@ public abstract class Creature extends Entity {
 
     public void setyMove(float yMove) {
         this.yMove = yMove;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
     }
 
     public float getSpeed() {

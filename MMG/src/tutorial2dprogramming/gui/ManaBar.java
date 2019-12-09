@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gamegui;
+package tutorial2dprogramming.gui;
 
 import java.awt.Canvas;
 import java.awt.Color;
@@ -48,7 +48,7 @@ public class ManaBar extends ObservingPanel {
         this.barBorderColor = new Color(232,142,0);
         this.isManaEnabled = false;
         
-        manaTrapeze = ImageIO.read(this.getClass().getResource("/res/gui/healthbg.png"));
+        manaTrapeze = ImageIO.read(this.getClass().getResource("/gui/healthbg.png"));
        
     }
     @Override

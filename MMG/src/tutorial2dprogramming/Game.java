@@ -14,6 +14,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.Observer;
 import java.util.logging.Logger;
 import tutorial2dprogramming.gfx.Assets;
 import tutorial2dprogramming.gfx.GameCamera;
@@ -73,6 +74,7 @@ public class Game implements Runnable {
         State.setState(gameState);
         
         lh = new LevelHandler(this.createLevelSequence(), handler);
+        
 
 
     }
@@ -200,4 +202,10 @@ public class Game implements Runnable {
 
         return l;
     }
+
+    public GameGUI getGui() {
+        return gui;
+    }
+    
+    
 }
