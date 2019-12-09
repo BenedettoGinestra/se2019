@@ -24,6 +24,7 @@ public class Assets {
     public static BufferedImage ground;
     public static BufferedImage[] trees = new BufferedImage[16];
     public static BufferedImage water;
+    public static BufferedImage[] portal;
     public static BufferedImage[] star, healthPotion;
     
     public static void init() {
@@ -36,6 +37,8 @@ public class Assets {
         
         star = new BufferedImage[6];
         healthPotion = new BufferedImage[1];
+        portal = new BufferedImage[1];
+        
         
         //CHARACTER IDLE ANIMATION
         player_idle[0] = sheet.crop(4, 5, width, height);
@@ -89,7 +92,7 @@ public class Assets {
         //SpriteSheet sheet6 = new SpriteSheet(ImageLoader.loadImage("/tutorial2dprogramming/images/healthPotion.png"));
         healthPotion[0] = ImageLoader.loadImage("/tutorial2dprogramming/images/health.png");
         
+        portal[0] = ImageLoader.loadImage("/statics/portal.gif");
         
-
     }   
 }

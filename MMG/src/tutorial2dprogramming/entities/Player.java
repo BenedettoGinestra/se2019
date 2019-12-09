@@ -146,6 +146,11 @@ public class Player extends Creature {
         e.actionOnCollision(this);
     }
     
+    @Override
+    public void touchStaticEntity(Entity e){
+        e.actionOnCollision(e);
+    }
+    
     public Health getLifeObservable(){
         return life;
     }

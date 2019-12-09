@@ -25,6 +25,7 @@ import tutorial2dprogramming.gfx.PlayerAssets;
 import tutorial2dprogramming.gui.HealthBar;
 import tutorial2dprogramming.gui.StarsPanel;
 import tutorial2dprogramming.policy.VerticalPolicy;
+import tutorial2dprogramming.staticentities.Portal;
 import tutorial2dprogramming.staticentities.grabbable.GrabbableHealthPotion;
 import tutorial2dprogramming.staticentities.grabbable.GrabbableStar;
 import tutorial2dprogramming.utils.GrabbableStarCollection;
@@ -93,6 +94,7 @@ public class World {
         entityManager.addEntity(bat1);
         entityManager.addEntity(new Bat(handler, 1200, 600, 32, 32, new BatAssets()));
         entityManager.addEntity(new Bat(handler, 1800, 2000, 32, 32, new BatAssets()));
+        entityManager.addEntity(new Portal(handler, 250, 200, 64, 64));
         System.out.println("Initiating world from... " + path);
 
         loadWorld(path);

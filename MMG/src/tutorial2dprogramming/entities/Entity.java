@@ -25,6 +25,7 @@ public abstract class Entity  extends Observable {
     protected Rectangle bounds;
     protected boolean isActive=true;
     protected boolean isGrabbable=false;
+    protected boolean isStatic=false;
     //protected int health;
     //protected int maxHealth;
     protected Health life;
@@ -67,6 +68,9 @@ public abstract class Entity  extends Observable {
                 if(e.isGrabbable){
                     touchGrabbable(e);
                 }
+                if(e.isStatic){
+                    touchStaticEntity(e);
+                }
                 
                 return true;
             }
@@ -76,6 +80,10 @@ public abstract class Entity  extends Observable {
     
     public void touchGrabbable(Entity e){
         System.out.println("Grabbable!");
+    }
+    
+    public void touchStaticEntity(Entity e){
+        System.out.println("static!");
     }
     
     public void actionOnCollision(Entity e){

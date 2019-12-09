@@ -31,7 +31,6 @@ public class Bat extends Enemy{
         //maxHealth=life.getHealthPoints();
         //setAttackCooldown(3000);
         //timer = new UtilityTimer(2000);
-        
     }
 
     
