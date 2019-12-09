@@ -83,28 +83,9 @@ public class World {
         entityManager = new EntityManager(handler, player);
         
         EnchantedTree etree1=new EnchantedTree(handler,150,400,90,90);
-        //EnchantedTree etree2=new EnchantedTree(handler,1400,800,90,90);
-      //  EnchantedTree etree3=new EnchantedTree(handler,200,900,90,90);
-        
-        //right leaves
-        EnchantedRightLeaf erleaf=new EnchantedRightLeaf(handler,etree1.getX()+55,etree1.getY()+55,10,10);
-        //EnchantedRightLeaf erleaf2=new EnchantedRightLeaf(handler,etree2.getX()+55,etree2.getY()+55,10,10);
-       // EnchantedLeaf eleaf3=new EnchantedLeaf(handler,250,920,30,30);
-        
-        //left leaves
-        EnchantedLeftLeaf elleaf=new EnchantedLeftLeaf(handler,etree1.getX()+55,etree1.getY()+55,10,10);
-        //EnchantedLeftLeaf elleaf2=new EnchantedLeftLeaf(handler,etree2.getX()+55,etree2.getY()+55,10,10);
         
         entityManager.addEntity(etree1);
-        //entityManager.addEntity(etree2);
-       // entityManager.addEntity(etree3);
-        
-        entityManager.addEntity(erleaf);
-        //entityManager.addEntity(erleaf2);
-        
-        entityManager.addEntity(elleaf);
-        //entityManager.addEntity(elleaf2);
-       // entityManager.addEntity(eleaf3);
+       
         
         GrabbableStar star1=new GrabbableStar(handler, 450, 250, 32, 32);
         GrabbableStar star2=new GrabbableStar(handler, 350, 250, 32, 32);
@@ -115,10 +96,10 @@ public class World {
         entityManager.addEntity(star2);
         
         entityManager.addEntity(new GrabbableHealthPotion(handler, 150, 500, 32, 32));
-        Bat bat1 = new Bat(handler, 500, 400, 32, 32, new BatAssets());
-        bat1.setMovementPolicy(new VerticalPolicy(bat1,(int)(bat1.getY()-100),(int)(bat1.getY() + 100)));
+        //Bat bat1 = new Bat(handler, 500, 400, 32, 32, new BatAssets());
+        //bat1.setMovementPolicy(new VerticalPolicy(bat1,(int)(bat1.getY()-100),(int)(bat1.getY() + 100)));
         entityManager.addEntity(new Boss1(handler, 1000, 200,new Boss2Assets()));
-        entityManager.addEntity(bat1);
+        //entityManager.addEntity(bat1);
         entityManager.addEntity(new Bat(handler, 1200, 600, 32, 32, new BatAssets()));
         entityManager.addEntity(new Bat(handler, 1800, 2000, 32, 32, new BatAssets()));
         entityManager.addEntity(new Portal(handler, 250, 200, 64, 64));

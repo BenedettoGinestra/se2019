@@ -147,7 +147,7 @@ public class Player extends Creature {
     }
     
     @Override
-    public void touchStaticEntity(Entity e){
+    public void touchEntity(Entity e){
         e.actionOnCollision(e);
     }
     

@@ -39,6 +39,7 @@ public abstract class Creature extends Entity {
     protected int damageAttack;
     private long lastAttackTimer, attackCooldown = DEFAULT_ATTACK_COOLDOWN, attackTimer = attackCooldown;
     private boolean attacking = false;
+    private boolean tileCollision=false;
 
     protected UtilityTimer timerAttack;
 
@@ -108,8 +109,10 @@ public abstract class Creature extends Entity {
                         !collisionWithLayerTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) &&
                             !collisionWithLayerTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT)) {
                 x += xMove;
+                tileCollision=false;
             } else {
                 x = tx * Tile.TILEWIDTH - bounds.x - bounds.width - 1;
+                tileCollision=true;
             }
             
         } else if (xMove < 0) {
@@ -119,8 +122,10 @@ public abstract class Creature extends Entity {
                         !collisionWithLayerTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) &&
                             !collisionWithLayerTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT)) {
                 x += xMove;
+                tileCollision=false;
             } else {
                 x = tx * Tile.TILEWIDTH + Tile.TILEWIDTH - bounds.x;
+                tileCollision=true;
             }
         }
     }
@@ -133,8 +138,10 @@ public abstract class Creature extends Entity {
                         !collisionWithLayerTile((int) (x + bounds.x) / Tile.TILEWIDTH, ty) &&
                             !collisionWithLayerTile((int) (x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty)) {
                 y += yMove;
+                tileCollision=false;
             } else {
                 y = ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - bounds.y;
+                tileCollision=true;
             }
         }else if(yMove > 0) {
             int ty = (int) (y + yMove + bounds.y + bounds.height) / Tile.TILEHEIGHT;
@@ -143,8 +150,10 @@ public abstract class Creature extends Entity {
                         !collisionWithLayerTile((int) (x + bounds.x) / Tile.TILEWIDTH, ty) &&
                             !collisionWithLayerTile((int) (x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty)) {
                 y += yMove;
+                tileCollision=false;
             } else {
                 y = ty * Tile.TILEHEIGHT - bounds.y - bounds.height - 1;
+                tileCollision=true;
             }
         }
     }
@@ -219,6 +228,10 @@ public abstract class Creature extends Entity {
 
     public MovementState getRightState() {
         return rightState;
+    }
+    
+    public boolean isCollidingWithTile(){
+        return tileCollision;
     }
     
     
