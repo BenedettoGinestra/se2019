@@ -33,9 +33,11 @@ public abstract class Level {
         /* Le prossime righe di codice sono tutte pezzotte */
         //world.getEntityManager().getPlayer().setHealth(100);
         //lifeBar = world.getEntityManager().getPlayer().getHealth();
-        //this.life = life;
+        this.life = life;
+        /*
         checkpoint = new Checkpoint(life, lifeBar, ID);
         checkpoint.saveCheckpoint();
+                */
         // checkpoint.saveCheckpoint();
         // Caricamento vignette... ancora da definire
     }

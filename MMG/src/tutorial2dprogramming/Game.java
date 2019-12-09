@@ -25,6 +25,7 @@ import tutorial2dprogramming.levels.BossLevel;
 import tutorial2dprogramming.levels.Level;
 import tutorial2dprogramming.levels.LevelHandler;
 import tutorial2dprogramming.levels.WorldLevel;
+import tutorial2dprogramming.saves.Checkpoint;
 import tutorial2dprogramming.world.World;
 
 /**
@@ -49,19 +50,25 @@ public class Game implements Runnable {
     private GameGUI gui;
 
     private LevelHandler lh;
+    private Checkpoint checkpoint;
+    private Checkpoint ck;
 
     public Game(String title, int width, int height) {
         this.title = title;
         this.width = width;
         this.height = height;
         keyManager = new KeyManager();
+        checkpoint=new Checkpoint();
     }
 
     public void init() throws IOException {
         /*display = new Display(title, width, height);
          display.getFrame().addKeyListener(keyManager);*/
+        ck=checkpoint.loadCheckpoint();
+        if(ck==null)
+            ck= new Checkpoint(3,120,0);
 
-        this.gui = new GameGUI();
+        this.gui = new GameGUI(ck);
         GameScenePanel gameScene = (GameScenePanel) this.gui.getGameScenePanel();
         this.width = gui.getCanvas().getSize().width;
         this.height = gui.getCanvas().getSize().height;
@@ -73,7 +80,9 @@ public class Game implements Runnable {
         gameState = new GameState(handler);
         State.setState(gameState);
         
-        lh = new LevelHandler(this.createLevelSequence(), handler);
+        lh = new LevelHandler(this.createLevelSequence(), handler, ck);
+        lh.addObserver(gui.getLevelNamePanel());
+        lh.addObserver(ck);
         
 
 
@@ -148,6 +157,7 @@ public class Game implements Runnable {
                 ticks = 0;
                 timer = 0;
             }
+            lh.checkPlayerLives();
         }
 
         stop();
@@ -195,10 +205,10 @@ public class Game implements Runnable {
         BossLevel bl;
 
         wl = new WorldLevel(0, new World(handler, "res/worlds/world1/"), handler);
-       // bl = new BossLevel(1, new World(handler, "res/worlds/world2.txt"), handler);
+        bl = new BossLevel(1, new World(handler, "res/worlds/world2/"), handler);
 
         l.add(wl);
-        //l.add(bl);
+        l.add(bl);
 
         return l;
     }

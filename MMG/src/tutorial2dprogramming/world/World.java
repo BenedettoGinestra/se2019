@@ -18,6 +18,9 @@ import tutorial2dprogramming.RenderableLayers;
 import tutorial2dprogramming.entities.enemy.level1.Boss1;
 import tutorial2dprogramming.entities.EntityManager;
 import tutorial2dprogramming.entities.Player;
+import tutorial2dprogramming.entities.enchanted.EnchantedLeftLeaf;
+import tutorial2dprogramming.entities.enchanted.EnchantedRightLeaf;
+import tutorial2dprogramming.entities.enchanted.EnchantedTree;
 import tutorial2dprogramming.entities.enemy.level1.Bat;
 import tutorial2dprogramming.gfx.BatAssets;
 import tutorial2dprogramming.gfx.Boss2Assets;
@@ -79,7 +82,31 @@ public class World {
         Player player = new Player(handler, 288, 320,new PlayerAssets());
         entityManager = new EntityManager(handler, player);
         
-        GrabbableStar star1=new GrabbableStar(handler, 300, 250, 32, 32);
+        EnchantedTree etree1=new EnchantedTree(handler,150,400,90,90);
+        //EnchantedTree etree2=new EnchantedTree(handler,1400,800,90,90);
+      //  EnchantedTree etree3=new EnchantedTree(handler,200,900,90,90);
+        
+        //right leaves
+        EnchantedRightLeaf erleaf=new EnchantedRightLeaf(handler,etree1.getX()+55,etree1.getY()+55,10,10);
+        //EnchantedRightLeaf erleaf2=new EnchantedRightLeaf(handler,etree2.getX()+55,etree2.getY()+55,10,10);
+       // EnchantedLeaf eleaf3=new EnchantedLeaf(handler,250,920,30,30);
+        
+        //left leaves
+        EnchantedLeftLeaf elleaf=new EnchantedLeftLeaf(handler,etree1.getX()+55,etree1.getY()+55,10,10);
+        //EnchantedLeftLeaf elleaf2=new EnchantedLeftLeaf(handler,etree2.getX()+55,etree2.getY()+55,10,10);
+        
+        entityManager.addEntity(etree1);
+        //entityManager.addEntity(etree2);
+       // entityManager.addEntity(etree3);
+        
+        entityManager.addEntity(erleaf);
+        //entityManager.addEntity(erleaf2);
+        
+        entityManager.addEntity(elleaf);
+        //entityManager.addEntity(elleaf2);
+       // entityManager.addEntity(eleaf3);
+        
+        GrabbableStar star1=new GrabbableStar(handler, 450, 250, 32, 32);
         GrabbableStar star2=new GrabbableStar(handler, 350, 250, 32, 32);
         star1.addObserver(starCollection);
         star2.addObserver(starCollection);

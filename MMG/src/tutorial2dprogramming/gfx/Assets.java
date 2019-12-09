@@ -27,6 +27,9 @@ public class Assets {
     public static BufferedImage[] portal;
     public static BufferedImage[] star, healthPotion;
     
+    public static BufferedImage[] enchantedTrees;
+    public static BufferedImage[] enchantedLeaf;
+    
     public static void init() {
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/tutorial2dprogramming/images/textures/sheet.png"));
         SpriteSheet tileset = new SpriteSheet(ImageLoader.loadImage("/tutorial2dprogramming/images/textures/tileset.png"));
@@ -93,6 +96,11 @@ public class Assets {
         healthPotion[0] = ImageLoader.loadImage("/tutorial2dprogramming/images/health.png");
         
         portal[0] = ImageLoader.loadImage("/statics/portal.gif");
+         enchantedTrees=new BufferedImage[3];
+        enchantedLeaf=new BufferedImage[3];
+        enchantedTrees[0]=ImageLoader.loadImage("/tutorial2dprogramming/images/enchantedTree3.png");
+
+        enchantedLeaf[0]=ImageLoader.loadImage("/tutorial2dprogramming/images/enchantedLeaf.png");
         
     }   
 }

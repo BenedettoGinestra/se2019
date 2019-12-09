@@ -8,22 +8,25 @@ package tutorial2dprogramming.gui;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Observable;
+import tutorial2dprogramming.saves.Checkpoint;
 
 /**
  *
  * @author bened
  */
 public class LevelNamePanel extends ObservingPanel {
-
-    public LevelNamePanel() {
+    private Checkpoint ck;
+    public LevelNamePanel(Checkpoint ck) {
         super();
+        this.ck=ck;
+
     }
 
     @Override
     public void paint(Graphics g) {
         super.paint(g);
         g.setColor(Color.white);
-        g.drawString(LevelUtilities.levels.get(LevelUtilities.currentLevel), 85, 20);
+        g.drawString(LevelUtilities.levels.get(ck.getLevelID()+1), 85, 20);
     }
 
     @Override

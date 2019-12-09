@@ -51,7 +51,7 @@ public class Bat extends Enemy{
         System.out.println("Bat è morto!!");
     }
 
-    /*@Override
+    @Override
     public void getMovement() {
         MovementState statePolicy;
         checkAttacks();
@@ -60,7 +60,7 @@ public class Bat extends Enemy{
         state.move();
 
         //state.attack();
-    }*/
+    }
 
     @Override
     public void render(Graphics g) {

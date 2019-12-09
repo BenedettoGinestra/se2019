@@ -35,6 +35,7 @@ import javax.swing.RootPaneContainer;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import tutorial2dprogramming.gfx.ImageLoader;
+import tutorial2dprogramming.saves.Checkpoint;
 
 /**
  *
@@ -58,9 +59,10 @@ public class GameGUI {
     private LevelNamePanel lnp;
     private StarsPanel starsPanel;
     private Canvas canvas;
+    private Checkpoint ck;
 
-    public GameGUI() throws IOException {
-
+    public GameGUI(Checkpoint ck) throws IOException {
+        this.ck=ck;
         createFrame();
         this.setFrameBackground("/gui/bg.png");
         this.createGameScenePanel();
@@ -172,7 +174,7 @@ public class GameGUI {
     }
 
     private void createLevelNamePanel() {
-        lnp = new LevelNamePanel();
+        lnp = new LevelNamePanel(ck);
         lnp.setLayout(null);
         lnp.setOpaque(false);
         frame.getContentPane().add(lnp);
@@ -269,9 +271,9 @@ public class GameGUI {
     
     
 
-    public static void main(String[] args) throws IOException {
+    public void main(String[] args) throws IOException {
 
-        new GameGUI();
+        new GameGUI(ck);
 
     }
 
