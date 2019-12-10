@@ -6,15 +6,13 @@
 package tutorial2dprogramming.policy;
 
 import tutorial2dprogramming.entities.Creature;
-import tutorial2dprogramming.entities.state.DownMovementState;
 import tutorial2dprogramming.entities.state.MovementState;
-import tutorial2dprogramming.entities.state.UpMovementState;
 
 /**
  *
  * @author mario
  */
-public class VerticalPolicy extends Policy{
+public class VerticalPolicy extends BasePolicy{
     private Creature c;
     private MovementState downState;
     private MovementState upState;
@@ -30,12 +28,37 @@ public class VerticalPolicy extends Policy{
         c.setState(downState);
     }
 
+
     @Override
-    public MovementState getMovement() {
-        if(c.getY()<=startY)
-            return downState;
-        if(c.getY()>=endY)
-            return upState;
-        else return null;
+    public void getAction() {
+        c.getState().move();
+    }
+
+    @Override
+    public boolean lowerBound() {
+        return c.getY()<=startY;
+    }
+
+    @Override
+    public boolean upperBound() {
+        return c.getY()>=endY;
+    }
+
+    @Override
+    public boolean tileCollision() {
+        return c.isCollidingWithTile();
+    }
+
+    @Override
+    public void changeState() {
+        if(c.getState().equals(upState))
+            c.setState(downState);
+        else if(c.getState().equals(downState))
+            c.setState(upState);
+    }
+
+    @Override
+    public void attack() {
+        return;
     }
 }

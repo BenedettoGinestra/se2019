@@ -87,10 +87,9 @@ public class World {
         entityManager.addEntity(etree1);
        
         
-        GrabbableStar star1=new GrabbableStar(handler, 787, 1252, 32, 32);
-        GrabbableStar star2=new GrabbableStar(handler, 3005, 410, 32, 32);
-        GrabbableStar star3=new GrabbableStar(handler, 2594, 2366, 32, 32);
-        
+
+        GrabbableStar star1=new GrabbableStar(handler, 450, 250, 32, 32);
+        GrabbableStar star2=new GrabbableStar(handler, 350, 250, 32, 32);
         star1.addObserver(starCollection);
         star2.addObserver(starCollection);
         star3.addObserver(starCollection);
@@ -100,18 +99,18 @@ public class World {
         entityManager.addEntity(star3);
         
         entityManager.addEntity(new GrabbableHealthPotion(handler, 150, 500, 32, 32));
-        //Bat bat1 = new Bat(handler, 500, 400, 32, 32, new BatAssets());
-        //bat1.setMovementPolicy(new VerticalPolicy(bat1,(int)(bat1.getY()-100),(int)(bat1.getY() + 100)));
+
+        
+        Bat bat1 = new Bat(handler, 900, 90, 32, 32, new BatAssets());
+        bat1.setMovementPolicy(new VerticalPolicy(bat1,(int)(bat1.getY()-100),(int)(bat1.getY() + 100)));
+        entityManager.addEntity(bat1);
+
         entityManager.addEntity(new Boss1(handler, 1000, 200,new Boss2Assets()));
-        //entityManager.addEntity(bat1);
         entityManager.addEntity(new Bat(handler, 1200, 600, 32, 32, new BatAssets()));
         entityManager.addEntity(new Bat(handler, 1800, 2000, 32, 32, new BatAssets()));
-        portal=new Portal(handler, 250, 200, 64, 64);
-        entityManager.addEntity(portal);
-       // portal.addObserver(lh);
-        
-        entityManager.addEntity(new ArcherBoss(handler, 500, 200,new Boss2Assets()));
-        //System.out.println("Initiating world from... " + path);
+        entityManager.addEntity(new Bat(handler, 150, 800, 32, 32, new BatAssets()));
+        entityManager.addEntity(new Portal(handler, 250, 200, 64, 64));
+        System.out.println("Initiating world from... " + path);
 
         loadWorld(path);
         rl = new RenderableLayers(this.tiles[0].length, this.tiles.length, handler, path);

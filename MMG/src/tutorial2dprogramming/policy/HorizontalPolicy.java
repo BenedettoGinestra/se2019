@@ -16,7 +16,7 @@ import tutorial2dprogramming.entities.state.RightMovementState;
  *
  * @author mario
  */
-public class HorizontalPolicy extends Policy{
+public class HorizontalPolicy extends BasePolicy{
     private Creature c;
     private MovementState leftState;
     private MovementState rightState;
@@ -31,15 +31,43 @@ public class HorizontalPolicy extends Policy{
         this.endX=endX;
         c.setState(leftState);
     }
+    @Override
+    public void getAction() {
+        c.getState().move();
+    }
 
     @Override
-    public MovementState getMovement() {
-        if(c.getX()<=startX)
-            return rightState;
-        if(c.getX()>=endX)
-            return leftState;
-        else return null;
+    public boolean lowerBound() {
+        return c.getX()<=startX;
     }
+
+    @Override
+    public boolean upperBound() {
+        return c.getX()>=endX;
+    }
+
+    @Override
+    public boolean tileCollision() {
+        return c.isCollidingWithTile();
+    }
+
+    @Override
+    public void changeState() {
+        if(c.getState().equals(leftState)){
+            c.setState(rightState);
+        }
+        else if(c.getState().equals(rightState)){
+            c.setState(leftState);
+        }
+            
+        //getAction();
+    }    
+
+    @Override
+    public void attack() {
+        return;
+    }
+    
     
     
     

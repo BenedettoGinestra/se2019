@@ -22,6 +22,7 @@ import tutorial2dprogramming.utils.UtilityTimer;
 public class DownMovementState extends TemplateMovementState{
     
     public DownMovementState(Creature creature, EntityAssets asset){
+        this.asset=asset;
         this.creature=creature;
         Map<String, BufferedImage[]> as = asset.getAnimations().get("down");
         animationStable = new Animation(50, as.get("stable"));

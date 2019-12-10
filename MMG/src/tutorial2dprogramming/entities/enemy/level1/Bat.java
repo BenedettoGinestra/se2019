@@ -22,8 +22,8 @@ public class Bat extends Enemy{
         super(handler, x, y, width, height, entityAssets);
         bounds.x = 1;
         bounds.y = 1;
-        bounds.width = 30;
-        bounds.height = 35;
+        bounds.width = 15;
+        bounds.height = 25;
         //health = 2;
         setState(leftState);
         life.setHealthPoints(1);
@@ -51,16 +51,17 @@ public class Bat extends Enemy{
         System.out.println("Bat è morto!!");
     }
 
-    @Override
+    /*Override
     public void getMovement() {
         MovementState statePolicy;
         checkAttacks();
-        if((statePolicy = movementPolicy.getMovement())!=null)
+        /*if((statePolicy = movementPolicy.getMovement())!=null)
             setState(statePolicy);
-        state.move();
+        movementPolicy.getAction();*/
+        //movementPolicy.getMovement();
 
         //state.attack();
-    }
+    //}
 
     @Override
     public void render(Graphics g) {

@@ -45,7 +45,7 @@ public abstract class Entity  extends Observable {
         this.life = new Health();
         //maxHealth = life.getHealthPoints();
         observers=new LinkedList<Observer>();
-        System.out.println(life.getHealthPoints() +" "+this);
+
     }
     
     public void hurt(int amt){

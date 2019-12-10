@@ -23,6 +23,7 @@ import tutorial2dprogramming.utils.UtilityTimer;
 public class UpMovementState extends TemplateMovementState{
     
     public UpMovementState(Creature creature, EntityAssets asset){
+        this.asset=asset;
         this.creature=creature;
         Map<String, BufferedImage[]> as = asset.getAnimations().get("up");
         animationStable = new Animation(50, as.get("stable"));
