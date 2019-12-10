@@ -99,7 +99,10 @@ public class World {
         entityManager.addEntity(star3);
         
         entityManager.addEntity(new GrabbableHealthPotion(handler, 150, 500, 32, 32));
+<<<<<<< HEAD
 
+=======
+>>>>>>> ca0548847af4176f4148f6f4d99eeffb8fa84977
         
         Bat bat1 = new Bat(handler, 900, 90, 32, 32, new BatAssets());
         bat1.setMovementPolicy(new VerticalPolicy(bat1,(int)(bat1.getY()-100),(int)(bat1.getY() + 100)));
