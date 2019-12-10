@@ -23,6 +23,7 @@ import tutorial2dprogramming.utils.UtilityTimer;
 public class LeftMovementState extends TemplateMovementState{
     
     public LeftMovementState(Creature creature, EntityAssets asset){
+        this.asset=asset;
         this.creature=creature;
         Map<String, BufferedImage[]> as = asset.getAnimations().get("left");
         animationStable = new Animation(50, as.get("stable"));

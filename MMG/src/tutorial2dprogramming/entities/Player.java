@@ -22,8 +22,8 @@ public class Player extends Creature {
 
     public Player(Handler handler, float x, float y, PlayerAssets pAssets) {
         super(handler, x, y, Creature.DEFAULT_WIDTH, Creature.DEFAULT_HEIGHT, pAssets);
-        bounds.x = 25;
-        bounds.y = 30;
+        bounds.x = 20;
+        bounds.y = 20;
         bounds.width = 15;
         bounds.height = 22;
         //life = new Life(10,3);

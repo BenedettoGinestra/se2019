@@ -39,7 +39,6 @@ public abstract class Entity  extends Observable {
         bounds = new Rectangle(0, 0, width, height);
         this.life = new Health();
         //maxHealth = life.getHealthPoints();
-        System.out.println(life.getHealthPoints() +" "+this);
     }
     
     public void hurt(int amt){

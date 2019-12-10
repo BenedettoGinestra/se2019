@@ -94,12 +94,15 @@ public class World {
         entityManager.addEntity(star2);
         
         entityManager.addEntity(new GrabbableHealthPotion(handler, 150, 500, 32, 32));
-        //Bat bat1 = new Bat(handler, 500, 400, 32, 32, new BatAssets());
-        //bat1.setMovementPolicy(new VerticalPolicy(bat1,(int)(bat1.getY()-100),(int)(bat1.getY() + 100)));
+        
+        Bat bat1 = new Bat(handler, 900, 90, 32, 32, new BatAssets());
+        bat1.setMovementPolicy(new VerticalPolicy(bat1,(int)(bat1.getY()-100),(int)(bat1.getY() + 100)));
+        entityManager.addEntity(bat1);
+
         entityManager.addEntity(new Boss1(handler, 1000, 200,new Boss2Assets()));
-        //entityManager.addEntity(bat1);
         entityManager.addEntity(new Bat(handler, 1200, 600, 32, 32, new BatAssets()));
         entityManager.addEntity(new Bat(handler, 1800, 2000, 32, 32, new BatAssets()));
+        entityManager.addEntity(new Bat(handler, 150, 800, 32, 32, new BatAssets()));
         entityManager.addEntity(new Portal(handler, 250, 200, 64, 64));
         System.out.println("Initiating world from... " + path);
 

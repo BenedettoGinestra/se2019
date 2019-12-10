@@ -33,7 +33,7 @@ public class EnchantedTree extends StaticEntity{
         bounds.width= 60;
         bounds.height= 60;
         animation = new Animation(20, Assets.enchantedTrees);
-        timer = new UtilityTimer(5000);
+        timer = new UtilityTimer(3000);
 
         
     }

@@ -12,8 +12,31 @@ import tutorial2dprogramming.entities.state.MovementState;
  *
  * @author mario
  */
-public abstract class Policy {
+public abstract class BasePolicy {
     
-    public abstract MovementState getMovement();
+    public void getMovement(){
+        if(lowerBound() || upperBound()){
+            attack();
+            changeState();
+        }
+        if(tileCollision()){
+            System.out.println(" has collision with tale");
+            changeState();
+        }
+        getAction();
+    
+    }
+    
+    public abstract void getAction();
+    
+    public abstract void attack();
+    
+    public abstract boolean lowerBound();
+    
+    public abstract boolean upperBound();
+    
+    public abstract boolean tileCollision();
+    
+    public abstract void changeState();
     
 }

@@ -6,7 +6,6 @@
 package tutorial2dprogramming.entities;
 
 import java.awt.Rectangle;
-import tutorial2dprogramming.Game;
 import tutorial2dprogramming.Handler;
 import tutorial2dprogramming.RenderableLayers;
 import tutorial2dprogramming.entities.state.DownMovementState;

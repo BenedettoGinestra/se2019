@@ -7,6 +7,7 @@ package tutorial2dprogramming.entities.state;
 
 import java.awt.Rectangle;
 import tutorial2dprogramming.gfx.Animation;
+import tutorial2dprogramming.gfx.EntityAssets;
 import tutorial2dprogramming.utils.UtilityTimer;
 
 /**
@@ -18,6 +19,7 @@ public abstract class TemplateMovementState extends MovementState{
     protected Animation animationStable;
     protected Animation animationRun;
     protected Animation animationAttack;
+    protected EntityAssets asset;
 
     @Override
     public void move() {
@@ -62,5 +64,10 @@ public abstract class TemplateMovementState extends MovementState{
         ar.height=arSize;
         setSize(ar, cb);
         return ar;
-    }    
+    }
+    
+    @Override
+    public EntityAssets getEntityAssets(){
+        return asset;
+    }
 }

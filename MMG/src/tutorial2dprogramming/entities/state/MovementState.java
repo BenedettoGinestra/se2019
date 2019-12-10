@@ -10,6 +10,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import tutorial2dprogramming.entities.Creature;
 import tutorial2dprogramming.gfx.Animation;
+import tutorial2dprogramming.gfx.EntityAssets;
 
 /**
  * The State abstract class in the State Design Pattern.
@@ -85,4 +86,12 @@ public abstract class MovementState {
     public BufferedImage getCurrentAnimationFrame(){
         return animation.getCurrentFrame();
     }
+    
+    public boolean equals(MovementState other){
+        if(this.animation.getCurrentFrame().equals(other.animation.getCurrentFrame()))
+            return true;
+        return false;
+    }
+    
+    public abstract EntityAssets getEntityAssets();
 }

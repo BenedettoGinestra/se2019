@@ -33,6 +33,7 @@ public class EnchantedLeaf extends Creature{
         bounds.y = 1;
         bounds.width= 24;
         bounds.height= 15;
+        speed=10;
         setState(rightState);
         //animation = new Animation(500, Assets.enchantedLeaf);
     }
