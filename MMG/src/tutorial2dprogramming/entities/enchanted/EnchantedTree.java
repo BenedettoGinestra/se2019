@@ -10,9 +10,12 @@ import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import tutorial2dprogramming.Handler;
 import tutorial2dprogramming.entities.Entity;
+import tutorial2dprogramming.entities.state.RightMovementState;
 import tutorial2dprogramming.gfx.Animation;
 import tutorial2dprogramming.gfx.Assets;
+import tutorial2dprogramming.gfx.LeafAssets;
 import tutorial2dprogramming.staticentities.StaticEntity;
+import tutorial2dprogramming.utils.UtilityTimer;
 
 /**
  *
@@ -20,8 +23,7 @@ import tutorial2dprogramming.staticentities.StaticEntity;
  */
 public class EnchantedTree extends StaticEntity{
     
-    private Animation animation;
-    private LinkedList<EnchantedLeaf> l=new LinkedList<EnchantedLeaf>();
+    private UtilityTimer timer;
    
     
     public EnchantedTree(Handler handler, float x, float y, int width, int height) {
@@ -31,12 +33,25 @@ public class EnchantedTree extends StaticEntity{
         bounds.width= 60;
         bounds.height= 60;
         animation = new Animation(20, Assets.enchantedTrees);
+        timer = new UtilityTimer(5000);
+
         
     }
-
     @Override
     public void tick() {
+        if(timer.isTimeOver()){
+            handler.getWorld().getEntityManager().addEntity(createLeaf() );
+        }
+        
+    }
        // animation.tick();
+    
+    public EnchantedLeaf createLeaf(){
+        EnchantedLeaf leaf = new EnchantedLeaf(handler, getX()+70, getY()+70, 10,10);
+        LeafAssets leafAsset = new LeafAssets();
+        leafAsset.init();
+        leaf.setState(new RightMovementState(leaf, leafAsset));
+        return leaf;
     }
 
     @Override

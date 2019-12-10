@@ -74,8 +74,8 @@ public abstract class Entity  extends Observable {
                 if(e.isGrabbable){
                     touchGrabbable(e);
                 }
-                if(e.isStatic){
-                    touchStaticEntity(e);
+                else{
+                    touchEntity(e);
                 }
                 
                 return true;
@@ -88,7 +88,7 @@ public abstract class Entity  extends Observable {
         System.out.println("Grabbable!");
     }
     
-    public void touchStaticEntity(Entity e){
+    public void touchEntity(Entity e){
         System.out.println("static!");
     }
     

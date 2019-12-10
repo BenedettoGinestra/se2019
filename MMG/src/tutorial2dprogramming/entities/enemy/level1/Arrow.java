@@ -3,32 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tutorial2dprogramming.entities.enchanted;
+package tutorial2dprogramming.entities.enemy.level1;
 
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.util.Timer;
-import java.util.TimerTask;
 import tutorial2dprogramming.Handler;
 import tutorial2dprogramming.entities.Creature;
 import tutorial2dprogramming.entities.Entity;
-import tutorial2dprogramming.entities.state.RightMovementState;
-import tutorial2dprogramming.gfx.Animation;
-import tutorial2dprogramming.gfx.Assets;
-import tutorial2dprogramming.gfx.LeafAssets;
-import tutorial2dprogramming.staticentities.StaticEntity;
-import tutorial2dprogramming.utils.UtilityTimer;
+import tutorial2dprogramming.gfx.ArrowAssets;
 
 /**
  *
  * @author Antonia
  */
-public class EnchantedLeaf extends Creature{
+public class Arrow extends Creature{
     
    
     
-    public EnchantedLeaf(Handler handler, float x, float y, int width, int height){
-        super(handler, x, y, width, height, new LeafAssets());
+    public Arrow(Handler handler, float x, float y, int width, int height){
+        super(handler, x, y, width, height, new ArrowAssets());
         bounds.x = 0;
         bounds.y = 1;
         bounds.width= 24;

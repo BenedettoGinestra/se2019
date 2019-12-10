@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class Boss2Assets extends EntityAssets{
     
-
+    public static BufferedImage[] boss_right;
     private static Map<String, Map<String, BufferedImage[]>> bossAnimations;
     
     public void init(){
@@ -23,7 +23,7 @@ public class Boss2Assets extends EntityAssets{
         BufferedImage[] boss_down = new BufferedImage[5];
         BufferedImage[] boss_up = new BufferedImage[5];
         BufferedImage[] boss_left = new BufferedImage[5];
-        BufferedImage[] boss_right = new BufferedImage[5];
+        boss_right = new BufferedImage[5];
         BufferedImage[] boss_up_stable = new BufferedImage[5];
         BufferedImage[] boss_right_stable = new BufferedImage[5];
         BufferedImage[] boss_left_stable = new BufferedImage[5];

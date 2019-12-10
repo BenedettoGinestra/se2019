@@ -69,6 +69,8 @@ public class Player extends Creature {
         getInput();
         move();
 
+        System.out.println("x: "+x+" y:"+y);
+        
         handler.getGameCamera().centerOnEntity(this);
     }
 
@@ -147,7 +149,7 @@ public class Player extends Creature {
     }
     
     @Override
-    public void touchStaticEntity(Entity e){
+    public void touchEntity(Entity e){
         e.actionOnCollision(e);
     }
     

@@ -30,6 +30,7 @@ public class Assets {
     public static BufferedImage[] enchantedTrees;
     public static BufferedImage[] enchantedLeaf;
     
+    
     public static void init() {
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/tutorial2dprogramming/images/textures/sheet.png"));
         SpriteSheet tileset = new SpriteSheet(ImageLoader.loadImage("/tutorial2dprogramming/images/textures/tileset.png"));

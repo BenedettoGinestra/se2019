@@ -26,6 +26,8 @@ import tutorial2dprogramming.levels.Level;
 import tutorial2dprogramming.levels.LevelHandler;
 import tutorial2dprogramming.levels.WorldLevel;
 import tutorial2dprogramming.saves.Checkpoint;
+import tutorial2dprogramming.world.Dungeon;
+import tutorial2dprogramming.world.InterWorld;
 import tutorial2dprogramming.world.World;
 
 /**
@@ -207,8 +209,8 @@ public class Game implements Runnable {
         WorldLevel wl;
         BossLevel bl;
 
-        world1=new World(handler, "res/worlds/world1/");
-        world2=new World(handler, "res/worlds/world2/");
+        world1=new InterWorld(handler, "res/worlds/world1/");
+        world2=new Dungeon(handler, "res/worlds/world2/");
         
         wl = new WorldLevel(0, world1, handler);
         bl = new BossLevel(1, world2 , handler);

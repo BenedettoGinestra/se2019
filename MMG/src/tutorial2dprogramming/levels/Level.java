@@ -26,7 +26,7 @@ public abstract class Level {
 
     public abstract void render(Graphics g);
 
-    public void init(int life,LevelHandler lh) {
+    public void init(int life, LevelHandler lh) {
         handler.setWorld(this.world);
         world.init();
         world.setPortalObserver(lh);

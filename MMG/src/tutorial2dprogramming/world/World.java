@@ -7,6 +7,7 @@ package tutorial2dprogramming.world;
 
 import java.awt.Graphics;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
@@ -15,12 +16,13 @@ import tutorial2dprogramming.Game;
 import tutorial2dprogramming.Handler;
 import tutorial2dprogramming.Layer;
 import tutorial2dprogramming.RenderableLayers;
+import tutorial2dprogramming.entities.Creature;
+import tutorial2dprogramming.entities.Entity;
 import tutorial2dprogramming.entities.enemy.level1.Boss1;
 import tutorial2dprogramming.entities.EntityManager;
 import tutorial2dprogramming.entities.Player;
-import tutorial2dprogramming.entities.enchanted.EnchantedLeftLeaf;
-import tutorial2dprogramming.entities.enchanted.EnchantedRightLeaf;
 import tutorial2dprogramming.entities.enchanted.EnchantedTree;
+import tutorial2dprogramming.entities.enemy.level1.ArcherBoss;
 import tutorial2dprogramming.entities.enemy.level1.Bat;
 import tutorial2dprogramming.gfx.BatAssets;
 import tutorial2dprogramming.gfx.Boss2Assets;
@@ -47,16 +49,17 @@ public class World {
     private int[][] tiles;
     private int spawnX;
     private int spawnY;
-    private Handler handler;
-    private GrabbableStarCollection starCollection;
+    protected Handler handler;
+    protected GrabbableStarCollection starCollection;
     private LifeObserver lifeObserver;
     private RenderableLayers rl;
     private String path;
   //Entities
-    private EntityManager entityManager;
-    private Portal portal;
-    
-    
+    protected EntityManager entityManager;
+    protected Portal portal;
+
+    //protected LinkedList<Creature> creatures;
+    protected LinkedList<Entity> entities;
     
     public GrabbableStarCollection getStarCollection() {
         return starCollection;
@@ -66,60 +69,48 @@ public class World {
     public World(Handler handler, String path){
         this.handler = handler;
         this.path=path;
-                System.out.println("Constructing world from... " + path);
-
-       // this.init();
+        System.out.println("Constructing world from... " + path);
+        //creatures=new LinkedList<Creature>();
+        entities=new LinkedList<Entity>();
+        //this.init();
                
     }
     
     public void init(){
+        /*
         starCollection = new GrabbableStarCollection();
         Player player = new Player(handler, 288, 320,new PlayerAssets());
         entityManager = new EntityManager(handler, player);
         
         EnchantedTree etree1=new EnchantedTree(handler,150,400,90,90);
-        //EnchantedTree etree2=new EnchantedTree(handler,1400,800,90,90);
-      //  EnchantedTree etree3=new EnchantedTree(handler,200,900,90,90);
-        
-        //right leaves
-        EnchantedRightLeaf erleaf=new EnchantedRightLeaf(handler,etree1.getX()+55,etree1.getY()+55,10,10);
-        //EnchantedRightLeaf erleaf2=new EnchantedRightLeaf(handler,etree2.getX()+55,etree2.getY()+55,10,10);
-       // EnchantedLeaf eleaf3=new EnchantedLeaf(handler,250,920,30,30);
-        
-        //left leaves
-        EnchantedLeftLeaf elleaf=new EnchantedLeftLeaf(handler,etree1.getX()+55,etree1.getY()+55,10,10);
-        //EnchantedLeftLeaf elleaf2=new EnchantedLeftLeaf(handler,etree2.getX()+55,etree2.getY()+55,10,10);
         
         entityManager.addEntity(etree1);
-        //entityManager.addEntity(etree2);
-       // entityManager.addEntity(etree3);
+       
         
-        entityManager.addEntity(erleaf);
-        //entityManager.addEntity(erleaf2);
+        GrabbableStar star1=new GrabbableStar(handler, 787, 1252, 32, 32);
+        GrabbableStar star2=new GrabbableStar(handler, 3005, 410, 32, 32);
+        GrabbableStar star3=new GrabbableStar(handler, 2594, 2366, 32, 32);
         
-        entityManager.addEntity(elleaf);
-        //entityManager.addEntity(elleaf2);
-       // entityManager.addEntity(eleaf3);
-        
-        GrabbableStar star1=new GrabbableStar(handler, 450, 250, 32, 32);
-        GrabbableStar star2=new GrabbableStar(handler, 350, 250, 32, 32);
         star1.addObserver(starCollection);
         star2.addObserver(starCollection);
+        star3.addObserver(starCollection);
         
         entityManager.addEntity(star1);
         entityManager.addEntity(star2);
+        entityManager.addEntity(star3);
         
         entityManager.addEntity(new GrabbableHealthPotion(handler, 150, 500, 32, 32));
-        Bat bat1 = new Bat(handler, 500, 400, 32, 32, new BatAssets());
-        bat1.setMovementPolicy(new VerticalPolicy(bat1,(int)(bat1.getY()-100),(int)(bat1.getY() + 100)));
+        //Bat bat1 = new Bat(handler, 500, 400, 32, 32, new BatAssets());
+        //bat1.setMovementPolicy(new VerticalPolicy(bat1,(int)(bat1.getY()-100),(int)(bat1.getY() + 100)));
         entityManager.addEntity(new Boss1(handler, 1000, 200,new Boss2Assets()));
-        entityManager.addEntity(bat1);
+        //entityManager.addEntity(bat1);
         entityManager.addEntity(new Bat(handler, 1200, 600, 32, 32, new BatAssets()));
         entityManager.addEntity(new Bat(handler, 1800, 2000, 32, 32, new BatAssets()));
         portal=new Portal(handler, 250, 200, 64, 64);
         entityManager.addEntity(portal);
        // portal.addObserver(lh);
         
+        entityManager.addEntity(new ArcherBoss(handler, 500, 200,new Boss2Assets()));
         //System.out.println("Initiating world from... " + path);
 
         loadWorld(path);
@@ -131,7 +122,29 @@ public class World {
         StarsPanel starsPanel = handler.getGame().getGui().getStarsPanel();
         starCollection.addObserver(starsPanel);
         
-    
+    */
+        starCollection = new GrabbableStarCollection();
+        Player player = new Player(handler, 288, 320,new PlayerAssets());
+        entityManager = new EntityManager(handler, player);
+        
+      //  setCreatures();
+        //aggiunta entità/creature
+        
+        for (Entity e:entities) {
+            entityManager.addEntity(e);
+        }
+        
+        entityManager.addEntity(portal);
+        
+        loadWorld(path);
+        rl = new RenderableLayers(this.tiles[0].length, this.tiles.length, handler, path);
+        rl.loadLayers();
+        
+        HealthBar healthBar = handler.getGame().getGui().getHealthBar();
+        player.getLifeObservable().addObserver(healthBar);
+        StarsPanel starsPanel = handler.getGame().getGui().getStarsPanel();
+        starCollection.addObserver(starsPanel);
+        
     }
 
     public EntityManager getEntityManager() {
@@ -180,7 +193,7 @@ public class World {
         return t;
     }
     //Carica un file per costruire il mondo
-    private void loadWorld(String path) {
+    protected void loadWorld(String path) {
         System.out.println("Loading world from... " + path);
         String file = Utils.loadFileAsString(path + "layer1.txt");
         String[] tokens = file.split("\\s+");
@@ -262,5 +275,5 @@ public class World {
     public void setPortalObserver(LevelHandler lh) {
         portal.addObserver(lh);
     }
-    
+   
 }
