@@ -27,6 +27,7 @@ import tutorial2dprogramming.gfx.Boss2Assets;
 import tutorial2dprogramming.gfx.PlayerAssets;
 import tutorial2dprogramming.gui.HealthBar;
 import tutorial2dprogramming.gui.StarsPanel;
+import tutorial2dprogramming.levels.LevelHandler;
 import tutorial2dprogramming.policy.VerticalPolicy;
 import tutorial2dprogramming.staticentities.Portal;
 import tutorial2dprogramming.staticentities.grabbable.GrabbableHealthPotion;
@@ -53,6 +54,9 @@ public class World {
     private String path;
   //Entities
     private EntityManager entityManager;
+    private Portal portal;
+    
+    
     
     public GrabbableStarCollection getStarCollection() {
         return starCollection;
@@ -64,17 +68,8 @@ public class World {
         this.path=path;
                 System.out.println("Constructing world from... " + path);
 
-        this.init();
-        /*
-        Observer observerBenedetto=new Observer() {
-            @Override
-            public void update(Observable o, Object arg) {
-                System.out.println("Sono il metodo di benedetto");
-            }
-        };
-        lifeObserver.addObserver(observerBenedetto);
-        */
-        
+       // this.init();
+               
     }
     
     public void init(){
@@ -121,8 +116,11 @@ public class World {
         entityManager.addEntity(bat1);
         entityManager.addEntity(new Bat(handler, 1200, 600, 32, 32, new BatAssets()));
         entityManager.addEntity(new Bat(handler, 1800, 2000, 32, 32, new BatAssets()));
-        entityManager.addEntity(new Portal(handler, 250, 200, 64, 64));
-        System.out.println("Initiating world from... " + path);
+        portal=new Portal(handler, 250, 200, 64, 64);
+        entityManager.addEntity(portal);
+       // portal.addObserver(lh);
+        
+        //System.out.println("Initiating world from... " + path);
 
         loadWorld(path);
         rl = new RenderableLayers(this.tiles[0].length, this.tiles.length, handler, path);
@@ -260,4 +258,9 @@ public class World {
     public RenderableLayers getRenderableLayers() {
         return this.rl;
     }
+    
+    public void setPortalObserver(LevelHandler lh) {
+        portal.addObserver(lh);
+    }
+    
 }

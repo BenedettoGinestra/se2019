@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gamegui;
+package tutorial2dprogramming.gui;
 
 import java.io.IOException;
 import java.util.Observer;
@@ -20,7 +20,7 @@ public class GameGUITest {
     private Health health;
     
     public GameGUITest() throws IOException {
-        this.gui = new GameGUI();
+            this.gui = new GameGUI();
             this.mana = new Mana();
             this.health = new Health();
             this.health.addObserver((Observer) gui.getHealthBar());

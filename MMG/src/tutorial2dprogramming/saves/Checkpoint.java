@@ -108,7 +108,7 @@ public class Checkpoint implements Observer, Serializable{
         setLevelID(lh.getLevelID());
         setLifeBar(120);
         setLife(lh.getNumLives());
-        this.saveCheckpoint();
+        saveCheckpoint();
     }
     
    }

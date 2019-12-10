@@ -21,7 +21,7 @@ import tutorial2dprogramming.saves.Checkpoint;
  *
  * @author Antonia
  */
-public class LevelHandler extends Observable {
+public class LevelHandler extends Observable implements Observer {
 
     //attributi aggiunti per la gestione della timeline
     private LinkedList<Level> l = new LinkedList<Level>();
@@ -58,8 +58,10 @@ public class LevelHandler extends Observable {
     
     public void setLevel(int levelID) {
         
+        System.out.println("SONO NEL SETLEVEL");
+        
         currentLevel = l.get(levelID);
-        currentLevel.init(numLives);
+        currentLevel.init(numLives,this);
 
         for (Observer o : observers) {
             o.update(this, this);
@@ -74,34 +76,14 @@ public class LevelHandler extends Observable {
     // inizializza il livello
     public void init() {
 
-        //vecchio checkpoint
-        /*    
-        String[] saves = ck.loadCheckpoint();
         
-        numLives=Integer.parseInt(saves[0]);
-        
-        System.out.println("IL NUMERO DI VITE è: "+saves[0]);
-        */
         
                 System.out.println("CHECKPOINT DAL LEVEL HANDLER INIT");
 
         
-     //   ck1=ck.loadCheckpoint();
-       
-        /*
-        if (ck1== null) {
-            ck1=new GameCheckpoint(3,120,0);
-           // levelID = 0;
-           // numLives=3;
-        }
-*/
+     
         levelID=ck.getLevelID();
         numLives=ck.getLife();
-        /*
-        life=new Life(numLives);
-        life.addObserver(GameGUI.getHealthBar());
-        life.setLifes(numLives);
-        */
         
         setLevel(levelID);
 
@@ -110,7 +92,7 @@ public class LevelHandler extends Observable {
     //cambia il livello puntando a quello successivo nella lista
     public void updateLevel() {
         
-        
+        System.out.println("Sono nell'update Level del LH");
         levelID++;
 
         if (levelID<l.size())
@@ -122,23 +104,11 @@ public class LevelHandler extends Observable {
 
     public void returnBack() {
         
-        /*
-        String[] saves = ck.loadCheckpoint();
         
-        levelID = Integer.parseInt(saves[2]);
-
-                */
         
         System.out.println("CHECKPOINT DAL LEVEL HANDLER RETURN BACK");
         
-        //ck1=ck.loadCheckpoint();
         
-        /*
-        if(ck1==null)
-            ck1=new GameCheckpoint(3,120,0);
-        */
-        
-        //levelID=ck1.getLevelID();
         
         setLevel(levelID);
 
@@ -147,6 +117,8 @@ public class LevelHandler extends Observable {
     //il gameOver deve essere gestito dal Game
     public void gameOver() {
         
+        System.out.println("SONO NEL GAMEOVER");
+        
         levelID=0; 
         
         setLevel(levelID);
@@ -154,6 +126,7 @@ public class LevelHandler extends Observable {
         init();
     }
 
+    //da cancellare
     public void checkPlayerLives() {
 
         if (changeLevel) {
@@ -187,6 +160,13 @@ public class LevelHandler extends Observable {
 
     public int getNumLives() {
         return numLives;
+    }
+    
+     @Override
+    public void update(Observable o, Object arg) {
+        System.out.println("SONO NELL'UPDATE DEL LEVEL HANDLER");
+        updateLevel();
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

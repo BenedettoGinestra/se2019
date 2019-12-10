@@ -26,20 +26,13 @@ public abstract class Level {
 
     public abstract void render(Graphics g);
 
-    public void init(int life) {
+    public void init(int life,LevelHandler lh) {
         handler.setWorld(this.world);
         world.init();
-        //world.getEntityManager().getPlayer().setNumLives(life);
-        /* Le prossime righe di codice sono tutte pezzotte */
-        //world.getEntityManager().getPlayer().setHealth(100);
-        //lifeBar = world.getEntityManager().getPlayer().getHealth();
+        world.setPortalObserver(lh);
+        
         this.life = life;
-        /*
-        checkpoint = new Checkpoint(life, lifeBar, ID);
-        checkpoint.saveCheckpoint();
-                */
-        // checkpoint.saveCheckpoint();
-        // Caricamento vignette... ancora da definire
+       
     }
 
     public synchronized void startLevel() {

@@ -7,6 +7,7 @@ package tutorial2dprogramming.staticentities;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.Observer;
 import tutorial2dprogramming.Handler;
 import tutorial2dprogramming.entities.Entity;
 import tutorial2dprogramming.gfx.Animation;
@@ -16,7 +17,8 @@ import tutorial2dprogramming.gfx.Assets;
  *
  * @author mario
  */
-public class Portal extends StaticEntity{
+
+public class Portal extends StaticEntity {
 
     public Portal(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
@@ -44,9 +46,13 @@ public class Portal extends StaticEntity{
     
     @Override
     public void actionOnCollision(Entity e){
-        System.out.println("Collisione con portale");
+        System.out.println("Collisione con portale!!");
+        
+        for (Observer o : observers) {
+           
+            o.update(this, this);
+        }
+        
     }
-    
-   
     
 }

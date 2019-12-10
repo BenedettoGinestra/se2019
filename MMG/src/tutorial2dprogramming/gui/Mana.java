@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gamegui;
+package tutorial2dprogramming.gui;
 
 import java.util.LinkedList;
 import java.util.List;

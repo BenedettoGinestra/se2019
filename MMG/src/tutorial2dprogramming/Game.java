@@ -52,6 +52,9 @@ public class Game implements Runnable {
     private LevelHandler lh;
     private Checkpoint checkpoint;
     private Checkpoint ck;
+    
+    private World world1;
+    private World world2;
 
     public Game(String title, int width, int height) {
         this.title = title;
@@ -84,7 +87,6 @@ public class Game implements Runnable {
         lh.addObserver(gui.getLevelNamePanel());
         lh.addObserver(ck);
         
-
 
     }
 
@@ -153,11 +155,11 @@ public class Game implements Runnable {
                 ticks++;
             }
             if (timer >= 1000000000) {
-                System.out.println("Ticks and Frames: " + ticks);
+              //  System.out.println("Ticks and Frames: " + ticks);
                 ticks = 0;
                 timer = 0;
             }
-            lh.checkPlayerLives();
+           // lh.checkPlayerLives();
         }
 
         stop();
@@ -199,13 +201,17 @@ public class Game implements Runnable {
     public int getHeight() {
         return height;
     }
+    
     public LinkedList<Level> createLevelSequence() {
         LinkedList<Level> l = new LinkedList<>();
         WorldLevel wl;
         BossLevel bl;
 
-        wl = new WorldLevel(0, new World(handler, "res/worlds/world1/"), handler);
-        bl = new BossLevel(1, new World(handler, "res/worlds/world2/"), handler);
+        world1=new World(handler, "res/worlds/world1/");
+        world2=new World(handler, "res/worlds/world2/");
+        
+        wl = new WorldLevel(0, world1, handler);
+        bl = new BossLevel(1, world2 , handler);
 
         l.add(wl);
         l.add(bl);
@@ -216,6 +222,6 @@ public class Game implements Runnable {
     public GameGUI getGui() {
         return gui;
     }
-    
-    
+ 
+       
 }

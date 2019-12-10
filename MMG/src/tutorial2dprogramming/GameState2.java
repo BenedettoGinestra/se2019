@@ -14,13 +14,16 @@ import tutorial2dprogramming.world.World;
  */
 public class GameState2 extends State {
 
+    
     private World world;
 
+    
     public GameState2(Handler handler) {
         super(handler);
-        world = new World(handler, "res/worlds/world2.txt");
+     //   world = new World(handler, "res/worlds/world2.txt");
         handler.setWorld(world);
     }
+    
 
     @Override
     public void tick() {
@@ -31,5 +34,7 @@ public class GameState2 extends State {
     public void render(Graphics g) {
         world.render(g);
     }
+    
+    */
 
 }

@@ -7,7 +7,10 @@ package tutorial2dprogramming.entities;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Observable;
+import java.util.Observer;
 import tutorial2dprogramming.Handler;
 import tutorial2dprogramming.gui.Health;
 
@@ -30,6 +33,8 @@ public abstract class Entity  extends Observable {
     //protected int maxHealth;
     protected Health life;
     
+    protected LinkedList<Observer> observers;
+    
     public Entity(Handler handler, float x, float y, int width, int height) {
         this.x = x;
         this.y = y;
@@ -39,6 +44,7 @@ public abstract class Entity  extends Observable {
         bounds = new Rectangle(0, 0, width, height);
         this.life = new Health();
         //maxHealth = life.getHealthPoints();
+        observers=new LinkedList<Observer>();
         System.out.println(life.getHealthPoints() +" "+this);
     }
     
@@ -146,7 +152,10 @@ public abstract class Entity  extends Observable {
         return life.getMaxHealthPoints();
     }
     
-    
-    
-    
+    @Override
+    public void addObserver(Observer o) {
+        
+        observers.add(o);
+    }
+   
 }

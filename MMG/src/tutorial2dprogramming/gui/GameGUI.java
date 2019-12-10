@@ -114,6 +114,7 @@ public class GameGUI {
         panel.setVisible(true);
 
     }
+    
 
     private void createFrame() {
         this.frame = new JFrame(title);
