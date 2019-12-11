@@ -16,6 +16,7 @@ import tutorial2dprogramming.utils.UtilityTimer;
  *
  * @author mario
  */
+
 public class Bat extends Enemy{
 
     public Bat(Handler handler, float x, float y, int width, int height, BatAssets entityAssets) {

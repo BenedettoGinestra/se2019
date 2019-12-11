@@ -187,7 +187,7 @@ public class GameGUI {
     private void createHealthBar() {
 
         try {
-            this.healthBar = new HealthBar();
+            this.healthBar = new HealthBar(ck);
         } catch (IOException ex) {
             Logger.getLogger(GameGUI.class.getName()).log(Level.SEVERE, null, ex);
         }

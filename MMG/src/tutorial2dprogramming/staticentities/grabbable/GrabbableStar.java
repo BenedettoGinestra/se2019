@@ -7,6 +7,7 @@ package tutorial2dprogramming.staticentities.grabbable;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.Observer;
 import tutorial2dprogramming.Handler;
 import tutorial2dprogramming.entities.Entity;
 import tutorial2dprogramming.gfx.Animation;
@@ -48,10 +49,18 @@ public class GrabbableStar extends GrabbableStaticEntity{
     @Override
     public void actionOnCollision(Entity e){
         System.out.println("Star action:notifica all'osservatore");
-        setChanged();
-        notifyObservers();
+      //  setChanged();
+      //  notifyObservers();
+        
+        for (Observer o: observers) {
+            o.update(this, this);
+        }
     }
     
+    @Override
+    public void addObserver(Observer o) {
+        observers.add(o);
+    }
    
     
 }

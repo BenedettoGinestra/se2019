@@ -20,7 +20,7 @@ public class Player extends Creature {
     
     
 
-    public Player(Handler handler, float x, float y, PlayerAssets pAssets) {
+    public Player(Handler handler, float x, float y, PlayerAssets pAssets, int lives) {
         super(handler, x, y, Creature.DEFAULT_WIDTH, Creature.DEFAULT_HEIGHT, pAssets);
         bounds.x = 20;
         bounds.y = 20;
@@ -30,7 +30,7 @@ public class Player extends Creature {
         //health = 100;
         life.setHealthPoints(10);
         //maxHealth = life.getMaxHealthPoints();
-        life.setLives(3);
+        life.setLives(lives);
         life.setMaxHealthPoints(10);
         //numLives = 3;
 

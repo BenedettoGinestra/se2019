@@ -14,12 +14,14 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.LinkedList;
+import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Logger;
 import tutorial2dprogramming.gfx.Assets;
 import tutorial2dprogramming.gfx.GameCamera;
 import tutorial2dprogramming.gui.GameGUI;
 import tutorial2dprogramming.gui.GameScenePanel;
+import tutorial2dprogramming.gui.Health;
 import tutorial2dprogramming.input.KeyManager;
 import tutorial2dprogramming.levels.BossLevel;
 import tutorial2dprogramming.levels.Level;
@@ -34,7 +36,7 @@ import tutorial2dprogramming.world.World;
  *
  * @author mario
  */
-public class Game implements Runnable {
+public class Game implements Runnable, Observer {
 
     private Display display;
     private int width, height;
@@ -71,7 +73,7 @@ public class Game implements Runnable {
          display.getFrame().addKeyListener(keyManager);*/
         ck=checkpoint.loadCheckpoint();
         if(ck==null)
-            ck= new Checkpoint(3,120,0);
+            ck= new Checkpoint(3,10,0);
 
         this.gui = new GameGUI(ck);
         GameScenePanel gameScene = (GameScenePanel) this.gui.getGameScenePanel();
@@ -88,6 +90,7 @@ public class Game implements Runnable {
         lh = new LevelHandler(this.createLevelSequence(), handler, ck);
         lh.addObserver(gui.getLevelNamePanel());
         lh.addObserver(ck);
+        
         
 
     }
@@ -209,8 +212,9 @@ public class Game implements Runnable {
         WorldLevel wl;
         BossLevel bl;
 
-        world1=new InterWorld(handler, "res/worlds/world1/");
-        world2=new Dungeon(handler, "res/worlds/world2/");
+        world1=new InterWorld(handler, "res/worlds/world1/",this,ck);
+        world2=new Dungeon(handler, "res/worlds/world2/",this,ck);
+        
         
         wl = new WorldLevel(0, world1, handler);
         bl = new BossLevel(1, world2 , handler);
@@ -225,5 +229,25 @@ public class Game implements Runnable {
         return gui;
     }
  
+    @Override
+    public void update(Observable o, Object arg) {
+       
+       Health h=(Health) o;
+       
+       if(h.getLives()<1) {
+           System.out.println("GAME OVER");
+           ck=new Checkpoint(3,10,0);
+           System.exit(0);
+       }
+       
+   }
+    
+    public Checkpoint getCheckpoint() {
+        return ck;
+    }
+    
+    public LevelHandler getLevelHandler() {
+        return lh;
+    }
        
 }

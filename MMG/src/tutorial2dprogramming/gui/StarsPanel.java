@@ -11,6 +11,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Observable;
 import tutorial2dprogramming.gfx.ImageLoader;
+import tutorial2dprogramming.utils.GrabbableStarCollection;
 
 /**
  *
@@ -36,7 +37,12 @@ public class StarsPanel extends ObservingPanel {
 
     @Override
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        GrabbableStarCollection sc= (GrabbableStarCollection) o;
+        
+        stars=sc.getSize();
+        repaint();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

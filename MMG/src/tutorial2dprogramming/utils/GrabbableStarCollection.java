@@ -17,13 +17,28 @@ import java.util.Observer;
 public class GrabbableStarCollection extends Observable implements Observer{
     
     private LinkedList<GrabbableStar> collection;
+    private LinkedList<Observer> observers;
     
     public GrabbableStarCollection(){
         collection = new LinkedList();
+        observers=new LinkedList();
+    }
+    
+    @Override
+    public void addObserver(Observer o) {
+        observers.add(o);
     }
     
     public void addStar(GrabbableStar star){
         collection.add(star);
+        
+        
+            
+            for (Observer o: observers) {
+                o.update(this, this);
+            }
+       
+        
     }
     
     public int getSize(){
@@ -38,6 +53,8 @@ public class GrabbableStarCollection extends Observable implements Observer{
         notifyObservers();
         System.out.println("Chiamato il metodo Update");
         System.out.println(collection);
+        
     }
+    
     
 }

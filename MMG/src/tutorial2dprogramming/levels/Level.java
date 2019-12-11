@@ -30,7 +30,7 @@ public abstract class Level {
         handler.setWorld(this.world);
         world.init();
         world.setPortalObserver(lh);
-        
+        world.setHealthObserver(lh);
         this.life = life;
        
     }

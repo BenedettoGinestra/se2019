@@ -11,6 +11,7 @@ import java.util.Observable;
 import java.util.Observer;
 import tutorial2dprogramming.Handler;
 import tutorial2dprogramming.gui.GameGUI;
+import tutorial2dprogramming.gui.Health;
 import tutorial2dprogramming.saves.Checkpoint;
 
 /**
@@ -76,12 +77,8 @@ public class LevelHandler extends Observable implements Observer {
     // inizializza il livello
     public void init() {
 
-        
-        
-                System.out.println("CHECKPOINT DAL LEVEL HANDLER INIT");
+      System.out.println("CHECKPOINT DAL LEVEL HANDLER INIT");
 
-        
-     
         levelID=ck.getLevelID();
         numLives=ck.getLife();
         
@@ -97,8 +94,10 @@ public class LevelHandler extends Observable implements Observer {
 
         if (levelID<l.size())
             setLevel(levelID);
-        else
-            gameOver();
+        else {
+            levelID=0;
+            setLevel(levelID);
+        }
         
     }
 
@@ -162,11 +161,26 @@ public class LevelHandler extends Observable implements Observer {
         return numLives;
     }
     
-     @Override
+   @Override
     public void update(Observable o, Object arg) {
         System.out.println("SONO NELL'UPDATE DEL LEVEL HANDLER");
-        updateLevel();
+ 
+        
+        try {
+            
+        Health h=(Health) o;
+        numLives=h.getLives();
+        
+        if (numLives>=1) {
+        for (Observer ob : observers) {
+            ob.update(this, this);
+           }
+         }
+        }
+        catch (Exception ex) {
+            updateLevel();
+        }
+        
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }
