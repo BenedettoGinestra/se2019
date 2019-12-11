@@ -153,13 +153,13 @@ GrabbableStar star1=new GrabbableStar(handler, 2688,2750, 32, 32); //2688,2750
         */
         
         //bats on the road
-        entities.add(new Bat(handler, 961, 2727, 32, 32, new BatAssets()));
+        /*entities.add(new Bat(handler, 961, 2727, 32, 32, new BatAssets()));
         entities.add(new Bat(handler, 217, 2400, 32, 32, new BatAssets()));
         entities.add(new Bat(handler, 217, 2600, 32, 32, new BatAssets()));
         entities.add(new Bat(handler, 1633, 2781, 32, 32, new BatAssets()));
         entities.add(new Bat(handler, 1127, 201, 32, 32, new BatAssets()));
         entities.add(new Bat(handler, 2654, 2505, 32, 32, new BatAssets()));
-        entities.add(new Bat(handler, 2375, 212, 32, 32, new BatAssets()));
+        entities.add(new Bat(handler, 2375, 212, 32, 32, new BatAssets()));*/
         
         //portal position settings
         portalX=500;
