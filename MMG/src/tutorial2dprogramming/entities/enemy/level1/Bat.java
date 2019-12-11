@@ -22,12 +22,14 @@ public class Bat extends Enemy{
         super(handler, x, y, width, height, entityAssets);
         bounds.x = 1;
         bounds.y = 1;
-        bounds.width = 15;
+        bounds.width = 25;
         bounds.height = 25;
         //health = 2;
         setState(leftState);
         life.setHealthPoints(1);
         life.setLives(1);
+        speed=4;
+        
         //maxHealth=life.getHealthPoints();
         //setAttackCooldown(3000);
         //timer = new UtilityTimer(2000);
