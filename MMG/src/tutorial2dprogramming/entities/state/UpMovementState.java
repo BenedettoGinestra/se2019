@@ -35,6 +35,7 @@ public class UpMovementState extends TemplateMovementState{
     @Override
     public void setMove() {
         creature.setyMove(-creature.getSpeed());
+        creature.setxMove(0);
     }
 
     @Override

@@ -32,7 +32,6 @@ public class Player extends Creature {
         //maxHealth = life.getMaxHealthPoints();
         life.setLives(3);
         life.setMaxHealthPoints(10);
-        System.out.println("========== Player COSTRUCTOR =================\n"+life.getHealthPoints());
         //numLives = 3;
 
         setState(downState);
@@ -69,7 +68,6 @@ public class Player extends Creature {
         getInput();
         move();
 
-        System.out.println("x: "+x+" y:"+y);
         
         handler.getGameCamera().centerOnEntity(this);
     }
@@ -126,7 +124,6 @@ public class Player extends Creature {
 
     @Override
     public void die() {
-        System.out.println("=============== \n n. vite \n============: "+getNumLives());
         if (getNumLives() > 0) {
             isActive = true;
             setNumLives(getNumLives()-1);
@@ -139,7 +136,6 @@ public class Player extends Creature {
             setHealth(0);
         }
             
-        System.out.println("n. vite: "+getNumLives());
     }
 
     @Override

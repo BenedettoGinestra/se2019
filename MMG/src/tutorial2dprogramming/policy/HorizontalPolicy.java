@@ -17,11 +17,10 @@ import tutorial2dprogramming.entities.state.RightMovementState;
  * @author mario
  */
 public class HorizontalPolicy extends BasePolicy{
-    private Creature c;
-    private MovementState leftState;
-    private MovementState rightState;
-    int startX;
-    int endX;
+    protected MovementState leftState;
+    protected MovementState rightState;
+    protected int startX;
+    protected int endX;
     
     public HorizontalPolicy(Creature c, int startX, int endX){
         this.c=c;
@@ -67,6 +66,24 @@ public class HorizontalPolicy extends BasePolicy{
     public void attack() {
         return;
     }
+
+    public int getStartX() {
+        return startX;
+    }
+
+    public void setStartX(int startX) {
+        this.startX = startX;
+    }
+
+    public int getEndX() {
+        return endX;
+    }
+
+    public void setEndX(int endX) {
+        this.endX = endX;
+    }
+    
+    
     
     
     

@@ -28,7 +28,6 @@ public abstract class Enemy extends Creature{
     * Policy to obtain the movement of the enemy
     */
     public void getMovement(){
-        MovementState statePolicy;
         checkAttacks();
         movementPolicy.getMovement();
     }

@@ -7,6 +7,7 @@ package tutorial2dprogramming.entities.enemy.level1;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.LinkedList;
 import tutorial2dprogramming.Handler;
 import tutorial2dprogramming.entities.Creature;
 import tutorial2dprogramming.entities.Entity;
@@ -17,7 +18,9 @@ import tutorial2dprogramming.gfx.Animation;
 import tutorial2dprogramming.gfx.Assets;
 import tutorial2dprogramming.gfx.Boss2Assets;
 import tutorial2dprogramming.gfx.ArrowAssets;
+import tutorial2dprogramming.policy.HorizontalArcherPolicy;
 import tutorial2dprogramming.policy.HorizontalPolicy;
+import tutorial2dprogramming.policy.VerticalArcherPolicy;
 import tutorial2dprogramming.policy.VerticalPolicy;
 import tutorial2dprogramming.utils.UtilityTimer;
 
@@ -27,29 +30,40 @@ import tutorial2dprogramming.utils.UtilityTimer;
  */
 public class ArcherBoss extends Enemy {
 
-    private UtilityTimer timer;
-    private Animation animation;
+    
+    ArrowAssets arrowAsset = new ArrowAssets();
+    private LinkedList<Arrow> arrows;
+    private UtilityTimer policyTimer;
+    private boolean vertical=false;
+    private VerticalArcherPolicy verticalPolicy; 
+    private HorizontalArcherPolicy horizontalPolicy;
     
     public ArcherBoss(Handler handler, float x, float y, Boss2Assets boss2Assets) {
         super(handler, x, y, 80, Creature.DEFAULT_HEIGHT, boss2Assets);
-        setMovementPolicy(new VerticalPolicy(this,(int) (y-300), (int)(y+300)));
+        arrows=new LinkedList();
+        for(int i=0;i<10;i++){
+            arrows.add(createArrow());
+        }
+        //verticalPolicy = new VerticalArcherPolicy(handler, this,(int) (getY()-300), (int)(getY()+300));
+        //horizontalPolicy = new HorizontalArcherPolicy(handler, this,(int) (getX()-300), (int)(getX()+300));
+        setMovementPolicy(new HorizontalArcherPolicy(handler, this,(int) (getX()-300), (int)(getX()+300)));
+        //setMovementPolicy(verticalPolicy);
         bounds.x = 25;
         bounds.y = 30;
         bounds.width = 15;
         bounds.height = 22;
-        setState(leftState);
-        life.setHealthPoints(2);
+        //setState(leftState);
+        life.setHealthPoints(10);
         life.setLives(1);
-        //maxHealth=life.getHealthPoints();
-        //setAttackCooldown(3000);
-        timer = new UtilityTimer(3000);
-       // animation = new Animation(20, Boss2Assets.boss_right);
-
+        arrowAsset.init();
+        policyTimer = new UtilityTimer(10000);
     }
 
     @Override
     //Deve fare l'update dello stato dell'oggetto
     public void tick() {
+        //Cambio policy dopo un certo tempo
+
         //Animations
         //Per update the index
         state.tick();
@@ -57,17 +71,33 @@ public class ArcherBoss extends Enemy {
         getMovement();
         move();
         
-        if(timer.isTimeOver()){
-            handler.getWorld().getEntityManager().addEntity(createArrow());
+        
+        if(policyTimer.isTimeOver()){
+            System.out.println("TIMER SCADUTO!!");
+            if(vertical){
+                setMovementPolicy(new HorizontalArcherPolicy(handler, this,(int) (getX()-300), (int)(getX()+300)));
+                vertical=false;
+            }else{
+
+                setMovementPolicy(new VerticalArcherPolicy(handler, this,(int) (getY()-300), (int)(getY()+300)));
+                vertical=true;
+            }
         }
+        
+        /*if(timer.isTimeOver()){
+            handler.getWorld().getEntityManager().addEntity(createArrow());
+        }*/
         
         //handler.getGameCamera().centerOnEntity(this);
     }
     
     public Arrow createArrow(){
-        Arrow arrow= new Arrow(handler, getX()+70, getY()+70, 10,10);
-        ArrowAssets arrowAsset = new ArrowAssets();
-        arrowAsset.init();
+        Arrow arrow = createArrow((int) getX()+50,(int) getY()+50, 10,10);
+        return arrow;
+    }
+    
+    public Arrow createArrow(int x, int y,int width,int height){
+        Arrow arrow= new Arrow(handler, x, y, width,height);
         arrow.setState(new RightMovementState(arrow, arrowAsset));
         return arrow;
     }
@@ -77,38 +107,26 @@ public class ArcherBoss extends Enemy {
         System.out.println("L'arciere è morto!!");
     }
 
-    /*@Override
-    public void getMovement() {
-
-        checkAttacks();
-
-        if (getX() > 500) {
-            setState(leftState);
-            state.move();
-        } else if (getX() < 100) {
-            setState(rightState);
-            state.move();
-        }
-
-        //state.attack();
-    }*/
 
     @Override
     public void render(Graphics g) {
         // g.drawImage(getCurrentAnimationFrame(), (int) (x - handler.getGameCamera().getxOffset()), (int) (y - handler.getGameCamera().getyOffset()), width, height, null);
         state.render(g);
     }
-   /* 
-    public BufferedImage getCurrentAnimationFrame(){
-        return animation.getCurrentFrame();
+
+    public LinkedList<Arrow> getArrows() {
+        return arrows;
     }
-    */
+    
+    
+   
     @Override
     public void actionOnCollision(Entity e){
         System.out.println("Star action:notifica all'osservatore");
         setChanged();
         notifyObservers();
     }
+    
     
 
 }

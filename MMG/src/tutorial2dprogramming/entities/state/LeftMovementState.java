@@ -35,6 +35,7 @@ public class LeftMovementState extends TemplateMovementState{
     @Override
     public void setMove() {
         creature.setxMove(-creature.getSpeed());
+        creature.setyMove(0);
     }
 
     @Override

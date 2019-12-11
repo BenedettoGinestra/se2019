@@ -14,16 +14,30 @@ import tutorial2dprogramming.entities.state.MovementState;
  */
 public abstract class BasePolicy {
     
+    protected boolean isAttacking=false;
+    protected Creature c;
+    
     public void getMovement(){
-        if(lowerBound() || upperBound()){
-            attack();
-            changeState();
-        }
-        if(tileCollision()){
-            System.out.println(" has collision with tale");
-            changeState();
-        }
-        getAction();
+        //if(!isAttacking){
+
+            if(lowerBound() || upperBound()){
+                //attack();
+                changeState();
+       
+                //attack();
+            }else
+            if(tileCollision()){
+                System.out.println(" has collision with tale");
+                changeState();
+                c.move();
+            }
+           getAction();
+
+       // }else{ 
+            //if(isAttacking){
+
+           // }
+        //}
     
     }
     

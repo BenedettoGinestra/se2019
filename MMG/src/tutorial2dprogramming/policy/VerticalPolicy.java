@@ -13,11 +13,10 @@ import tutorial2dprogramming.entities.state.MovementState;
  * @author mario
  */
 public class VerticalPolicy extends BasePolicy{
-    private Creature c;
-    private MovementState downState;
-    private MovementState upState;
-    int startY;
-    int endY;
+    protected MovementState downState;
+    protected MovementState upState;
+    protected int startY;
+    protected int endY;
     
     public VerticalPolicy(Creature c, int startY, int endY){
         this.c=c;
@@ -61,4 +60,22 @@ public class VerticalPolicy extends BasePolicy{
     public void attack() {
         return;
     }
+
+    public int getStartY() {
+        return startY;
+    }
+
+    public void setStartY(int startY) {
+        this.startY = startY;
+    }
+
+    public int getEndY() {
+        return endY;
+    }
+
+    public void setEndY(int endY) {
+        this.endY = endY;
+    }
+    
+    
 }
