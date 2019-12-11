@@ -20,6 +20,7 @@ import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
+import tutorial2dprogramming.saves.Checkpoint;
 
 /**
  *
@@ -32,13 +33,13 @@ public class HealthBar extends ObservingPanel {
     private final int barWidth, barHeight;
     private final Color barColor, barBorderColor;
     
-    public HealthBar() throws IOException {
+    public HealthBar(Checkpoint ck) throws IOException {
         
         this.barWidth = 317;
         this.barHeight = 23;
-        this.max = 120;
-        this.value = 60;
-        this.lifes = 3;
+        this.max = 10;
+        this.value = 10;
+        this.lifes = ck.getLife();
         this.barColor = new Color(137,0,0);
         this.barBorderColor = new Color(232,142,0);
         

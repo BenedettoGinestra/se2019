@@ -106,7 +106,7 @@ public class Checkpoint implements Observer, Serializable{
     public void update(Observable o, Object arg) {
         LevelHandler lh=(LevelHandler) o;
         setLevelID(lh.getLevelID());
-        setLifeBar(120);
+        setLifeBar(10);
         setLife(lh.getNumLives());
         saveCheckpoint();
     }

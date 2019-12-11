@@ -51,7 +51,7 @@ public class BatAssets extends EntityAssets{
             bat_down_attack[i] =  sheet.crop(startingXAttack + i*width , startingYAttack , width, height);
             bat_right_attack[i] =  sheet.crop(startingXAttack + i*width , startingYAttack + height, width, height);
             bat_up_attack[i] =  sheet.crop(startingXAttack + i*width , startingYAttack + 2*height, width, height);
-            bat_left_attack[i] =  sheet.crop(startingXAttack + i*width , startingYAttack+ 3*height - 15, width, height);
+            bat_left_attack[i] =  sheet.crop(startingXAttack + i*width , startingYAttack+ 3*height - 13, width, height);
             
             
             
@@ -59,13 +59,13 @@ public class BatAssets extends EntityAssets{
             bat_down_stable[i] =  sheet.crop(startingXAttack + i*width , startingYAttack , width, height);
             bat_right_stable[i] =  sheet.crop(startingXAttack + i*width , startingYAttack + height , width, height);
             bat_up_stable[i] =  sheet.crop(startingXAttack + i*width , startingYAttack + 2*height, width, height);
-            bat_left_stable[i] =  sheet.crop(startingXAttack + i*width , startingYAttack+ 3*height - 15, width, height);
+            bat_left_stable[i] =  sheet.crop(startingXAttack + i*width , startingYAttack+ 3*height - 13, width, height);
 
             
             bat_down[i] =  sheet.crop(startingXAttack + i*width , startingYAttack , width, height);
             bat_right[i] =  sheet.crop(startingXAttack + i*width , startingYAttack + height-2, width, height-3);
             bat_up[i] =  sheet.crop(startingXAttack + i*width , startingYAttack + 2*height, width, height);
-            bat_left[i] =  sheet.crop(startingXAttack + i*width , startingYAttack+ 3*height - 15, width, height);
+            bat_left[i] =  sheet.crop(startingXAttack + i*width , startingYAttack+ 3*height - 13, width, height);
 
         }
         

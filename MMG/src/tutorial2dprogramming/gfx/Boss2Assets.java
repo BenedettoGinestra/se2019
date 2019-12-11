@@ -47,8 +47,8 @@ public class Boss2Assets extends EntityAssets{
 
 
         for(int i=0;i<=4;i++){
-            boss_up_attack[i] =  sheet.crop(startingXAttack + i*width, startingYAttack , width, height);
-            boss_down_attack[i] =  sheet.crop(startingXAttack + i*width, startingYAttack + height, width, height);
+            boss_up_attack[i] =  sheet.crop(startingXAttack + i*width, startingYAttack , width -30, height);
+            boss_down_attack[i] =  sheet.crop(startingXAttack + i*width, startingYAttack + height, width - 30, height);
             boss_right_attack[i] =  sheet.crop(startingXAttack + i*width, startingYAttack + 2*height, width, height);
             boss_left_attack[i] =  sheet.crop(startingXAttack + i*width, startingYAttack+ 3*height, width, height);
             
@@ -56,15 +56,15 @@ public class Boss2Assets extends EntityAssets{
             
             //sheet = new SpriteSheet(ImageLoader.loadImage("/tutorial2dprogramming/images/EBros_Boss_samurai/Boss_Samurai_Walk.png"));
             if(i<=11){
-            boss_up_stable[i] =  sheet.crop(startingXStable + i*width, startingYStable, width, height);
-            boss_down_stable[i] =  sheet.crop(startingXStable + i*width, startingYStable +height, width, height);
-            boss_right_stable[i] =  sheet.crop(startingXStable + i*width, startingYStable + 2*height, width, height);
+            boss_up_stable[i] =  sheet.crop(startingXStable + i*width, startingYStable, width - 30 , height);
+            boss_down_stable[i] =  sheet.crop(startingXStable + i*width, startingYStable +height, width - 30, height);
+            boss_right_stable[i] =  sheet.crop(startingXStable + i*width, startingYStable + 2*height, width - 30, height);
             boss_left_stable[i] =  sheet.crop(startingXStable + i*width, startingYStable+ 3*height, width, height);
             }
 
             
-            boss_up[i] =  sheet.crop(startingX + i*width, startingY , width, height);
-            boss_down[i] =  sheet.crop(startingX + i*width, startingY +height, width, height);
+            boss_up[i] =  sheet.crop(startingX + i*width, startingY , width - 30, height);
+            boss_down[i] =  sheet.crop(startingX + i*width, startingY +height, width - 30, height);
             boss_right[i] =  sheet.crop(startingX + i*width, startingY + 2*height, width, height);
             boss_left[i] =  sheet.crop(startingX + i*width, startingY + 3*height, width, height);
 

@@ -31,6 +31,7 @@ import tutorial2dprogramming.gui.HealthBar;
 import tutorial2dprogramming.gui.StarsPanel;
 import tutorial2dprogramming.levels.LevelHandler;
 import tutorial2dprogramming.policy.VerticalPolicy;
+import tutorial2dprogramming.saves.Checkpoint;
 import tutorial2dprogramming.staticentities.Portal;
 import tutorial2dprogramming.staticentities.grabbable.GrabbableHealthPotion;
 import tutorial2dprogramming.staticentities.grabbable.GrabbableStar;
@@ -61,17 +62,30 @@ public class World {
     //protected LinkedList<Creature> creatures;
     protected LinkedList<Entity> entities;
     
+    protected int portalX;
+    protected int portalY;
+    
+    private Player player;
+    
+    private Game game;
+    
+    private Checkpoint ck;
+    
+    
     public GrabbableStarCollection getStarCollection() {
         return starCollection;
     }
   
     
-    public World(Handler handler, String path){
+    public World(Handler handler, String path,Game game, Checkpoint ck){
         this.handler = handler;
         this.path=path;
+        this.game=game; // used for the lives update
+        this.ck=ck; // used for the lives' checkpoint update
         System.out.println("Constructing world from... " + path);
         //creatures=new LinkedList<Creature>();
         entities=new LinkedList<Entity>();
+        starCollection = new GrabbableStarCollection();
         //this.init();
                
     }
@@ -125,8 +139,8 @@ public class World {
         starCollection.addObserver(starsPanel);
         
     */
-        starCollection = new GrabbableStarCollection();
-        Player player = new Player(handler, 288, 320,new PlayerAssets());
+       
+        player = new Player(handler, 288, 320,new PlayerAssets(),ck.getLife());
         entityManager = new EntityManager(handler, player);
         
       //  setCreatures();
@@ -136,6 +150,7 @@ public class World {
             entityManager.addEntity(e);
         }
         
+        portal=new Portal(handler, portalX, portalY, 64, 64);
         entityManager.addEntity(portal);
         
         loadWorld(path);
@@ -146,6 +161,7 @@ public class World {
         player.getLifeObservable().addObserver(healthBar);
         StarsPanel starsPanel = handler.getGame().getGui().getStarsPanel();
         starCollection.addObserver(starsPanel);
+        starCollection.addObserver(portal);
         
     }
 
@@ -277,5 +293,12 @@ public class World {
     public void setPortalObserver(LevelHandler lh) {
         portal.addObserver(lh);
     }
-   
+    
+ public void setHealthObserver(LevelHandler lh) {
+         player.getLifeObservable().addObserver(game);
+         player.getLifeObservable().addObserver(lh);
+    }
+ 
+    
 }
+   
