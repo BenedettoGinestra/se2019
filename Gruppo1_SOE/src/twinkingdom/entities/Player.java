@@ -46,6 +46,10 @@ public class Player extends Creature {
         
          setState(new AttackState(entityState));*/
     }
+    
+    public Player(Handler handler, float x, float y, PlayerAssets pAssets) {
+        this(handler, x, y, pAssets, 3);
+    }
 
     public int getNumLives() {
         return life.getLives();

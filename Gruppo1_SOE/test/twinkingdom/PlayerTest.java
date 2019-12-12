@@ -13,6 +13,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import twinkingdom.Game;
 import twinkingdom.Handler;
+import twinkingdom.entities.Player;
 import twinkingdom.gfx.PlayerAssets;
 import twinkingdom.staticentities.grabbable.GrabbableHealthPotion;
 
