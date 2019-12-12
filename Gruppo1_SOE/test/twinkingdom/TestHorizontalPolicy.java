@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tutorial2dprogramming.entities;
+package twinkingdom;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -11,12 +11,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tutorial2dprogramming.Game;
-import tutorial2dprogramming.Handler;
-import tutorial2dprogramming.entities.enemy.level1.Bat;
-import tutorial2dprogramming.gfx.BatAssets;
-import tutorial2dprogramming.gfx.PlayerAssets;
-import tutorial2dprogramming.policy.HorizontalPolicy;
+import twinkingdom.Game;
+import twinkingdom.Handler;
+import twinkingdom.entities.enemy.level1.Bat;
+import twinkingdom.gfx.BatAssets;
+import twinkingdom.gfx.PlayerAssets;
+import twinkingdom.policy.HorizontalPolicy;
 
 /**
  *

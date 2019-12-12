@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tutorial2dprogramming.entities;
+package twinkingdom;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -20,8 +20,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tutorial2dprogramming.levels.Level;
-import tutorial2dprogramming.saves.Checkpoint;
+import twinkingdom.levels.Level;
+import twinkingdom.saves.Checkpoint;
 
 /**
  *

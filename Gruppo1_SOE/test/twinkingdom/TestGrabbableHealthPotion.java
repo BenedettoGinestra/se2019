@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tutorial2dprogramming.entities;
+package twinkingdom;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -11,10 +11,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import tutorial2dprogramming.Game;
-import tutorial2dprogramming.Handler;
-import tutorial2dprogramming.gfx.PlayerAssets;
-import tutorial2dprogramming.staticentities.grabbable.GrabbableHealthPotion;
+import twinkingdom.Game;
+import twinkingdom.Handler;
+import twinkingdom.gfx.PlayerAssets;
+import twinkingdom.staticentities.grabbable.GrabbableHealthPotion;
 
 /**
  *
