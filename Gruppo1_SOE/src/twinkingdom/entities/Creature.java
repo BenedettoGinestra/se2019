@@ -80,7 +80,6 @@ public abstract class Creature extends Entity {
             }
             if (e.getCollisionBounds(0, 0).intersects(ar)) {
                 e.hurt(this.damageAttack);
-                System.out.println("Ha attaccato "+this);
                 return;
             }
 

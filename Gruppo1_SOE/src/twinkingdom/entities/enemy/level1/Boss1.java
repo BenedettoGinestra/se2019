@@ -55,7 +55,6 @@ public class Boss1 extends Enemy {
 
     @Override
     public void die() {
-        System.out.println("Boss1 è morto!!");
     }
 
     /*@Override

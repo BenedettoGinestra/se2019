@@ -163,7 +163,6 @@ public class LevelHandler extends Observable implements Observer {
     
    @Override
     public void update(Observable o, Object arg) {
-        System.out.println("SONO NELL'UPDATE DEL LEVEL HANDLER");
  
         
         try {

@@ -51,7 +51,6 @@ public class Bat extends Enemy{
 
     @Override
     public void die() {
-        System.out.println("Bat è morto!!");
     }
 
     /*Override

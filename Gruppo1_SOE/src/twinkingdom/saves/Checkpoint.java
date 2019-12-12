@@ -41,16 +41,13 @@ public class Checkpoint implements Observer, Serializable{
         try (ObjectInputStream ois=new ObjectInputStream(new FileInputStream(new File(path)))) {
             ck1=(Checkpoint)ois.readObject();
         } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
             return null;
         } catch (IOException ex) {
-            ex.printStackTrace();
             return null;
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Checkpoint.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         } catch (Exception ex) {
-            ex.printStackTrace();
             return null;
         }
         
@@ -65,9 +62,7 @@ public class Checkpoint implements Observer, Serializable{
             oos.writeObject(this);
             oos.close();
         } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
         } catch (IOException ex) {
-            ex.printStackTrace();
         }
         
     }

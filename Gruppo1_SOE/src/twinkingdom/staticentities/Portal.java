@@ -50,7 +50,6 @@ public class Portal extends StaticEntity implements Observer{
     
     @Override
     public void actionOnCollision(Entity e){
-        System.out.println("Collisione con portale!!");
         
        if(unblocked) {
            System.out.println("PORTALE SBLOCCATO!");

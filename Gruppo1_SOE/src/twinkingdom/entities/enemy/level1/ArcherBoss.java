@@ -104,7 +104,6 @@ public class ArcherBoss extends Enemy {
 
     @Override
     public void die() {
-        System.out.println("L'arciere è morto!!");
     }
 
 

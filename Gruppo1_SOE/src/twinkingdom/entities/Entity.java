@@ -52,7 +52,6 @@ public abstract class Entity  extends Observable {
     public void hurt(int amt){
         //System.out.println(health);
         setHealth(getHealth() - amt);
-        System.out.println(getHealth()+" "+this);
         if(getHealth() <=0){
             isActive=false;
             die();
@@ -64,7 +63,6 @@ public abstract class Entity  extends Observable {
     }
     
     public void die(){
-        System.out.println("Entity die!");
     }
     
     public boolean checkEntityCollisions(float xOffset, float yOffset){

@@ -25,8 +25,6 @@ public class LifeObserver extends Observable implements Observer{
         Player p=(Player) o;
         health=p.getHealth();
         numLives=p.getNumLives();
-        System.out.println("\n\n-----------------"+o);
-        System.out.println("Vita persa: "+health);
         if (numLives ==0){
             System.out.println("Game Over");
         }

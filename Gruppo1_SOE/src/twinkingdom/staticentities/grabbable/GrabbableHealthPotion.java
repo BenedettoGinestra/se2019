@@ -51,11 +51,9 @@ public class GrabbableHealthPotion extends GrabbableStaticEntity{
     
     @Override
     public void actionOnCollision(Entity e){
-        System.out.println("vita prima "+e.getHealth());
         e.setHealth(e.getHealth() + bonus);
         if(e.getHealth() > e.getMaxHealth())
             e.setHealth(e.getMaxHealth());
-        System.out.println("vita dopo "+e.getHealth());
         
     }
     
