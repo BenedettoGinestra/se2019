@@ -21,45 +21,45 @@ public class PlayerAssets extends EntityAssets{
     public static Map<String, Map<String, BufferedImage[]>> playerAnimations;
     
     public void init(){
-        SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/twinkingdom/images/spadaccino.png"));
+        SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/twinkingdom/images/Player2.png"));
         //player = sheet.crop(0, 610, 128, 128);
-        player_down = new BufferedImage[11];
-        player_up = new BufferedImage[11];
-        player_left = new BufferedImage[11];
-        player_right = new BufferedImage[11];
-        player_up_stable = new BufferedImage[11];
-        player_right_stable = new BufferedImage[11];
-        player_left_stable = new BufferedImage[11];
-        player_down_stable = new BufferedImage[11];
-        player_down_attack = new BufferedImage[11];
-        player_up_attack= new BufferedImage[11];
-        player_left_attack= new BufferedImage[11];
-        player_right_attack=new BufferedImage[11];
+        player_down = new BufferedImage[8];
+        player_up = new BufferedImage[8];
+        player_left = new BufferedImage[8];
+        player_right = new BufferedImage[8];
+        player_up_stable = new BufferedImage[8];
+        player_right_stable = new BufferedImage[8];
+        player_left_stable = new BufferedImage[8];
+        player_down_stable = new BufferedImage[8];
+        player_down_attack = new BufferedImage[8];
+        player_up_attack= new BufferedImage[8];
+        player_left_attack= new BufferedImage[8];
+        player_right_attack=new BufferedImage[8];
         
         
         int startingX=0;
-        int startingY=1000;
-        int height=128;
-        int width = 128;
-        int startingYStable=500;
-        int startingYAttack=0;
-        for(int i=0;i<11;i++){
+        int startingY=0;
+        int height= 40;
+        int width = 39;
+        int startingYStable= 8*height;
+        int startingYAttack= 4*height;
+        for(int i=0;i<8;i++){
             
-            player_right_attack[i] =  sheet.crop(startingX + i*width, startingYAttack, width, height);
-            player_down_attack[i] =  sheet.crop(startingX + i*width, startingYAttack + height, width, height);
-            player_up_attack[i] =  sheet.crop(startingX + i*width, startingYAttack+ 2*height, width, height);
-            player_left_attack[i] =  sheet.crop(startingX + i*width, startingYAttack+ 3*height, width, height);
+            player_right_attack[i] =  sheet.crop(startingX + i*width, startingYAttack + 3*height, width, height);
+            player_down_attack[i] =  sheet.crop(startingX + i*width, startingYAttack, width, height);
+            player_up_attack[i] =  sheet.crop(startingX + i*width, startingYAttack + height, width, height);
+            player_left_attack[i] =  sheet.crop(startingX + i*width, startingYAttack+ 2*height, width, height);
             
-            player_right_stable[i] =  sheet.crop(startingX + i*width, startingYStable, width, height);
-            player_down_stable[i] =  sheet.crop(startingX + i*width, startingYStable + height, width, height);
-            player_up_stable[i] =  sheet.crop(startingX + i*width, startingYStable+ 2*height, width, height);
-            player_left_stable[i] =  sheet.crop(startingX + i*width, startingYStable+ 3*height, width, height);
+            player_right_stable[i] =  sheet.crop(startingX + 3*width, startingYStable, width, height);
+            player_down_stable[i] =  sheet.crop(startingX, startingYStable, width, height);
+            player_up_stable[i] =  sheet.crop(startingX + width, startingYStable, width, height);
+            player_left_stable[i] =  sheet.crop(startingX + 2*width, startingYStable, width, height);
             
 
             player_down[i] =  sheet.crop(startingX + i*width, startingY, width, height);
-            player_left[i] =  sheet.crop(startingX + i*width, startingY + height, width, height);
-            player_right[i] =  sheet.crop(startingX + i*width, startingY + 2*height, width, height);
-            player_up[i] =  sheet.crop(startingX + i*width, startingY + 3*height, width, height);
+            player_left[i] =  sheet.crop(startingX + i*width, startingY + 2*height, width, height);
+            player_right[i] =  sheet.crop(startingX + i*width, startingY + 3*height, width, height);
+            player_up[i] =  sheet.crop(startingX + i*width, startingY + height, width, height);
 
         }
         

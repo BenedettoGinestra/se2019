@@ -24,8 +24,10 @@ import twinkingdom.entities.Player;
 import twinkingdom.entities.enchanted.EnchantedTree;
 import twinkingdom.entities.enemy.level1.ArcherBoss;
 import twinkingdom.entities.enemy.level1.Bat;
+import twinkingdom.entities.enemy.level3.Ghost;
 import twinkingdom.gfx.BatAssets;
 import twinkingdom.gfx.Boss2Assets;
+import twinkingdom.gfx.GhostAssets;
 import twinkingdom.gfx.PlayerAssets;
 import twinkingdom.gui.HealthBar;
 import twinkingdom.gui.StarsPanel;
@@ -163,6 +165,7 @@ public class World {
         starCollection.addObserver(starsPanel);
         starCollection.addObserver(portal);
         
+        entityManager.addEntity(new Ghost(handler, 200,590, 48,48, new GhostAssets()));
     }
 
     public EntityManager getEntityManager() {

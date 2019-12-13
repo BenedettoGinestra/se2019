@@ -27,7 +27,7 @@ public class RightMovementState extends TemplateMovementState{
         Map<String, BufferedImage[]> as = asset.getAnimations().get("right");
         animationStable = new Animation(50, as.get("stable"));
         animationRun = new Animation(50, as.get("run"));
-        animationAttack = new Animation(5, as.get("attack"));
+        animationAttack = new Animation(50, as.get("attack"));
         animation=animationStable;
     }
 
