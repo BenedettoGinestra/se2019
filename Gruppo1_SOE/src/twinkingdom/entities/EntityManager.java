@@ -80,7 +80,10 @@ public class EntityManager {
     }
     
    
-    
+    public void clearEntities() {
+        entities.clear();
+        entities = new ArrayList();
+    }
     
     
 }

@@ -27,29 +27,61 @@ import twinkingdom.staticentities.grabbable.GrabbableHealthPotion;
 import twinkingdom.staticentities.grabbable.GrabbableStar;
 import twinkingdom.utils.GrabbableStarCollection;
 import twinkingdom.utils.LifeObserver;
+import twinkingdom.utils.Utils;
 
 /**
  *
  * @author Antonia
  */
-public class Dungeon extends World{
- 
-    
-    public Dungeon(Handler handler, String path, Game game, Checkpoint ck){
-        super(handler,path,game,ck);
-        
-        setCreatures();
-    }
-     
-    
-    public void setCreatures() {
-       
-       // entities.add(new EnchantedTree(handler,150,400,90,90));
-        entities.add(new ArcherBoss(handler, 500, 200,new /*Boss2Assets()*/ArcherAssets()));
-        portal=new Portal(handler, 1700, 200, 64, 64);
+public class Dungeon extends World {
 
-        
+    public Dungeon(Handler handler, String path, Game game, Checkpoint ck) {
+        super(handler, path, game, ck);
+
+        //setCreatures();
     }
-    
-    
+
+    public void setCreatures() {
+
+        // entities.add(new EnchantedTree(handler,150,400,90,90));
+        entities.add(new ArcherBoss(handler, 500, 200, new /*Boss2Assets()*/ ArcherAssets()));
+       // portal=new Portal(handler, 1700, 200, 64, 64);
+
+    }
+
+    @Override
+    public void init() {
+
+        setCreatures();
+        loadWorld(path);
+        super.init();
+
+    }
+
+    protected void loadWorld(String path) {
+
+        System.out.println("Loading world from... " + path);
+        String file = Utils.loadFileAsString(path + "layer1.txt");
+        String[] tokens = file.split("\\s+");
+        width = Utils.parseInt(tokens[0]);
+        height = Utils.parseInt(tokens[1]);
+
+        tiles = new int[width][height];
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 2]);
+            }
+        }
+
+    }
+
+    @Override
+    public void clearEntities() {
+
+        entities.clear();
+
+        entityManager.clearEntities();
+
+    }
+
 }

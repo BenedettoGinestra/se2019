@@ -62,7 +62,7 @@ public class LevelHandler extends Observable implements Observer {
         System.out.println("SONO NEL SETLEVEL");
         
         currentLevel = l.get(levelID);
-        currentLevel.init(numLives,this);
+        currentLevel.init(this);
 
         for (Observer o : observers) {
             o.update(this, this);
@@ -125,34 +125,6 @@ public class LevelHandler extends Observable implements Observer {
         init();
     }
 
-    //da cancellare
-    public void checkPlayerLives() {
-
-        if (changeLevel) {
-            changeLevel = false;
-            updateLevel();
-        } else if (lifeLost) {
-            lifeLost = false; //portato qui da me
-            if (currentLevel.world.getEntityManager().getPlayer().getNumLives() > 1) {
-                numLives--;   
-               // life.setLifes(numLives);
-                returnBack();
-            } else {
-                numLives = 3;
-                gameOver = false;
-                gameOver();
-            }
-
-        }
-
-        //Provvisorio per prova poi non servirà più
-        if (gameOver) {
-            numLives = 3;
-            gameOver = false;
-            gameOver();
-        }
-    }
-    
     public int getLevelID() {
         return levelID;
     }
@@ -163,23 +135,25 @@ public class LevelHandler extends Observable implements Observer {
     
    @Override
     public void update(Observable o, Object arg) {
- 
-        
+
         try {
-            
-        Health h=(Health) o;
-        numLives=h.getLives();
-        
-        if (numLives>=1) {
-        for (Observer ob : observers) {
-            ob.update(this, this);
-           }
-         }
-        }
-        catch (Exception ex) {
+
+            Health h = (Health) o;
+            numLives = h.getLives();
+
+            if (numLives >= 1) {
+                for (Observer ob : observers) {
+                    ob.update(this, this);
+                }
+                currentLevel.getWorld().clearEntities();
+                returnBack();
+            }
+
+        } catch (Exception ex) {
+            currentLevel.getWorld().clearEntities();
             updateLevel();
         }
-        
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

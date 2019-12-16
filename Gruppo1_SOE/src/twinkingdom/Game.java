@@ -23,6 +23,7 @@ import twinkingdom.gui.GameGUI;
 import twinkingdom.gui.GameScenePanel;
 import twinkingdom.gui.Health;
 import twinkingdom.input.KeyManager;
+import twinkingdom.input.UtilKeyManager;
 import twinkingdom.levels.BossLevel;
 import twinkingdom.levels.Level;
 import twinkingdom.levels.LevelHandler;
@@ -57,8 +58,10 @@ public class Game implements Runnable, Observer {
     private Checkpoint checkpoint;
     private Checkpoint ck;
     
-    private World world1;
-    private World world2;
+    private InterWorld world1;
+    private Dungeon world2;
+    private UtilKeyManager ukm;
+    
 
     public Game(String title, int width, int height) {
         this.title = title;
@@ -91,8 +94,9 @@ public class Game implements Runnable, Observer {
         lh.addObserver(gui.getLevelNamePanel());
         lh.addObserver(ck);
         
+       // ukm=new UtilKeyManager(lh);
+       // gui.getFrame().addKeyListener(ukm);
         
-
     }
 
     public void tick() {
@@ -207,7 +211,7 @@ public class Game implements Runnable, Observer {
         return height;
     }
     
-    public LinkedList<Level> createLevelSequence() {
+       public LinkedList<Level> createLevelSequence() {
         LinkedList<Level> l = new LinkedList<>();
         WorldLevel wl;
         BossLevel bl;

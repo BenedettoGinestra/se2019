@@ -32,15 +32,22 @@ public class Health extends Observable {
     @Override
     public void addObserver(Observer o) {
         this.observers.add(o);
-        o.update(this, this);
+        
     }
 
     public void setHealthPoints(int healthPoints) {
         
         this.healthPoints = Math.max(0, Math.min(healthPoints, this.maxHealthPoints));
         //this.healthPoints = healthPoints;
-        for (Observer o : observers) 
-            o.update(this, this);   
+        for (Observer o : observers) {
+            try {
+            o=(HealthBar) o; //only healthbar updating
+            o.update(this, this);  
+            }catch (Exception ex) {
+                //
+            }
+        }
+        
     }
     
     public int getHealthPoints() {
