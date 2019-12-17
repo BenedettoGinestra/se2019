@@ -17,7 +17,7 @@ import twinkingdom.entities.state.RightMovementState;
 import twinkingdom.gfx.Animation;
 import twinkingdom.gfx.ArcherAssets;
 import twinkingdom.gfx.Assets;
-import twinkingdom.gfx.Boss2Assets;
+import twinkingdom.gfx.MonsterAssets;
 import twinkingdom.gfx.ArrowAssets;
 import twinkingdom.policy.HorizontalArcherPolicy;
 import twinkingdom.policy.HorizontalPolicy;

@@ -14,7 +14,7 @@ import twinkingdom.entities.Player;
 import twinkingdom.entities.enchanted.EnchantedTree;
 import twinkingdom.entities.enemy.level1.ArcherBoss;
 import twinkingdom.entities.enemy.level1.Bat;
-import twinkingdom.entities.enemy.level1.Boss1;
+import twinkingdom.entities.enemy.level1.Monster;
 import twinkingdom.gfx.ArcherAssets;
 import twinkingdom.gfx.ArrowAssets;
 import twinkingdom.gfx.BatAssets;

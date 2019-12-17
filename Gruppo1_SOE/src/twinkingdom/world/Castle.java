@@ -10,7 +10,7 @@ import twinkingdom.Handler;
 import twinkingdom.entities.enchanted.EnchantedTree;
 import twinkingdom.entities.enemy.level1.Arrow;
 import twinkingdom.entities.enemy.level1.Bat;
-import twinkingdom.entities.enemy.level1.Boss1;
+import twinkingdom.entities.enemy.level1.Monster;
 import twinkingdom.entities.enemy.level1.Wolf;
 import twinkingdom.entities.enemy.level3.Ghost;
 import twinkingdom.gfx.BatAssets;

@@ -18,7 +18,7 @@ import twinkingdom.Layer;
 import twinkingdom.RenderableLayers;
 import twinkingdom.entities.Creature;
 import twinkingdom.entities.Entity;
-import twinkingdom.entities.enemy.level1.Boss1;
+import twinkingdom.entities.enemy.level1.Monster;
 import twinkingdom.entities.EntityManager;
 import twinkingdom.entities.Player;
 import twinkingdom.entities.enchanted.EnchantedTree;
