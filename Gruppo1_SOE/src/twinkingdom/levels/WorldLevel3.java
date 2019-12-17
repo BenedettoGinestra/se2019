@@ -7,54 +7,52 @@ package twinkingdom.levels;
 
 import java.awt.Graphics;
 import twinkingdom.Handler;
-import twinkingdom.world.Dungeon;
-import twinkingdom.world.World;
+import twinkingdom.world.Castle;
+import twinkingdom.world.InterWorld;
 
 /**
  *
  * @author Antonia
  */
-public class BossLevel extends Level {
-
-    private Dungeon world;
+public class WorldLevel3 extends Level{
+  
+    private Castle world;
     private Handler handler;
 
-
-    
-    public BossLevel(int id, Dungeon world, Handler handler) {
-        super(id,handler);
+    public WorldLevel3(int id, Castle world, Handler handler) {
+        super(id, handler);
         this.world = world;
-        this.handler=handler;
-
+        this.handler = handler;
     }
 
     @Override
     public void tick() {
         super.tick();
-        if(world!=null)
-        world.tick();
+        if (world != null) {
+            world.tick();
+        }
     }
 
     @Override
     public void render(Graphics g) {
-        if(world!=null)
-        world.render(g);
+        if (world != null) {
+            world.render(g);
+        }
     }
 
     @Override
     public void init(LevelHandler lh) {
-        System.out.println("SONO NELL'INIT DEL BOSSLEVEL");
         super.init(lh);
         handler.setWorld(this.world);
         world.init();
         world.setPortalObserver(lh);
         world.setHealthObserver(lh);
     }
-    
-    
+
     @Override
     public void stop() {
         world.clearWorld();
     }
+
 
 }

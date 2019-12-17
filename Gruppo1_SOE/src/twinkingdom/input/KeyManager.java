@@ -17,7 +17,7 @@ import java.util.LinkedList;
 public class KeyManager implements KeyListener{
     
     private boolean[] keys;
-    public boolean up, down, left, right, attack;
+    public boolean up, down, left, right, attack,changeLevel;
     private int move=0;
     private LinkedList<Integer> stack;
     
@@ -39,6 +39,7 @@ public class KeyManager implements KeyListener{
         right = (getNext() == KeyEvent.VK_RIGHT);
         down = (getNext() == KeyEvent.VK_DOWN);
         attack = (getNext() == KeyEvent.VK_SPACE);
+        changeLevel=(getNext() == KeyEvent.VK_L);
     }
 
     @Override

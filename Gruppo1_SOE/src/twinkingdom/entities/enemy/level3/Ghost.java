@@ -17,9 +17,15 @@ import twinkingdom.utils.UtilityTimer;
  * @author Alex1
  */
 public class Ghost extends Enemy {
-    
-    
-    public Ghost(Handler handler, float x, float y, int width, int height, GhostAssets entityAssets) {
+
+    private UtilityTimer timer;
+    protected boolean isVisible = false;
+    protected boolean isSolid = false;
+    private int counter=0;
+    private float[] xpos;
+    private float[] ypos;
+
+    public Ghost(Handler handler, float x, float y, int width, int height, GhostAssets entityAssets, float[] xposition, float[] yposition) {
         super(handler, x, y, width, height, entityAssets);
         bounds.x = 1;
         bounds.y = 1;
@@ -29,14 +35,18 @@ public class Ghost extends Enemy {
         setState(leftState);
         life.setHealthPoints(1);
         life.setLives(1);
-        speed=4;
-        
+        speed = 4;
+        isVisible = true;
+        isSolid = true;
+        this.timer = new UtilityTimer(2000);
+        this.xpos=xposition;
+        this.ypos=yposition;
+
         //maxHealth=life.getHealthPoints();
         //setAttackCooldown(3000);
         //timer = new UtilityTimer(2000);
     }
 
-    
     @Override
     //Deve fare l'update dello stato dell'oggetto
     public void tick() {
@@ -46,7 +56,17 @@ public class Ghost extends Enemy {
         //Movement
         getMovement();
         move();
-        //handler.getGameCamera().centerOnEntity(this);
+        //System.out.println("mi muovo...");
+
+        if (timer.isTimeOver()) {
+            this.setX(xpos[counter]);
+            this.setY(ypos[counter]);
+            counter=(counter+1)%xpos.length;
+            //System.out.println("cambio1");
+            
+            //System.out.println("nuovo timer");
+        }
+        
     }
 
     @Override
@@ -60,14 +80,28 @@ public class Ghost extends Enemy {
         /*if((statePolicy = movementPolicy.getMovement())!=null)
             setState(statePolicy);
         movementPolicy.getAction();*/
-        //movementPolicy.getMovement();
-
-        //state.attack();
+    //movementPolicy.getMovement();
+    //state.attack();
     //}
-
     @Override
     public void render(Graphics g) {
         state.render(g);
     }
-    
+
+    /*public boolean isSolid() {
+        if(isVisible())
+            isSolid=true;
+        else
+            isSolid=false;
+        
+        return isSolid;
+    }*/
+    public boolean isVisible() {
+        return isVisible;
+    }
+
+    public void setIsVisible(boolean isVisible) {
+        this.isVisible = isVisible;
+    }
+
 }

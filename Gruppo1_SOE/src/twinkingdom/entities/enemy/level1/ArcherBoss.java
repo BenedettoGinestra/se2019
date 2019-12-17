@@ -23,7 +23,9 @@ import twinkingdom.policy.HorizontalArcherPolicy;
 import twinkingdom.policy.HorizontalPolicy;
 import twinkingdom.policy.VerticalArcherPolicy;
 import twinkingdom.policy.VerticalPolicy;
+import twinkingdom.staticentities.Portal;
 import twinkingdom.utils.UtilityTimer;
+import twinkingdom.world.World;
 
 /**
  *
@@ -38,6 +40,8 @@ public class ArcherBoss extends Enemy {
     private boolean vertical=false;
     private VerticalArcherPolicy verticalPolicy; 
     private HorizontalArcherPolicy horizontalPolicy;
+    private Portal portal;
+    private World w;
     
     public ArcherBoss(Handler handler, float x, float y, /*Boss2Assets*/ArcherAssets boss2Assets) {
         super(handler, x, y, 80, Creature.DEFAULT_HEIGHT, boss2Assets);
@@ -53,8 +57,8 @@ public class ArcherBoss extends Enemy {
         bounds.y = 30;
         bounds.width = 15;
         bounds.height = 22;
-        //setState(leftState);
-        life.setHealthPoints(10);
+        //setState(leftState); 
+        life.setHealthPoints(1);
         life.setLives(1);
         arrowAsset.init();
         policyTimer = new UtilityTimer(10000);
@@ -104,6 +108,7 @@ public class ArcherBoss extends Enemy {
 
     @Override
     public void die() {
+
     }
 
 
@@ -124,8 +129,10 @@ public class ArcherBoss extends Enemy {
         setChanged();
         notifyObservers();
     }
-    
-    
+ 
+ public void setWorld(World w) {
+     this.w=w;
+ } 
 
 }
 

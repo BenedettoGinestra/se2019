@@ -89,6 +89,8 @@ public class LevelHandler extends Observable implements Observer {
     //cambia il livello puntando a quello successivo nella lista
     public void updateLevel() {
         
+        currentLevel.stop();
+        
         System.out.println("Sono nell'update Level del LH");
         levelID++;
 
@@ -125,6 +127,7 @@ public class LevelHandler extends Observable implements Observer {
         init();
     }
 
+    
     public int getLevelID() {
         return levelID;
     }
@@ -135,7 +138,8 @@ public class LevelHandler extends Observable implements Observer {
     
    @Override
     public void update(Observable o, Object arg) {
-
+ 
+        
         try {
 
             Health h = (Health) o;
@@ -145,15 +149,14 @@ public class LevelHandler extends Observable implements Observer {
                 for (Observer ob : observers) {
                     ob.update(this, this);
                 }
-                currentLevel.getWorld().clearEntities();
+                currentLevel.stop();
                 returnBack();
             }
 
         } catch (Exception ex) {
-            currentLevel.getWorld().clearEntities();
             updateLevel();
         }
-
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -8,38 +8,40 @@ import twinkingdom.world.World;
 
 public abstract class Level {
 
- private int ID;
-    
-    private int life;
-    /*
-    private Checkpoint checkpoint;
-    private boolean levelCompleted, playerAlive;
-   // protected Handler handler;
-*/
-    public Level(int ID) {
+    private int ID;
+    protected Handler handler;
+    private LevelHandler lh;
+
+    public Level(int ID, Handler handler) {
         this.ID = ID;
+        this.handler = handler;
     }
 
-    // Ricordare di modificare la variabile running in tick
-    public abstract void tick();
+    public void tick() {
+        getInput();
+    }
+
+     public void init(LevelHandler lh) {
+       this.lh=lh;
+       
+    }
+     
+    private void getInput() {
+
+        if (handler.getKeyManager().isPressing()) {
+
+
+            if (handler.getKeyManager().changeLevel) {
+                lh.updateLevel();
+
+            }
+
+        }
+    }
+    
 
     public abstract void render(Graphics g);
 
- 
-    public void init(LevelHandler lh) {
-        //to override
-    }
+    public abstract void stop();
 
-    public synchronized void startLevel() {
-
-    }
-
-    public synchronized void end() {
-
-        //LevelHandler.howLevelEnded(levelCompleted, playerAlive);
-    }
-    
-    public World getWorld () {
-        return null;
-    }
 }

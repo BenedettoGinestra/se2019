@@ -227,6 +227,7 @@ public class GameGUI {
 
         starsPanel.setLayout(null);
         starsPanel.setOpaque(false);
+        
     }
 
     public Canvas getCanvas() {

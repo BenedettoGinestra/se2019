@@ -21,6 +21,10 @@ public class LevelUtilities {
         LevelUtilities.levels = new HashMap<>();
         LevelUtilities.levels.put(1, "Level 1");
         LevelUtilities.levels.put(2, "Boss 1");
+        LevelUtilities.levels.put(3, "Level 2");
+        LevelUtilities.levels.put(4, "Boss 2");
+        LevelUtilities.levels.put(5, "Level 3");
+        LevelUtilities.levels.put(6, "Boss 3");
         LevelUtilities.currentLevel = 1;
     }
 }

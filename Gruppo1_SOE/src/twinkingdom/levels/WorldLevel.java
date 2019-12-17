@@ -16,17 +16,19 @@ import twinkingdom.world.World;
  */
 public class WorldLevel extends Level {
 
+
        private InterWorld world;
-        private Handler handler;
+       private Handler handler;
         
     public WorldLevel(int id, InterWorld world, Handler handler) {
-        super(id);
+        super(id,handler);
         this.world = world;
         this.handler=handler;
     }
 
     @Override
     public void tick() {
+        super.tick();
         if(world!=null)
         world.tick();
     }
@@ -36,6 +38,7 @@ public class WorldLevel extends Level {
         if(world!=null)
         world.render(g);
     }
+
 
     @Override
     public void init(LevelHandler lh) {
@@ -47,14 +50,9 @@ public class WorldLevel extends Level {
     }
     
     @Override
-    public void end() {
-        world=null;
+    public void stop() {
+        world.clearWorld();
     }
-    
-    @Override
-    public InterWorld getWorld () {
-        return world;
-    }
-    
+   
 
 }

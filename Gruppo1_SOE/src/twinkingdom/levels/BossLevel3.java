@@ -8,24 +8,21 @@ package twinkingdom.levels;
 import java.awt.Graphics;
 import twinkingdom.Handler;
 import twinkingdom.world.Dungeon;
-import twinkingdom.world.World;
+import twinkingdom.world.Dungeon3;
 
 /**
  *
  * @author Antonia
  */
-public class BossLevel extends Level {
-
-    private Dungeon world;
-    private Handler handler;
-
-
+public class BossLevel3 extends Level{
     
-    public BossLevel(int id, Dungeon world, Handler handler) {
+     private Dungeon3 world;
+     private Handler handler;
+    
+    public BossLevel3(int id, Dungeon3 world, Handler handler) {
         super(id,handler);
         this.world = world;
         this.handler=handler;
-
     }
 
     @Override
@@ -56,5 +53,5 @@ public class BossLevel extends Level {
     public void stop() {
         world.clearWorld();
     }
-
+    
 }

@@ -5,39 +5,21 @@
  */
 package twinkingdom.world;
 
-import java.awt.Color;
 import twinkingdom.Game;
 import twinkingdom.Handler;
-import twinkingdom.RenderableLayers;
-import twinkingdom.entities.EntityManager;
-import twinkingdom.entities.Player;
-import twinkingdom.entities.enchanted.EnchantedTree;
 import twinkingdom.entities.enemy.level1.ArcherBoss;
-import twinkingdom.entities.enemy.level1.Bat;
-import twinkingdom.entities.enemy.level1.Monster;
 import twinkingdom.gfx.ArcherAssets;
-import twinkingdom.gfx.ArrowAssets;
-import twinkingdom.gfx.BatAssets;
-import twinkingdom.gfx.Boss2Assets;
-import twinkingdom.gfx.PlayerAssets;
-import twinkingdom.gui.HealthBar;
-import twinkingdom.gui.StarsPanel;
 import twinkingdom.saves.Checkpoint;
-import twinkingdom.staticentities.Portal;
-import twinkingdom.staticentities.grabbable.GrabbableHealthPotion;
-import twinkingdom.staticentities.grabbable.GrabbableStar;
-import twinkingdom.utils.GrabbableStarCollection;
-import twinkingdom.utils.LifeObserver;
 import twinkingdom.utils.Utils;
 
 /**
  *
  * @author Antonia
  */
-
-public class Dungeon extends World {
-
-    public Dungeon(Handler handler, String path, Game game, Checkpoint ck) {
+public class Dungeon2 extends World{
+ 
+    
+    public Dungeon2(Handler handler, String path, Game game, Checkpoint ck) {
         super(handler, path, game, ck);
 
         //setCreatures();
@@ -45,16 +27,14 @@ public class Dungeon extends World {
 
     public void setCreatures() {
 
-        //System.out.println(x+" "+y); //567,755 player; 927,755 arciere
         // entities.add(new EnchantedTree(handler,150,400,90,90));
-        ArcherBoss ab=new ArcherBoss(handler, 732,752, new /*Boss2Assets()*/ ArcherAssets());
-        entities.add(ab);
-        ab.setWorld(this);
+        entities.add(new ArcherBoss(handler, 732,752, new /*Boss2Assets()*/ ArcherAssets()));
         /*
         StarsPanel starsPanel = handler.getGame().getGui().getStarsPanel();
         starCollection.addObserver(starsPanel);
         starCollection.addObserver(portal);
                 */
+       // portal=new Portal(handler, 1700, 200, 64, 64);
         portalX=1330;
         portalY=749;
         playerX=741;
@@ -70,9 +50,7 @@ public class Dungeon extends World {
         loadWorld(path);
         super.init();
         initStarCollection();
-
     }
-     
 
     @Override
     public void loadWorld(String path) {
@@ -92,9 +70,16 @@ public class Dungeon extends World {
 
     }
 
+    @Override
+    public void clearEntities() {
+
+        entities.clear();
+
+        entityManager.clearEntities();
+
+    }
     
     public void initStarCollection() {
-        //prova a metterlo in clearworld
     starCollection.addObserver(starsPanel);
     starCollection.clearStars();
     }    
@@ -104,12 +89,5 @@ public class Dungeon extends World {
         entities.clear();
         entityManager.clearEntities();
     }
-    
-    @Override
-    public void addPortal(Portal portal) {
-        entityManager.addEntity(portal);
-        setPortalObserver(lh);
-    }
-
-    
+  
 }
