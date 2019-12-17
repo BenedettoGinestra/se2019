@@ -7,7 +7,7 @@ package twinkingdom.levels;
 
 import java.awt.Graphics;
 import twinkingdom.Handler;
-import twinkingdom.world.Dungeon;
+import twinkingdom.world.Dungeon1;
 import twinkingdom.world.Dungeon3;
 
 /**

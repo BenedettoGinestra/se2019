@@ -45,7 +45,7 @@ public class Dungeon2 extends World{
 
     @Override
     public void init() {
-
+        
         setCreatures();
         loadWorld(path);
         super.init();
@@ -67,15 +67,6 @@ public class Dungeon2 extends World{
                 tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 2]);
             }
         }
-
-    }
-
-    @Override
-    public void clearEntities() {
-
-        entities.clear();
-
-        entityManager.clearEntities();
 
     }
     

@@ -77,15 +77,6 @@ public class Dungeon3 extends World {
 
     }
 
-    @Override
-    public void clearEntities() {
-
-        entities.clear();
-
-        entityManager.clearEntities();
-
-    }
-    
     public void initStarCollection() {
     starCollection.addObserver(starsPanel);
     starCollection.clearStars();

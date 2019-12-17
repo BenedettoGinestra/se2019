@@ -25,6 +25,7 @@ public class LevelUtilities {
         LevelUtilities.levels.put(4, "Boss 2");
         LevelUtilities.levels.put(5, "Level 3");
         LevelUtilities.levels.put(6, "Boss 3");
+        LevelUtilities.levels.put(7, "Final Boss");
         LevelUtilities.currentLevel = 1;
     }
 }
