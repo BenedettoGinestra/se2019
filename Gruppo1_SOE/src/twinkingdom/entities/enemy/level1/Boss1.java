@@ -16,6 +16,7 @@ import twinkingdom.entities.state.MovementState;
 import twinkingdom.entities.state.RightMovementState;
 import twinkingdom.entities.state.UpMovementState;
 import twinkingdom.gfx.Boss2Assets;
+import twinkingdom.staticentities.Portal;
 import twinkingdom.utils.UtilityTimer;
 
 /**
@@ -25,7 +26,9 @@ import twinkingdom.utils.UtilityTimer;
 public class Boss1 extends Enemy {
 
     private UtilityTimer timer;
-
+    private Handler handler;
+    private Portal portal;
+    
     public Boss1(Handler handler, float x, float y, Boss2Assets boss2Assets) {
         super(handler, x, y, 80, Creature.DEFAULT_HEIGHT, boss2Assets);
         bounds.x = 25;
@@ -38,6 +41,7 @@ public class Boss1 extends Enemy {
         //maxHealth=life.getHealthPoints();
         //setAttackCooldown(3000);
         timer = new UtilityTimer(500);
+        this.handler=handler;
 
     }
 
@@ -55,6 +59,7 @@ public class Boss1 extends Enemy {
 
     @Override
     public void die() {
+        portal=new Portal(handler, x, y, 64, 64);
     }
 
     /*@Override
@@ -76,6 +81,10 @@ public class Boss1 extends Enemy {
     @Override
     public void render(Graphics g) {
         state.render(g);
+    }
+    
+    public Portal getPortal() {
+        return portal;
     }
 
 }

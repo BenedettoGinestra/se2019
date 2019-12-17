@@ -21,6 +21,8 @@ public class Health extends Observable {
     private int maxHealthPoints;
     private int lives;
     private List<Observer> observers;
+    private HealthBar healthBar;
+    
 
     public Health() {
         this.maxHealthPoints = 120;
@@ -28,19 +30,24 @@ public class Health extends Observable {
         this.lives = 3;
         this.observers = new LinkedList<>();
     }
+    
+    public void setHealthBar(HealthBar healthBar){
+        System.out.println("HO SETTATO L'HEALTHBAR");
+        this.healthBar=healthBar;
+    }
 
     @Override
     public void addObserver(Observer o) {
         this.observers.add(o);
-        o.update(this, this);
     }
 
-    public void setHealthPoints(int healthPoints) {
+     public void setHealthPoints(int healthPoints) {
         
         this.healthPoints = Math.max(0, Math.min(healthPoints, this.maxHealthPoints));
         //this.healthPoints = healthPoints;
-        for (Observer o : observers) 
-            o.update(this, this);   
+        if(this.healthBar!=null)
+        this.healthBar.update(this, this);
+        
     }
     
     public int getHealthPoints() {

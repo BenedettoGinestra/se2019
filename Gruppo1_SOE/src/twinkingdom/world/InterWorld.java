@@ -29,6 +29,7 @@ import twinkingdom.staticentities.grabbable.GrabbableHealthPotion;
 import twinkingdom.staticentities.grabbable.GrabbableStar;
 import twinkingdom.utils.GrabbableStarCollection;
 import twinkingdom.utils.LifeObserver;
+import twinkingdom.utils.Utils;
 
 /**
  *
@@ -40,7 +41,6 @@ public class InterWorld extends World{
      public InterWorld(Handler handler, String path, Game game, Checkpoint ck){
         super(handler,path,game,ck);
 
-        setCreatures();
     }
      
    
@@ -58,7 +58,7 @@ public class InterWorld extends World{
         entities.add(star1);
         entities.add(star2);
         entities.add(star3);
-        
+        /*
         
      //enemies for the star1
         entities.add(new Bat(handler, 2700, 2868 , 32, 32, new BatAssets()));
@@ -119,11 +119,47 @@ public class InterWorld extends World{
         Bat batVertical1 = new Bat(handler, 600, 500, 32, 32, new BatAssets());
         batVertical1.setMovementPolicy(new VerticalPolicy(batVertical1,(int) batVertical1.getY()-500,(int) batVertical1.getY()+500));
         entities.add(batVertical1);
-        
+        */
         //portal position settings
-        portalX=500;
-        portalY=200;
+        portalX = 500;
+        portalY = 200;
+        
+        playerX=288;
+        playerY=320;
+
     }
-    
-    
+
+    @Override
+    public void loadWorld(String path) {
+        System.out.println("Loading world from... " + path);
+        String file = Utils.loadFileAsString(path + "layer1.txt");
+        String[] tokens = file.split("\\s+");
+        width = Utils.parseInt(tokens[0]);
+        height = Utils.parseInt(tokens[1]);
+
+        tiles = new int[width][height];
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 2]);
+            }
+        }
+    }
+
+    @Override
+    public void init() {
+
+        //entityManager.clearEntities();
+        setCreatures();
+        loadWorld(path);
+        super.init();
+
+    }
+
+
+    @Override
+    public void clearWorld() {
+        entities.clear();
+        entityManager.clearEntities();
+    }
+
 }

@@ -33,6 +33,16 @@ public class Portal extends StaticEntity implements Observer{
         animation = new Animation(50, Assets.portal);
         
     }
+    
+    public Portal(Handler handler, float x, float y, int width, int height, boolean unblocked) {
+        super(handler, x, y, width, height);
+        bounds.x = 1;
+        bounds.y = 1;
+        bounds.width= 50;
+        bounds.height= 50;
+        animation = new Animation(50, Assets.portal);
+        this.unblocked=unblocked;
+    }
 
     @Override
     public void tick() {

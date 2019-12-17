@@ -46,17 +46,17 @@ import twinkingdom.utils.Utils;
  *
  * @author mario
  */
-public class World {
+public abstract class World {
     
-    private int width, height;
-    private int[][] tiles;
+    protected int width, height;
+    protected int[][] tiles;
     private int spawnX;
     private int spawnY;
     protected Handler handler;
     protected GrabbableStarCollection starCollection;
     private LifeObserver lifeObserver;
     private RenderableLayers rl;
-    private String path;
+    protected String path;
   //Entities
     protected EntityManager entityManager;
     protected Portal portal;
@@ -66,13 +66,16 @@ public class World {
     
     protected int portalX;
     protected int portalY;
-    
+    protected int playerY;
+    protected int playerX;
     private Player player;
     
     private Game game;
     
     private Checkpoint ck;
     
+    protected StarsPanel starsPanel;
+    protected LevelHandler lh;
     
     public GrabbableStarCollection getStarCollection() {
         return starCollection;
@@ -103,6 +106,7 @@ public class World {
         entityManager.addEntity(etree1);
        
         
+<<<<<<< Updated upstream
 
         GrabbableStar star1=new GrabbableStar(handler, 450, 250, 32, 32);
         GrabbableStar star2=new GrabbableStar(handler, 350, 250, 32, 32);
@@ -142,7 +146,8 @@ public class World {
         
     */
        
-        player = new Player(handler, 288, 320,new PlayerAssets(),ck.getLife());
+        
+        player = new Player(handler, playerX, playerY,new PlayerAssets(),ck.getLife());
         entityManager = new EntityManager(handler, player);
         
       //  setCreatures();
@@ -161,11 +166,21 @@ public class World {
         
         HealthBar healthBar = handler.getGame().getGui().getHealthBar();
         player.getLifeObservable().addObserver(healthBar);
-        StarsPanel starsPanel = handler.getGame().getGui().getStarsPanel();
+        player.getLifeObservable().setHealthBar(healthBar);
+        
+        starsPanel = handler.getGame().getGui().getStarsPanel();
         starCollection.addObserver(starsPanel);
         starCollection.addObserver(portal);
         
-        entityManager.addEntity(new Ghost(handler, 200,590, 48,48, new GhostAssets()));
+        
+    }
+    
+        public void clearEntities() {
+
+        entities.clear();
+
+        entityManager.clearEntities();
+
     }
 
     public EntityManager getEntityManager() {
@@ -179,6 +194,7 @@ public class World {
     public void tick(){
         //this.rl.loadLayers();
         entityManager.tick();
+        
     }
     
     public void render(Graphics g){
@@ -213,22 +229,6 @@ public class World {
         }
         return t;
     }
-    //Carica un file per costruire il mondo
-    protected void loadWorld(String path) {
-        System.out.println("Loading world from... " + path);
-        String file = Utils.loadFileAsString(path + "layer1.txt");
-        String[] tokens = file.split("\\s+");
-        width = Utils.parseInt(tokens[0]);
-        height = Utils.parseInt(tokens[1]);
-
-        tiles = new int[width][height];
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                tiles[x][y] = Utils.parseInt(tokens[(x + y * width) + 2]);
-            }
-        }
-    }
-    
     
     public Tile getLayerTile(int tileNum, int x, int y) {
 
@@ -294,6 +294,7 @@ public class World {
     }
     
     public void setPortalObserver(LevelHandler lh) {
+        this.lh=lh;
         portal.addObserver(lh);
     }
     
@@ -302,6 +303,15 @@ public class World {
          player.getLifeObservable().addObserver(lh);
     }
  
+    public abstract void loadWorld(String path);
     
+    public abstract void clearWorld();
+
+    public abstract void setCreatures();
+
+    public void addPortal(Portal portal){
+        //used for the portal spawning in the dungeon worlds
+    }
+ 
 }
    

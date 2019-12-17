@@ -79,6 +79,10 @@ public class EntityManager {
         this.entities = entities;
     }
     
+ public void clearEntities() {
+     entities.clear();
+     entities=new ArrayList();
+ }   
    
     
     

@@ -15,7 +15,9 @@ import twinkingdom.saves.Checkpoint;
  * @author bened
  */
 public class LevelNamePanel extends ObservingPanel {
+    
     private Checkpoint ck;
+    
     public LevelNamePanel(Checkpoint ck) {
         super();
         this.ck=ck;
