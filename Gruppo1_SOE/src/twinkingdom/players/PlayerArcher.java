@@ -22,8 +22,6 @@ public class PlayerArcher extends Player{
 
     public PlayerArcher(Handler handler, float x, float y, PlayerAssets pAssets, int numLife) {
         super(handler, x, y, pAssets, numLife);
-        ArrowAssets arrowAsset = new ArrowAssets();
-        arrowAsset.init();
         rightState=new RightArcherState(this, pAssets);
         leftState=new LeftArcherState(this, pAssets);
         downState=new DownArcherState(this, pAssets);
