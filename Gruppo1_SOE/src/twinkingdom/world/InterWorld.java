@@ -19,6 +19,7 @@ import twinkingdom.entities.enemy.level1.Monster;
 import twinkingdom.entities.enemy.level1.Wolf;
 import twinkingdom.gfx.BatAssets;
 import twinkingdom.gfx.Boss2Assets;
+import twinkingdom.gfx.MonsterAssets;
 import twinkingdom.gfx.PlayerAssets;
 import twinkingdom.gfx.WolfAssets;
 import twinkingdom.gui.HealthBar;
@@ -96,16 +97,31 @@ public class InterWorld extends World{
         //trees on the road
         entities.add(new EnchantedTree(handler,260, 1300, 90,90));
         entities.add(new EnchantedTree(handler,1808, 1173, 90,90));
-        
-        //potions on the road
-        entities.add(new GrabbableHealthPotion(handler, 250, 2800, 32, 32));
+<<<<<<< HEAD
+        entities.add(new Crow(handler, 600, 200, 16, 16, new CrowAssets()));
+        /*entities.add(new Papavero(handler, 770, 203, 32, 32, new PapaveroAssets()));*/
+
+        entities.add(new Monster(handler, 1800, 1900, new MonsterAssets()));
+        entities.add(new EnchantedTree(handler, 1480, 1030, 90, 90));
+
+        //bosses on the road
+        entities.add(new Monster(handler, 961, 2064, new MonsterAssets()));
+        entities.add(new Monster(handler, 1226, 630, new MonsterAssets()));
+        entities.add(new Monster(handler, 2840, 1690, new MonsterAssets()));
+
+        //trees on the road
+        entities.add(new EnchantedTree(handler, 260, 1300, 90, 90));
+        entities.add(new EnchantedTree(handler, 1808, 1173, 90, 90));
+        entities.add(new Monster(handler, 840, 550, new MonsterAssets()));
+
+
         entities.add(new GrabbableHealthPotion(handler, 2187, 1686, 32, 32));
         entities.add(new GrabbableHealthPotion(handler, 3045, 459, 32, 32));
         
         
         
         //bats on the road
-        entities.add(new Bat(handler, 961, 2727, 32, 32, new BatAssets()));
+        /*entities.add(new Bat(handler, 961, 2727, 32, 32, new BatAssets()));
         entities.add(new Bat(handler, 217, 2400, 32, 32, new BatAssets()));
         entities.add(new Bat(handler, 217, 2600, 32, 32, new BatAssets()));
         entities.add(new Bat(handler, 1633, 2781, 32, 32, new BatAssets()));
@@ -115,12 +131,12 @@ public class InterWorld extends World{
         entities.add(new Wolf(handler, 150, 300, 32, 32,new WolfAssets()));
         entities.add(new Bat(handler, 145, 880, 32, 32, new BatAssets()));
         entities.add(new Bat(handler, 150, 980, 32, 32, new BatAssets()));
-        entities.add(new Bat(handler, 155, 1050, 32, 32, new BatAssets()));
+        entities.add(new Bat(handler, 155, 1050, 32, 32, new BatAssets()));*/
         entities.add(new Bat(handler, 150, 1100, 32, 32, new BatAssets()));
         Bat batVertical1 = new Bat(handler, 600, 500, 32, 32, new BatAssets());
         batVertical1.setMovementPolicy(new VerticalPolicy(batVertical1,(int) batVertical1.getY()-500,(int) batVertical1.getY()+500));
         entities.add(batVertical1);
-        */
+        
         //portal position settings
         portalX = 500;
         portalY = 200;

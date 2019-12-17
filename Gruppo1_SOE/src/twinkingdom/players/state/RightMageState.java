@@ -10,24 +10,28 @@ import twinkingdom.entities.enemy.level1.Arrow;
 import twinkingdom.entities.enemy.level1.FireBall;
 import twinkingdom.entities.state.RightMovementState;
 import twinkingdom.gfx.EntityAssets;
+import twinkingdom.utils.UtilityTimer;
 
 /**
  *
  * @author mario
  */
 public class RightMageState extends RightMovementState{
-
+    UtilityTimer timer;
     public RightMageState(Creature creature, EntityAssets asset) {
         super(creature, asset);
+        timer = new UtilityTimer(500);
     }
     
     @Override
     public void attack(){
         super.attack();
         //attacca con le frecce a destra
-        FireBall fire = new FireBall(creature.getHandler(), creature.getX() + 42, creature.getY()+32, 64, 64);
-        fire.setState(fire.getRightState());
-        creature.getHandler().getWorld().getEntityManager().addEntity(fire);
+        if(timer.isTimeOver()){
+            FireBall fire = new FireBall(creature.getHandler(), creature.getX() + 42, creature.getY()+32, 64, 64);
+            fire.setState(fire.getRightState());
+            creature.getHandler().getWorld().getEntityManager().addEntity(fire);
+        }
     }
     
 }
