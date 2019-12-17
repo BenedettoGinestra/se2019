@@ -17,9 +17,11 @@ import twinkingdom.entities.enemy.level1.Bat;
 import twinkingdom.entities.enemy.level1.Monster;
 import twinkingdom.entities.enemy.level1.Wolf;
 import twinkingdom.entities.enemy.level2.Crow;
+import twinkingdom.entities.enemy.level2.Papavero;
 import twinkingdom.gfx.BatAssets;
 import twinkingdom.gfx.CrowAssets;
 import twinkingdom.gfx.MonsterAssets;
+import twinkingdom.gfx.PapaveroAssets;
 import twinkingdom.gfx.PlayerAssets;
 import twinkingdom.gfx.WolfAssets;
 import twinkingdom.gui.HealthBar;
@@ -110,6 +112,7 @@ public class InterWorld extends World {
         entities.add(new EnchantedTree(handler,260, 1300, 90,90));
         entities.add(new EnchantedTree(handler,1808, 1173, 90,90));
         entities.add(new Crow(handler, 600, 200, 16, 16, new CrowAssets()));
+        entities.add(new Papavero(handler, 770, 203, 32, 32, new PapaveroAssets()));
 
         entities.add(new Monster(handler, 1800, 1900, new MonsterAssets()));
         entities.add(new EnchantedTree(handler, 1480, 1030, 90, 90));

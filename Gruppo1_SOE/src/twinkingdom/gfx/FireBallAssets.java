@@ -44,28 +44,28 @@ public class FireBallAssets extends EntityAssets {
         int startingXAttack=0;
         int startingYAttack=0;
         SpriteSheet sheet1, sheet2, sheet = null;            
-        sheet = new SpriteSheet(ImageLoader.loadImage("/twinkingdom/images/fireball2.png"));
+        sheet = new SpriteSheet(ImageLoader.loadImage("/twinkingdom/images/fireball.png"));
 
 
-        for(int i=0;i<6;i++){
-            fireball_down_attack[i] =  sheet.crop(startingXAttack + i*width , startingY , width, height);
-            fireball_right_attack[i] =  sheet.crop(startingXAttack + i*width , 2*height, width, height);
-            fireball_up_attack[i] =  sheet.crop(startingXAttack + i*width , 3*height, width, height);
-            fireball_left_attack[i] =  sheet.crop(startingXAttack + i*width , height, width, height);
+        for(int i=0;i<8;i++){
+            fireball_down_attack[i] =  sheet.crop(startingXAttack + i*width , startingYAttack + 6*height , width, height);
+            fireball_right_attack[i] =  sheet.crop(startingXAttack + i*width , startingYAttack + 4*height, width, height);
+            fireball_up_attack[i] =  sheet.crop(startingXAttack + i*width , startingYAttack + 2*height, width, height);
+            fireball_left_attack[i] =  sheet.crop(startingXAttack + i*width , startingYAttack , width, height);
             
             
             
             //sheet = new SpriteSheet(ImageLoader.loadImage("/twinkingdom/images/EBros_fireball_samurai/fireball_Samurai_Walk.png"));
-            fireball_down_stable[i] =  sheet.crop(startingXAttack + i*width , startingY , width, height);
-            fireball_right_stable[i] =  sheet.crop(startingXAttack + i*width , 2*height, width, height);
-            fireball_up_stable[i] =  sheet.crop(startingXAttack + i*width , 3*height, width, height);
-            fireball_left_stable[i] =  sheet.crop(startingXAttack + i*width , height, width, height);
+            fireball_down_stable[i] =  sheet.crop(startingXAttack + i*width , startingYAttack + 6*height , width, height);
+            fireball_right_stable[i] =  sheet.crop(startingXAttack + i*width , startingYAttack + 4*height, width, height);
+            fireball_up_stable[i] =  sheet.crop(startingXAttack + i*width , startingYAttack + 2*height, width, height);
+            fireball_left_stable[i] =  sheet.crop(startingXAttack + i*width , startingYAttack , width, height);
 
             
-            fireball_down[i] =  sheet.crop(startingXAttack + i*width , startingY , width, height);
-            fireball_right[i] =  sheet.crop(startingXAttack + i*width , 2*height, width, height);
-            fireball_up[i] =  sheet.crop(startingXAttack + i*width , 3*height, width, height);
-            fireball_left[i] =  sheet.crop(startingXAttack + i*width , height, width, height);
+            fireball_down[i] =  sheet.crop(startingXAttack + i*width , startingYAttack + 6*height , width, height);
+            fireball_right[i] =  sheet.crop(startingXAttack + i*width , startingYAttack + 4*height, width, height);
+            fireball_up[i] =  sheet.crop(startingXAttack + i*width , startingYAttack + 2*height, width, height);
+            fireball_left[i] =  sheet.crop(startingXAttack + i*width , startingYAttack , width, height);
 
         }
         
