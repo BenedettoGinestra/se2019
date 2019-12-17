@@ -13,6 +13,7 @@ import twinkingdom.Handler;
 import twinkingdom.entities.Entity;
 import twinkingdom.gfx.Animation;
 import twinkingdom.gfx.Assets;
+import twinkingdom.gui.Health;
 import twinkingdom.utils.GrabbableStarCollection;
 
 /**
@@ -23,6 +24,7 @@ import twinkingdom.utils.GrabbableStarCollection;
 public class Portal extends StaticEntity implements Observer{
 
     private boolean unblocked=false;
+    private int numLives = 0;
     
     public Portal(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
@@ -73,10 +75,19 @@ public class Portal extends StaticEntity implements Observer{
     @Override
     public void update(Observable o, Object arg) {
         
-        GrabbableStarCollection gsc=(GrabbableStarCollection) o;
-        
-        if(gsc.getSize()==3)
-        unblocked=true;
+        try {
+            GrabbableStarCollection gsc = (GrabbableStarCollection) o;
+            if (gsc.getSize() == 3) {
+                unblocked = true;
+            }
+        } catch (Exception ex) {
+            Health h = (Health) o;
+            numLives = h.getLives();
+
+            if (numLives == 0) {
+                unblocked = true;
+            }
+        }
         
     }
 }

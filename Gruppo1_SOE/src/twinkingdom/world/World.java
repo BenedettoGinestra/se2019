@@ -41,13 +41,13 @@ import twinkingdom.utils.GrabbableStarCollection;
 import twinkingdom.tiles.Tile;
 import twinkingdom.utils.LifeObserver;
 import twinkingdom.utils.Utils;
- 
+
 /**
  *
  * @author mario
  */
 public abstract class World {
-    
+
     protected int width, height;
     protected int[][] tiles;
     private int spawnX;
@@ -57,147 +57,69 @@ public abstract class World {
     private LifeObserver lifeObserver;
     private RenderableLayers rl;
     protected String path;
-  //Entities
+    //Entities
     protected EntityManager entityManager;
     protected Portal portal;
 
     //protected LinkedList<Creature> creatures;
     protected LinkedList<Entity> entities;
-    
+
     protected int portalX;
     protected int portalY;
     protected int playerY;
     protected int playerX;
     private Player player;
-    
+
     private Game game;
-    
+
     private Checkpoint ck;
-    
+
     protected StarsPanel starsPanel;
     protected LevelHandler lh;
-    
-    public GrabbableStarCollection getStarCollection() {
-        return starCollection;
-    }
-  
-    
-    public World(Handler handler, String path,Game game, Checkpoint ck){
+
+    public World(Handler handler, String path, Game game, Checkpoint ck) {
         this.handler = handler;
-        this.path=path;
-        this.game=game; // used for the lives update
-        this.ck=ck; // used for the lives' checkpoint update
+        this.path = path;
+        this.game = game; // used for the lives update
+        this.ck = ck; // used for the lives' checkpoint update
         System.out.println("Constructing world from... " + path);
-        //creatures=new LinkedList<Creature>();
-        entities=new LinkedList<Entity>();
+        entities = new LinkedList<Entity>();
         starCollection = new GrabbableStarCollection();
-        //this.init();
-               
+
     }
-    
-    public void init(){
-        /*
-        starCollection = new GrabbableStarCollection();
-        Player player = new Player(handler, 288, 320,new PlayerAssets());
+
+    public void init() {
+
+        player = new Player(handler, playerX, playerY, new PlayerAssets(), ck.getLife());
         entityManager = new EntityManager(handler, player);
-        
-        EnchantedTree etree1=new EnchantedTree(handler,150,400,90,90);
-        
-        entityManager.addEntity(etree1);
-       
-        
-<<<<<<< Updated upstream
 
-        GrabbableStar star1=new GrabbableStar(handler, 450, 250, 32, 32);
-        GrabbableStar star2=new GrabbableStar(handler, 350, 250, 32, 32);
-        star1.addObserver(starCollection);
-        star2.addObserver(starCollection);
-        star3.addObserver(starCollection);
-        
-        entityManager.addEntity(star1);
-        entityManager.addEntity(star2);
-        entityManager.addEntity(star3);
-        
-        entityManager.addEntity(new GrabbableHealthPotion(handler, 150, 500, 32, 32));
-<<<<<<< HEAD
-
-=======
->>>>>>> ca0548847af4176f4148f6f4d99eeffb8fa84977
-        
-        Bat bat1 = new Bat(handler, 900, 90, 32, 32, new BatAssets());
-        bat1.setMovementPolicy(new VerticalPolicy(bat1,(int)(bat1.getY()-100),(int)(bat1.getY() + 100)));
-        entityManager.addEntity(bat1);
-
-        entityManager.addEntity(new Boss1(handler, 1000, 200,new Boss2Assets()));
-        entityManager.addEntity(new Bat(handler, 1200, 600, 32, 32, new BatAssets()));
-        entityManager.addEntity(new Bat(handler, 1800, 2000, 32, 32, new BatAssets()));
-        entityManager.addEntity(new Bat(handler, 150, 800, 32, 32, new BatAssets()));
-        entityManager.addEntity(new Portal(handler, 250, 200, 64, 64));
-        System.out.println("Initiating world from... " + path);
-
-        loadWorld(path);
-        rl = new RenderableLayers(this.tiles[0].length, this.tiles.length, handler, path);
-        rl.loadLayers();
-        
-        HealthBar healthBar = handler.getGame().getGui().getHealthBar();
-        player.getLifeObservable().addObserver(healthBar);
-        StarsPanel starsPanel = handler.getGame().getGui().getStarsPanel();
-        starCollection.addObserver(starsPanel);
-        
-    */
-       
-        
-        player = new Player(handler, playerX, playerY,new PlayerAssets(),ck.getLife());
-        entityManager = new EntityManager(handler, player);
-        
-      //  setCreatures();
-        //aggiunta entità/creature
-        
-        for (Entity e:entities) {
+        for (Entity e : entities) {
             entityManager.addEntity(e);
         }
-        
-        portal=new Portal(handler, portalX, portalY, 64, 64);
+
+        portal = new Portal(handler, portalX, portalY, 64, 64);
         entityManager.addEntity(portal);
-        
+
         loadWorld(path);
         rl = new RenderableLayers(this.tiles[0].length, this.tiles.length, handler, path);
         rl.loadLayers();
-        
+
         HealthBar healthBar = handler.getGame().getGui().getHealthBar();
         player.getLifeObservable().addObserver(healthBar);
         player.getLifeObservable().setHealthBar(healthBar);
-        
+
         starsPanel = handler.getGame().getGui().getStarsPanel();
         starCollection.addObserver(starsPanel);
         starCollection.addObserver(portal);
-        
-        
-    }
-    
-        public void clearEntities() {
-
-        entities.clear();
-
-        entityManager.clearEntities();
 
     }
 
-    public EntityManager getEntityManager() {
-        return entityManager;
-    }
-
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-    
-    public void tick(){
-        //this.rl.loadLayers();
+    public void tick() {
         entityManager.tick();
-        
+
     }
-    
-    public void render(Graphics g){
+
+    public void render(Graphics g) {
         //Servono per non far disegnare ogni volta tutta la mappa
         int xStart = (int) Math.max(0, handler.getGameCamera().getxOffset() / Tile.TILEWIDTH);
         int xEnd = (int) Math.min(width, (handler.getGameCamera().getxOffset() + handler.getWidth()) / Tile.TILEWIDTH + 1);
@@ -207,16 +129,16 @@ public abstract class World {
         for (int y = yStart; y < yEnd; y++) {
             for (int x = xStart; x < xEnd; x++) {
                 getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - handler.getGameCamera().getxOffset()), (int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
-                
+
                 for (int i = 0; i < rl.countLayers(); i++) {
                     getLayerTile(i, x, y).render(g, (int) (x * Tile.TILEWIDTH - handler.getGameCamera().getxOffset()), (int) (y * Tile.TILEHEIGHT - handler.getGameCamera().getyOffset()));
                 }
             }
         }
-        
+
         entityManager.render(g);
     }
-    
+
     public Tile getTile(int x, int y) {
         if (x < 0 || y < 0 || x >= width || y >= height) {
             return Tile.invisibleTile;
@@ -229,7 +151,7 @@ public abstract class World {
         }
         return t;
     }
-    
+
     public Tile getLayerTile(int tileNum, int x, int y) {
 
         Layer layer = this.rl.getLayer(tileNum);
@@ -280,38 +202,48 @@ public abstract class World {
         }
     }
 
-    
-    public int getWidth(){
+    public int getWidth() {
         return width;
     }
-    
-    public int getheight(){
+
+    public int getheight() {
         return height;
     }
-    
+
     public RenderableLayers getRenderableLayers() {
         return this.rl;
     }
+
+    public GrabbableStarCollection getStarCollection() {
+        return starCollection;
+    }
+
+    public Portal getPortal() {
+        return portal;
+    }
+    
+    public EntityManager getEntityManager() {
+        return entityManager;
+    }
+
+    public void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
+    }
     
     public void setPortalObserver(LevelHandler lh) {
-        this.lh=lh;
+        this.lh = lh;
         portal.addObserver(lh);
     }
-    
- public void setHealthObserver(LevelHandler lh) {
-         player.getLifeObservable().addObserver(game);
-         player.getLifeObservable().addObserver(lh);
+
+    public void setHealthObserver(LevelHandler lh) {
+        player.getLifeObservable().addObserver(game);
+        player.getLifeObservable().addObserver(lh);
     }
- 
+
     public abstract void loadWorld(String path);
-    
+
     public abstract void clearWorld();
 
     public abstract void setCreatures();
 
-    public void addPortal(Portal portal){
-        //used for the portal spawning in the dungeon worlds
-    }
- 
 }
-   

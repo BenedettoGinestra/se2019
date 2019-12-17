@@ -38,10 +38,6 @@ public class LevelHandler extends Observable implements Observer {
     private Handler handler;
     private int levelID = 0;
     
-    //Life
-//    private Life life;
-
-    //Class observers' list
     private List<Observer> observers;
     
     public LevelHandler(LinkedList<Level> l, Handler handler, Checkpoint ck) {
@@ -104,13 +100,8 @@ public class LevelHandler extends Observable implements Observer {
     }
 
     public void returnBack() {
-        
-        
-        
+
         System.out.println("CHECKPOINT DAL LEVEL HANDLER RETURN BACK");
-        
-        
-        
         setLevel(levelID);
 
     }
@@ -138,7 +129,6 @@ public class LevelHandler extends Observable implements Observer {
     
    @Override
     public void update(Observable o, Object arg) {
- 
         
         try {
 
@@ -156,7 +146,6 @@ public class LevelHandler extends Observable implements Observer {
         } catch (Exception ex) {
             updateLevel();
         }
-        
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      
     }
 }

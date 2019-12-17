@@ -23,22 +23,21 @@ import twinkingdom.gui.GameGUI;
 import twinkingdom.gui.GameScenePanel;
 import twinkingdom.gui.Health;
 import twinkingdom.input.KeyManager;
-import twinkingdom.levels.BossLevel;
+import twinkingdom.levels.BossLevel1;
 import twinkingdom.levels.BossLevel2;
 import twinkingdom.levels.BossLevel3;
 import twinkingdom.levels.Level;
 import twinkingdom.levels.LevelHandler;
-import twinkingdom.levels.WorldLevel;
+import twinkingdom.levels.WorldLevel1;
 import twinkingdom.levels.WorldLevel2;
 import twinkingdom.levels.WorldLevel3;
 import twinkingdom.saves.Checkpoint;
 import twinkingdom.world.Castle;
-import twinkingdom.world.Dungeon;
+import twinkingdom.world.Dungeon1;
 import twinkingdom.world.Dungeon2;
 import twinkingdom.world.Dungeon3;
 import twinkingdom.world.Forest;
-import twinkingdom.world.InterWorld;
-import twinkingdom.world.World;
+import twinkingdom.world.Garden;
 
 /**
  *
@@ -65,9 +64,9 @@ public class Game implements Runnable, Observer {
     private Checkpoint checkpoint;
     private Checkpoint ck;
     
-    private InterWorld world0;
-    private Dungeon world1;
-    private Forest world2;
+    private Forest world0;
+    private Dungeon1 world1;
+    private Garden world2;
     private Dungeon2 world3;
     private Castle world4;
     private Dungeon3 world5;
@@ -222,24 +221,24 @@ public class Game implements Runnable, Observer {
     
     public LinkedList<Level> createLevelSequence() {
         LinkedList<Level> l = new LinkedList<>();
-        WorldLevel wl;
-        BossLevel bl;
+        WorldLevel1 wl;
+        BossLevel1 bl;
         WorldLevel2 wl2;
         BossLevel2 bl2;
         WorldLevel3 wl3;
         BossLevel3 bl3;
         
-        world0=new InterWorld(handler, "res/worlds/world1/",this,ck);
-        world1=new Dungeon(handler, "res/worlds/world2/",this,ck);
-        world2=new Forest(handler, "res/worlds/world1/",this,ck);
-        world3=new Dungeon2(handler, "res/worlds/world2/",this,ck);
-        world4=new Castle(handler, "res/worlds/world1/",this,ck);
-        world5=new Dungeon3(handler, "res/worlds/world2/", this,ck);
+        world0=new Forest(handler, "res/worlds/world1/",this,ck);
+        world1=new Dungeon1(handler, "res/worlds/dungeon1/",this,ck);
+        world2=new Garden(handler, "res/worlds/world2/",this,ck);
+        world3=new Dungeon2(handler, "res/worlds/dungeon2/",this,ck);
+        world4=new Castle(handler, "res/worlds/world3/",this,ck);
+        world5=new Dungeon3(handler, "res/worlds/dungeon3/", this,ck);
         
-        wl = new WorldLevel(0, world0, handler);
-        bl = new BossLevel(1, world1, handler);
+        wl = new WorldLevel1(0, world0, handler);
+        bl = new BossLevel1(1, world1, handler);
         wl2= new WorldLevel2(2, world2, handler);
-        bl2= new BossLevel2(1, world3, handler);
+        bl2= new BossLevel2(3, world3, handler);
         wl3=new WorldLevel3(4,world4,handler);
         bl3=new BossLevel3(5,world5,handler);
         

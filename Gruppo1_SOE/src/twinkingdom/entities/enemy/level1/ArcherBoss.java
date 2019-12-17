@@ -19,6 +19,7 @@ import twinkingdom.gfx.ArcherAssets;
 import twinkingdom.gfx.Assets;
 import twinkingdom.gfx.MonsterAssets;
 import twinkingdom.gfx.ArrowAssets;
+import twinkingdom.gui.Health;
 import twinkingdom.policy.HorizontalArcherPolicy;
 import twinkingdom.policy.HorizontalPolicy;
 import twinkingdom.policy.VerticalArcherPolicy;
@@ -33,25 +34,24 @@ import twinkingdom.world.World;
  */
 public class ArcherBoss extends Enemy {
 
-    
     ArrowAssets arrowAsset = new ArrowAssets();
     private LinkedList<Arrow> arrows;
     private UtilityTimer policyTimer;
-    private boolean vertical=false;
-    private VerticalArcherPolicy verticalPolicy; 
+    private boolean vertical = false;
+    private VerticalArcherPolicy verticalPolicy;
     private HorizontalArcherPolicy horizontalPolicy;
     private Portal portal;
     private World w;
-    
-    public ArcherBoss(Handler handler, float x, float y, /*Boss2Assets*/ArcherAssets boss2Assets) {
+
+    public ArcherBoss(Handler handler, float x, float y, /*Boss2Assets*/ ArcherAssets boss2Assets) {
         super(handler, x, y, 80, Creature.DEFAULT_HEIGHT, boss2Assets);
-        arrows=new LinkedList();
-        for(int i=0;i<10;i++){
+        arrows = new LinkedList();
+        for (int i = 0; i < 10; i++) {
             arrows.add(createArrow());
         }
         //verticalPolicy = new VerticalArcherPolicy(handler, this,(int) (getY()-300), (int)(getY()+300));
         //horizontalPolicy = new HorizontalArcherPolicy(handler, this,(int) (getX()-300), (int)(getX()+300));
-        setMovementPolicy(new HorizontalArcherPolicy(handler, this,(int) (getX()-300), (int)(getX()+300)));
+        setMovementPolicy(new HorizontalArcherPolicy(handler, this, (int) (getX() - 300), (int) (getX() + 300)));
         //setMovementPolicy(verticalPolicy);
         bounds.x = 25;
         bounds.y = 30;
@@ -75,42 +75,34 @@ public class ArcherBoss extends Enemy {
         //Movement
         getMovement();
         move();
-        
-        
-        if(policyTimer.isTimeOver()){
-            if(vertical){
-                setMovementPolicy(new HorizontalArcherPolicy(handler, this,(int) (getX()-300), (int)(getX()+300)));
-                vertical=false;
-            }else{
 
-                setMovementPolicy(new VerticalArcherPolicy(handler, this,(int) (getY()-300), (int)(getY()+300)));
-                vertical=true;
+        if (policyTimer.isTimeOver()) {
+            if (vertical) {
+                setMovementPolicy(new HorizontalArcherPolicy(handler, this, (int) (getX() - 300), (int) (getX() + 300)));
+                vertical = false;
+            } else {
+
+                setMovementPolicy(new VerticalArcherPolicy(handler, this, (int) (getY() - 300), (int) (getY() + 300)));
+                vertical = true;
             }
         }
-        
-        /*if(timer.isTimeOver()){
-            handler.getWorld().getEntityManager().addEntity(createArrow());
-        }*/
-        
-        //handler.getGameCamera().centerOnEntity(this);
     }
-    
-    public Arrow createArrow(){
-        Arrow arrow = createArrow((int) getX()+50,(int) getY()+50, 10,10);
+
+    public Arrow createArrow() {
+        Arrow arrow = createArrow((int) getX() + 50, (int) getY() + 50, 10, 10);
         return arrow;
     }
-    
-    public Arrow createArrow(int x, int y,int width,int height){
-        Arrow arrow= new Arrow(handler, x, y, width,height);
+
+    public Arrow createArrow(int x, int y, int width, int height) {
+        Arrow arrow = new Arrow(handler, x, y, width, height);
         arrow.setState(new RightMovementState(arrow, arrowAsset));
         return arrow;
     }
 
     @Override
     public void die() {
-
+        this.setNumLives(0);
     }
-
 
     @Override
     public void render(Graphics g) {
@@ -121,18 +113,22 @@ public class ArcherBoss extends Enemy {
     public LinkedList<Arrow> getArrows() {
         return arrows;
     }
-    
-    
-   
+
     @Override
-    public void actionOnCollision(Entity e){
+    public void actionOnCollision(Entity e) {
         setChanged();
         notifyObservers();
     }
- 
- public void setWorld(World w) {
-     this.w=w;
- } 
+    
+    public int getNumLives() {
+        return life.getLives();
+    }
 
+    public void setNumLives(int numLives) {
+        life.setLives(numLives);
+    }
+
+    public Health getLifeObservable() {
+        return life;
+    }
 }
-
