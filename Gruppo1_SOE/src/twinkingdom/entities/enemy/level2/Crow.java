@@ -14,45 +14,35 @@ import twinkingdom.gfx.CrowAssets;
  * @author Alex1
  */
 public class Crow extends Enemy {
-    
-    public Crow(Handler handler, float x, float y, int width, int height, CrowAssets entityAssets) {
         
+    public Crow(Handler handler, float x, float y, int width, int height, CrowAssets entityAssets) {
         super(handler, x, y, width, height, entityAssets);
         bounds.x = 1;
         bounds.y = 1;
-        bounds.width = 48;
-        bounds.height = 48;
+        bounds.width = 25;
+        bounds.height = 25;
         //health = 2;
         setState(leftState);
         life.setHealthPoints(1);
         life.setLives(1);
-        //maxHealth=life.getHealthPoints();
-        //setAttackCooldown(3000);
-        //timer = new UtilityTimer(2000);
+        speed=5;
     }
 
     
     @Override
-    //Deve fare l'update dello stato dell'oggetto
     public void tick() {
-        //Animations
-        //Per update the index
+
         state.tick();
-        //Movement
         getMovement();
         move();
-        //handler.getGameCamera().centerOnEntity(this);
     }
 
     @Override
     public void die() {
-        System.out.println("Crow è morto!!");
     }
-
 
     @Override
     public void render(Graphics g) {
         state.render(g);
     }
-    
 }

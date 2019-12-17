@@ -159,15 +159,6 @@ public class Castle extends World {
     }
 
     @Override
-    public void clearEntities() {
-
-        entities.clear();
-
-        entityManager.clearEntities();
-
-    }
-
-    @Override
     public void clearWorld() {
         entities.clear();
         entityManager.clearEntities();

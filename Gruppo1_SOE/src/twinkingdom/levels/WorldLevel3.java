@@ -8,7 +8,6 @@ package twinkingdom.levels;
 import java.awt.Graphics;
 import twinkingdom.Handler;
 import twinkingdom.world.Castle;
-import twinkingdom.world.InterWorld;
 
 /**
  *

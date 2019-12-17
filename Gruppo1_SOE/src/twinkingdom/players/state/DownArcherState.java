@@ -10,24 +10,28 @@ import twinkingdom.entities.Player;
 import twinkingdom.entities.enemy.level1.Arrow;
 import twinkingdom.entities.state.DownMovementState;
 import twinkingdom.gfx.EntityAssets;
+import twinkingdom.utils.UtilityTimer;
 
 /**
  *
  * @author mario
  */
 public class DownArcherState extends DownMovementState{
-
+    private UtilityTimer timer;
     public DownArcherState(Creature creature, EntityAssets asset) {
         super(creature, asset);
+        timer = new UtilityTimer(500);
     }
     
     @Override
     public void attack(){
         super.attack();
         //attacca con le frecce a destra
-        Arrow arrow = new Arrow(creature.getHandler(), creature.getX() + 20, creature.getY()+90, 10, 10);
-        arrow.setState(arrow.getDownState());
-        creature.getHandler().getWorld().getEntityManager().addEntity(arrow);
+        if(timer.isTimeOver()){
+            Arrow arrow = new Arrow(creature.getHandler(), creature.getX() + 20, creature.getY()+90, 10, 10);
+            arrow.setState(arrow.getDownState());
+            creature.getHandler().getWorld().getEntityManager().addEntity(arrow);
+        }
     }
     
 }

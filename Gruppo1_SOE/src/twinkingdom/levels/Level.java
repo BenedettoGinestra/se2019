@@ -3,8 +3,6 @@ package twinkingdom.levels;
 
 import java.awt.Graphics;
 import twinkingdom.Handler;
-import twinkingdom.saves.Checkpoint;
-import twinkingdom.world.World;
 
 public abstract class Level {
 
@@ -32,6 +30,7 @@ public abstract class Level {
 
 
             if (handler.getKeyManager().changeLevel) {
+                //if(lh!= null)
                 lh.updateLevel();
 
             }

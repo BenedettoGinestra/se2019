@@ -106,6 +106,7 @@ public class Forest extends World{
         portalX = 500;
         portalY = 200;
         
+        //player position settings
         playerX=288;
         playerY=320;
 
@@ -129,20 +130,9 @@ public class Forest extends World{
 
     @Override
     public void init() {
-
-        //entityManager.clearEntities();
         setCreatures();
         loadWorld(path);
         super.init();
-
-    }
-
-    @Override
-    public void clearEntities() {
-
-        entities.clear();
-
-        entityManager.clearEntities();
 
     }
 
