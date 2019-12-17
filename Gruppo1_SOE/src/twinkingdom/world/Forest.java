@@ -15,6 +15,7 @@ import twinkingdom.gfx.BatAssets;
 import twinkingdom.gfx.MonsterAssets;
 import twinkingdom.gfx.MonsterAssets;
 import twinkingdom.gfx.WolfAssets;
+import twinkingdom.players.PlayerArcher;
 import twinkingdom.policy.VerticalPolicy;
 import twinkingdom.saves.Checkpoint;
 import twinkingdom.staticentities.grabbable.GrabbableHealthPotion;
@@ -133,7 +134,6 @@ public class Forest extends World{
         setCreatures();
         loadWorld(path);
         super.init();
-
     }
 
     @Override

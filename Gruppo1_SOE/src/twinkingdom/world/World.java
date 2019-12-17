@@ -70,7 +70,7 @@ public abstract class World {
     protected int playerY;
     protected int playerX;
 
-    private Player player;
+    protected Player player;
 
     private Game game;
 

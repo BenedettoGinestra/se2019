@@ -29,10 +29,10 @@ public class PlayerAssets extends EntityAssets {
         BufferedImage[] player_right_stable = new BufferedImage[9];
         BufferedImage[] player_left_stable = new BufferedImage[9];
         BufferedImage[] player_down_stable = new BufferedImage[9];
-        BufferedImage[] player_down_attack = new BufferedImage[9];
-        BufferedImage[] player_up_attack= new BufferedImage[9];
-        BufferedImage[] player_left_attack= new BufferedImage[9];
-        BufferedImage[] player_right_attack=new BufferedImage[9];
+        BufferedImage[] player_down_attack = new BufferedImage[6];
+        BufferedImage[] player_up_attack= new BufferedImage[6];
+        BufferedImage[] player_left_attack= new BufferedImage[6];
+        BufferedImage[] player_right_attack=new BufferedImage[6];
         
         
         int startingX=0;

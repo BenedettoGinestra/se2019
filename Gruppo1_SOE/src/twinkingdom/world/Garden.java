@@ -9,6 +9,7 @@ import twinkingdom.Game;
 import twinkingdom.Handler;
 import twinkingdom.entities.enemy.level2.Crow;
 import twinkingdom.gfx.CrowAssets;
+import twinkingdom.players.PlayerArcher;
 import twinkingdom.policy.HorizontalPolicy;
 import twinkingdom.saves.Checkpoint;
 import twinkingdom.staticentities.grabbable.GrabbableStar;
@@ -75,6 +76,9 @@ public class Garden extends World{
         setCreatures();
         loadWorld(path);
         super.init();
+        
+        PlayerArcher playerArcher = new PlayerArcher(player);
+        setPlayer(playerArcher);
 
     }
 

@@ -18,6 +18,8 @@ import twinkingdom.gfx.BatAssets;
 import twinkingdom.gfx.Boss2Assets;
 import twinkingdom.gfx.GhostAssets;
 import twinkingdom.gfx.WolfAssets;
+import twinkingdom.players.PlayerArcher;
+import twinkingdom.players.PlayerMage;
 import twinkingdom.policy.HorizontalPolicy;
 import twinkingdom.policy.VerticalPolicy;
 import twinkingdom.saves.Checkpoint;
@@ -155,6 +157,8 @@ public class Castle extends World {
         setCreatures();
         loadWorld(path);
         super.init();
+        PlayerMage playerMage = new PlayerMage(player);
+        setPlayer(playerMage);
 
     }
 

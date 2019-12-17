@@ -28,4 +28,9 @@ public class PlayerMage extends Player{
         setState(downState);
     }
     
+    public PlayerMage(Player player){
+        this(player.getHandler(), player.getX(), player.getY(), new PlayerAssets(), player.getNumLives());
+        setHealth(player.getHealth());
+    }
+    
 }
