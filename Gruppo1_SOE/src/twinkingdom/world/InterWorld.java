@@ -14,10 +14,12 @@ import twinkingdom.entities.Player;
 import twinkingdom.entities.enchanted.EnchantedTree;
 import twinkingdom.entities.enemy.level1.ArcherBoss;
 import twinkingdom.entities.enemy.level1.Bat;
-import twinkingdom.entities.enemy.level1.Boss1;
+import twinkingdom.entities.enemy.level1.Monster;
 import twinkingdom.entities.enemy.level1.Wolf;
+import twinkingdom.entities.enemy.level2.Crow;
 import twinkingdom.gfx.BatAssets;
-import twinkingdom.gfx.Boss2Assets;
+import twinkingdom.gfx.CrowAssets;
+import twinkingdom.gfx.MonsterAssets;
 import twinkingdom.gfx.PlayerAssets;
 import twinkingdom.gfx.WolfAssets;
 import twinkingdom.gui.HealthBar;
@@ -56,14 +58,28 @@ public class InterWorld extends World {
         entities.add(star2);
         entities.add(star3);
 
+        
+        
+     //enemies for the star1
+        entities.add(new Bat(handler, 2700, 2868 , 32, 32, new BatAssets()));
+        entities.add(new Monster(handler, 3200,2808 ,new MonsterAssets()));
+        entities.add(new EnchantedTree(handler,2139, 2792,90,90));
+        
+        //enemies for the star2
+        entities.add(new EnchantedTree(handler,528,1225,90,90));
+        entities.add(new Monster(handler, 825, 931, new MonsterAssets()));
+        
+
+
         //enemies for the star1
         entities.add(new Bat(handler, 2700, 2868, 32, 32, new BatAssets()));
-        entities.add(new Boss1(handler, 3200, 2808, new Boss2Assets()));
+        entities.add(new Monster(handler, 3200, 2808, new MonsterAssets()));
         entities.add(new EnchantedTree(handler, 2139, 2792, 90, 90));
 
         //enemies for the star2
         entities.add(new EnchantedTree(handler, 528, 1225, 90, 90));
-        entities.add(new Boss1(handler, 825, 931, new Boss2Assets()));
+        entities.add(new Monster(handler, 825, 931, new MonsterAssets()));
+
 
         Bat batV2 = new Bat(handler, 747, 520, 32, 32, new BatAssets());
         batV2.setMovementPolicy(new VerticalPolicy(batV2, (int) batV2.getY() - 200, (int) batV2.getY() + 200));
@@ -78,20 +94,36 @@ public class InterWorld extends World {
         //enemies for the star3
         entities.add(new Bat(handler, 1945, 1520, 32, 32, new BatAssets()));
         entities.add(new Bat(handler, 1900, 1600, 32, 32, new BatAssets()));
-        entities.add(new Boss1(handler, 1800, 1900, new Boss2Assets()));
+
+
+        entities.add(new Monster(handler, 1800, 1900, new MonsterAssets()));
+        entities.add(new EnchantedTree(handler,1480,1030,90,90));
+        
+       
+        
+        //bosses on the road
+        entities.add(new Monster(handler, 961, 2064,new MonsterAssets()));
+        entities.add(new Monster(handler, 1226, 630,new MonsterAssets()));
+        entities.add(new Monster(handler, 2840, 1690,new MonsterAssets()));
+        
+        //trees on the road
+        entities.add(new EnchantedTree(handler,260, 1300, 90,90));
+        entities.add(new EnchantedTree(handler,1808, 1173, 90,90));
+        entities.add(new Crow(handler, 600, 200, 16, 16, new CrowAssets()));
+
+        entities.add(new Monster(handler, 1800, 1900, new MonsterAssets()));
         entities.add(new EnchantedTree(handler, 1480, 1030, 90, 90));
 
         //bosses on the road
-        entities.add(new Boss1(handler, 961, 2064, new Boss2Assets()));
-        entities.add(new Boss1(handler, 1226, 630, new Boss2Assets()));
-        entities.add(new Boss1(handler, 2840, 1690, new Boss2Assets()));
+        entities.add(new Monster(handler, 961, 2064, new MonsterAssets()));
+        entities.add(new Monster(handler, 1226, 630, new MonsterAssets()));
+        entities.add(new Monster(handler, 2840, 1690, new MonsterAssets()));
 
         //trees on the road
         entities.add(new EnchantedTree(handler, 260, 1300, 90, 90));
         entities.add(new EnchantedTree(handler, 1808, 1173, 90, 90));
+        entities.add(new Monster(handler, 840, 550, new MonsterAssets()));
 
-        //potions on the road
-        entities.add(new GrabbableHealthPotion(handler, 250, 2800, 32, 32));
         entities.add(new GrabbableHealthPotion(handler, 2187, 1686, 32, 32));
         entities.add(new GrabbableHealthPotion(handler, 3045, 459, 32, 32));
 

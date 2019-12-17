@@ -23,8 +23,8 @@ public class EnchantedLeaf extends Creature{
         super(handler, x, y, width, height, new LeafAssets());
         bounds.x = 0;
         bounds.y = 1;
-        bounds.width= 24;
-        bounds.height= 15;
+        bounds.width= 32;
+        bounds.height= 32;
 
         
         

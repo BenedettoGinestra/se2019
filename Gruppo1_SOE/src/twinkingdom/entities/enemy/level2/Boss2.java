@@ -3,8 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package twinkingdom.entities.enemy.level1;
-
+package twinkingdom.entities.enemy.level2;
 import twinkingdom.entities.enemies.Enemy;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -16,22 +15,23 @@ import twinkingdom.entities.state.MovementState;
 import twinkingdom.entities.state.RightMovementState;
 import twinkingdom.entities.state.UpMovementState;
 import twinkingdom.gfx.Boss2Assets;
+import twinkingdom.gfx.MonsterAssets;
 import twinkingdom.utils.UtilityTimer;
 
 /**
  *
- * @author mario
+ * @author Alex1
  */
-public class Boss1 extends Enemy {
-
+public class Boss2 extends Enemy {
+    
     private UtilityTimer timer;
-
-    public Boss1(Handler handler, float x, float y, Boss2Assets boss2Assets) {
+    
+    public Boss2(Handler handler, int x, int y, Boss2Assets boss2Assets) {
         super(handler, x, y, 80, Creature.DEFAULT_HEIGHT, boss2Assets);
         bounds.x = 25;
         bounds.y = 30;
-        bounds.width = 15;
-        bounds.height = 22;
+        bounds.width = 64;
+        bounds.height = 64;
         setState(leftState);
         life.setHealthPoints(2);
         life.setLives(1);
@@ -78,4 +78,5 @@ public class Boss1 extends Enemy {
         state.render(g);
     }
 
+ 
 }
