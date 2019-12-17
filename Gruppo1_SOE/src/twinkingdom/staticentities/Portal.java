@@ -21,7 +21,7 @@ import twinkingdom.utils.GrabbableStarCollection;
  * @author mario
  */
 
-public class Portal extends StaticEntity implements Observer{
+public class Portal extends StaticEntity /*implements Observer*/{
 
     private boolean unblocked=false;
     private int numLives = 0;
@@ -36,15 +36,7 @@ public class Portal extends StaticEntity implements Observer{
         
     }
     
-    public Portal(Handler handler, float x, float y, int width, int height, boolean unblocked) {
-        super(handler, x, y, width, height);
-        bounds.x = 1;
-        bounds.y = 1;
-        bounds.width= 50;
-        bounds.height= 50;
-        animation = new Animation(50, Assets.portal);
-        this.unblocked=unblocked;
-    }
+
 
     @Override
     public void tick() {
@@ -72,14 +64,15 @@ public class Portal extends StaticEntity implements Observer{
        }
     }
     
-    @Override
+    /*@Override
     public void update(Observable o, Object arg) {
         
-        try {
+        /*try {
             GrabbableStarCollection gsc = (GrabbableStarCollection) o;
             if (gsc.getSize() == 3) {
                 unblocked = true;
             }
+                
         } catch (Exception ex) {
             Health h = (Health) o;
             numLives = h.getLives();
@@ -87,7 +80,13 @@ public class Portal extends StaticEntity implements Observer{
             if (numLives == 0) {
                 unblocked = true;
             }
+            System.out.println("prova");
         }
         
+    }*/
+
+    public void setUnblocked(boolean unblocked) {
+        this.unblocked = unblocked;
     }
+    
 }

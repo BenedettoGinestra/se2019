@@ -6,9 +6,11 @@
 package twinkingdom.levels;
 
 import java.awt.Graphics;
+import java.util.Observable;
 import twinkingdom.Handler;
+import twinkingdom.gui.Health;
+import twinkingdom.utils.GrabbableStarCollection;
 import twinkingdom.world.Dungeon2;
-import twinkingdom.world.Dungeon3;
 
 /**
  *
@@ -17,24 +19,23 @@ import twinkingdom.world.Dungeon3;
 public class BossLevel2 extends Level{
     
      private Dungeon2 world;
-     private Handler handler;
+     private int numLives = 0;
     
     public BossLevel2(int id, Dungeon2 world, Handler handler) {
         super(id,handler);
         this.world = world;
-        this.handler=handler;
     }
 
     @Override
     public void tick() {
         super.tick();
-        if(world!=null)
+        //if(world!=null)
         world.tick();
     }
 
     @Override
     public void render(Graphics g) {
-        if(world!=null)
+        //if(world!=null)
         world.render(g);
     }
 
@@ -46,12 +47,30 @@ public class BossLevel2 extends Level{
         world.init();
         world.setPortalObserver(lh);
         world.setHealthObserver(lh);
+        world.setBossHealthObserver(this);
     }
     
     
     @Override
     public void stop() {
         world.clearWorld();
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        try {
+            GrabbableStarCollection gsc = (GrabbableStarCollection) o;
+            if (gsc.getSize() == 3) {
+                world.getPortal().setUnblocked(true);
+            }
+        } catch (Exception ex) {
+            Health h = (Health) o;
+            numLives = h.getLives();
+
+            if (numLives == 0) {
+                world.getPortal().setUnblocked(true);
+            }
+        }
     }
        
 }

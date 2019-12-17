@@ -112,7 +112,7 @@ public abstract class World {
 
         starsPanel = handler.getGame().getGui().getStarsPanel();
         starCollection.addObserver(starsPanel);
-        starCollection.addObserver(portal);
+        //starCollection.addObserver(portal);
 
     }
 
