@@ -20,4 +20,9 @@ public abstract class StaticEntity extends Entity{
         isStatic=true;
     }
     
+    @Override
+    public void hurt(int amt){
+        return;
+    }
+    
 }
