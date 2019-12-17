@@ -13,7 +13,7 @@ import java.util.Map;
  *
  * @author Alex1
  */
-public class ArmorAssets {
+public class ArmorAssets extends EntityAssets {
     
      
     private static Map<String, Map<String, BufferedImage[]>> armorAnimations;
@@ -22,18 +22,18 @@ public class ArmorAssets {
     
     public void init(){
         //player = sheet.crop(0, 610, 128, 128);
-        BufferedImage[] armor_down = new BufferedImage[6];
-        BufferedImage[] armor_up = new BufferedImage[6];
-        BufferedImage[] armor_left = new BufferedImage[6];
-        BufferedImage[] armor_right = new BufferedImage[6];
-        BufferedImage[] armor_up_stable = new BufferedImage[6];
-        BufferedImage[] armor_right_stable = new BufferedImage[6];
-        BufferedImage[] armor_left_stable = new BufferedImage[6];
-        BufferedImage[] armor_down_stable = new BufferedImage[6];
-        BufferedImage[] armor_down_attack = new BufferedImage[6];
-        BufferedImage[] armor_up_attack= new BufferedImage[6];
-        BufferedImage[] armor_left_attack= new BufferedImage[6];
-        BufferedImage[] armor_right_attack=new BufferedImage[6];
+        BufferedImage[] armor_down = new BufferedImage[5];
+        BufferedImage[] armor_up = new BufferedImage[5];
+        BufferedImage[] armor_left = new BufferedImage[5];
+        BufferedImage[] armor_right = new BufferedImage[5];
+        BufferedImage[] armor_up_stable = new BufferedImage[5];
+        BufferedImage[] armor_right_stable = new BufferedImage[5];
+        BufferedImage[] armor_left_stable = new BufferedImage[5];
+        BufferedImage[] armor_down_stable = new BufferedImage[5];
+        BufferedImage[] armor_down_attack = new BufferedImage[5];
+        BufferedImage[] armor_up_attack= new BufferedImage[5];
+        BufferedImage[] armor_left_attack= new BufferedImage[5];
+        BufferedImage[] armor_right_attack=new BufferedImage[5];
         
         
         

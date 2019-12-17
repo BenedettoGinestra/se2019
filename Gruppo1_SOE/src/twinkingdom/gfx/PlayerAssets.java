@@ -11,55 +11,63 @@ import java.util.Map;
 
 /**
  *
- * @author mario
+ * @author Alex1
  */
-public class PlayerAssets extends EntityAssets{
-    
-    public static BufferedImage[] player_down, player_up, player_left, player_right;
-    public static BufferedImage[] player_right_stable, player_down_stable, player_left_stable, player_up_stable;
-    public static BufferedImage[] player_down_attack, player_up_attack, player_left_attack, player_right_attack;
-    public static Map<String, Map<String, BufferedImage[]>> playerAnimations;
+public class PlayerAssets extends EntityAssets {
+  
+         private static Map<String, Map<String, BufferedImage[]>> playerAnimations;
+
+  
     
     public void init(){
-        SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/twinkingdom/images/Player2.png"));
         //player = sheet.crop(0, 610, 128, 128);
-        player_down = new BufferedImage[8];
-        player_up = new BufferedImage[8];
-        player_left = new BufferedImage[8];
-        player_right = new BufferedImage[8];
-        player_up_stable = new BufferedImage[8];
-        player_right_stable = new BufferedImage[8];
-        player_left_stable = new BufferedImage[8];
-        player_down_stable = new BufferedImage[8];
-        player_down_attack = new BufferedImage[8];
-        player_up_attack= new BufferedImage[8];
-        player_left_attack= new BufferedImage[8];
-        player_right_attack=new BufferedImage[8];
+        BufferedImage[] player_down = new BufferedImage[9];
+        BufferedImage[] player_up = new BufferedImage[9];
+        BufferedImage[] player_left = new BufferedImage[9];
+        BufferedImage[] player_right = new BufferedImage[9];
+        BufferedImage[] player_up_stable = new BufferedImage[9];
+        BufferedImage[] player_right_stable = new BufferedImage[9];
+        BufferedImage[] player_left_stable = new BufferedImage[9];
+        BufferedImage[] player_down_stable = new BufferedImage[9];
+        BufferedImage[] player_down_attack = new BufferedImage[9];
+        BufferedImage[] player_up_attack= new BufferedImage[9];
+        BufferedImage[] player_left_attack= new BufferedImage[9];
+        BufferedImage[] player_right_attack=new BufferedImage[9];
         
         
         int startingX=0;
-        int startingY=0;
-        int height= 40;
-        int width = 39;
-        int startingYStable= 8*height;
-        int startingYAttack= 4*height;
-        for(int i=0;i<8;i++){
-            
-            player_right_attack[i] =  sheet.crop(startingX + i*width, startingYAttack + 3*height, width, height);
-            player_down_attack[i] =  sheet.crop(startingX + i*width, startingYAttack, width, height);
-            player_up_attack[i] =  sheet.crop(startingX + i*width, startingYAttack + height, width, height);
-            player_left_attack[i] =  sheet.crop(startingX + i*width, startingYAttack+ 2*height, width, height);
-            
-            player_right_stable[i] =  sheet.crop(startingX + 3*width, startingYStable, width, height);
-            player_down_stable[i] =  sheet.crop(startingX, startingYStable, width, height);
-            player_up_stable[i] =  sheet.crop(startingX + width, startingYStable, width, height);
-            player_left_stable[i] =  sheet.crop(startingX + 2*width, startingYStable, width, height);
-            
+        int startingYSpell=0;
+        int height= 64;
+        int width = 64;
+        int startingXStable = 0;
+        int startingYStable=0;
+        int startingXAttack=0;
+        int startingYSlashAttack= 12*height;
+        int startingYWalk= 8*height;
+        SpriteSheet sheet1, sheet2, sheet = null;            
+        sheet = new SpriteSheet(ImageLoader.loadImage("/twinkingdom/images/player_sword.png"));
 
-            player_down[i] =  sheet.crop(startingX + i*width, startingY, width, height);
-            player_left[i] =  sheet.crop(startingX + i*width, startingY + 2*height, width, height);
-            player_right[i] =  sheet.crop(startingX + i*width, startingY + 3*height, width, height);
-            player_up[i] =  sheet.crop(startingX + i*width, startingY + height, width, height);
+
+        for(int i=0;i<9;i++){
+            if(i<6){
+            player_down_attack[i] =  sheet.crop(startingXAttack + i*width, startingYSlashAttack + 2*height , width, height);
+            player_right_attack[i] =  sheet.crop(startingXAttack + i*width, startingYSlashAttack + 3*height, width, height);
+            player_up_attack[i] =  sheet.crop(startingXAttack + i*width, startingYSlashAttack, width, height);
+            player_left_attack[i] =  sheet.crop(startingXAttack + i*width, startingYSlashAttack + height, width, height);
+            }
+            
+            
+            //sheet = new SpriteSheet(ImageLoader.loadImage("/twinkingdom/images/EBros_player_samurai/player_Samurai_Walk.png"));
+            player_down_stable[i] =  sheet.crop(startingX , startingYWalk + 2*height , width, height);
+            player_right_stable[i] =  sheet.crop(startingX, startingYWalk + 3*height, width, height);
+            player_up_stable[i] =  sheet.crop(startingX, startingYWalk, width, height);
+            player_left_stable[i] =  sheet.crop(startingX, startingYWalk + height, width, height);
+
+            
+            player_down[i] =  sheet.crop(startingX + i*width , startingYWalk + 2*height , width, height);
+            player_right[i] =  sheet.crop(startingX + i*width , startingYWalk + 3*height, width, height);
+            player_up[i] =  sheet.crop(startingX + i*width , startingYWalk, width, height);
+            player_left[i] =  sheet.crop(startingX + i*width , startingYWalk + height, width, height);
 
         }
         
@@ -95,9 +103,9 @@ public class PlayerAssets extends EntityAssets{
         playerAnimations.put("right", playerRight);
    
     }
-    
+
     @Override
-    public Map<String, Map<String, BufferedImage[]>> getAnimations(){
+    public Map<String, Map<String, BufferedImage[]>> getAnimations() {
         return playerAnimations;
     }
     
