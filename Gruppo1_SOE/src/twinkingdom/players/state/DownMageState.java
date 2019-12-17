@@ -6,7 +6,7 @@
 package twinkingdom.players.state;
 
 import twinkingdom.entities.Creature;
-import twinkingdom.entities.enemy.level1.FireBall;
+import twinkingdom.entities.enemy.level2.FireBall;
 import twinkingdom.entities.state.DownMovementState;
 import twinkingdom.gfx.EntityAssets;
 import twinkingdom.utils.UtilityTimer;

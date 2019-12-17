@@ -40,8 +40,6 @@ public class ArcherBoss extends Enemy {
     private boolean vertical = false;
     private VerticalArcherPolicy verticalPolicy;
     private HorizontalArcherPolicy horizontalPolicy;
-    private Portal portal;
-    private World w;
 
     public ArcherBoss(Handler handler, float x, float y, /*Boss2Assets*/ ArcherAssets boss2Assets) {
         super(handler, x, y, 80, Creature.DEFAULT_HEIGHT, boss2Assets);

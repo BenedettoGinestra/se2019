@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import twinkingdom.Handler;
-import twinkingdom.gui.GameGUI;
 import twinkingdom.gui.Health;
 import twinkingdom.saves.Checkpoint;
 
