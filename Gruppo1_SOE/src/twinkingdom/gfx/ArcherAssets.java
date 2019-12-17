@@ -16,6 +16,7 @@ public class ArcherAssets extends EntityAssets{
     
     private static Map<String, Map<String, BufferedImage[]>> archerAnimations;
     
+    @Override
     public void init(){
         //player = sheet.crop(0, 610, 128, 128);
         BufferedImage[] monkey_down = new BufferedImage[13];

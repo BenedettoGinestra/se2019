@@ -32,6 +32,7 @@ import twinkingdom.gfx.PlayerAssets;
 import twinkingdom.gui.HealthBar;
 import twinkingdom.gui.StarsPanel;
 import twinkingdom.levels.LevelHandler;
+import twinkingdom.players.PlayerArcher;
 import twinkingdom.policy.VerticalPolicy;
 import twinkingdom.saves.Checkpoint;
 import twinkingdom.staticentities.Portal;
@@ -98,7 +99,7 @@ public class World {
     public void init(){
        
         
-        player = new Player(handler, 288, 320,new PlayerAssets(),ck.getLife());
+        player = new PlayerArcher(handler, 288, 320,new PlayerAssets(),ck.getLife());
         entityManager = new EntityManager(handler, player);
         
       //  setCreatures();
