@@ -24,6 +24,7 @@ import twinkingdom.gfx.PlayerAssets;
 import twinkingdom.gfx.WolfAssets;
 import twinkingdom.gui.HealthBar;
 import twinkingdom.gui.StarsPanel;
+import twinkingdom.players.PlayerArcher;
 import twinkingdom.policy.VerticalPolicy;
 import twinkingdom.saves.Checkpoint;
 import twinkingdom.staticentities.Portal;
@@ -46,8 +47,11 @@ public class InterWorld extends World{
     }
      
    
+     @Override
     public void setCreatures() {
-        
+        //player = new PlayerArcher(player);
+        //player = new PlayerArcher(handler, playerX, playerY,new PlayerAssets(),3);
+
         GrabbableStar star1=new GrabbableStar(handler, 2688,2750, 32, 32); //2688,2750
         GrabbableStar star2=new GrabbableStar(handler, 450,958, 32, 32);  //450,958
         GrabbableStar star3=new GrabbableStar(handler, 1920,1570, 32, 32); //1920,1570

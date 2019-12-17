@@ -25,9 +25,10 @@ public class DownArcherState extends DownMovementState{
     
     @Override
     public void attack(){
-        super.attack();
-        //attacca con le frecce a destra
         if(timer.isTimeOver()){
+
+            super.attack();
+        //attacca con le frecce a destra
             Arrow arrow = new Arrow(creature.getHandler(), creature.getX() + 20, creature.getY()+90, 10, 10);
             arrow.setState(arrow.getDownState());
             creature.getHandler().getWorld().getEntityManager().addEntity(arrow);

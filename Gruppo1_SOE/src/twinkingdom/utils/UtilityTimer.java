@@ -38,9 +38,8 @@ public class UtilityTimer {
 
     private void timerOn() {
         thisCall=System.currentTimeMillis();
-        if (lastCall!=0){
            delta+= thisCall-lastCall; 
-        }
+        
         
         lastCall=System.currentTimeMillis();
         

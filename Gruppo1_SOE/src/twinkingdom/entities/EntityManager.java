@@ -51,6 +51,10 @@ public class EntityManager {
             e.render(g);
     }
     
+    public void removeEntity(Entity e){
+        entities.remove(e);
+    }
+    
     public void addEntity(Entity e){
         entities.add(e);
     }
