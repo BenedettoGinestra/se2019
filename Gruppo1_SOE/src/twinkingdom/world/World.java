@@ -32,6 +32,7 @@ import twinkingdom.gfx.PlayerAssets;
 import twinkingdom.gui.HealthBar;
 import twinkingdom.gui.StarsPanel;
 import twinkingdom.levels.LevelHandler;
+import twinkingdom.players.PlayerMage;
 import twinkingdom.policy.VerticalPolicy;
 import twinkingdom.saves.Checkpoint;
 import twinkingdom.staticentities.Portal;
@@ -68,7 +69,8 @@ public abstract class World {
     protected int portalY;
     protected int playerY;
     protected int playerX;
-    private Player player;
+
+    protected Player player;
 
     private Game game;
 
@@ -110,7 +112,7 @@ public abstract class World {
 
         starsPanel = handler.getGame().getGui().getStarsPanel();
         starCollection.addObserver(starsPanel);
-        starCollection.addObserver(portal);
+        //starCollection.addObserver(portal);
 
     }
 
@@ -245,5 +247,12 @@ public abstract class World {
     public abstract void clearWorld();
 
     public abstract void setCreatures();
+    
+    public void setPlayer(Player newPlayer){
+        entityManager.removeEntity(player);
+        this.player=newPlayer;
+        entityManager.addEntity(player);
+        entityManager.setPlayer(player);
+    }
 
 }

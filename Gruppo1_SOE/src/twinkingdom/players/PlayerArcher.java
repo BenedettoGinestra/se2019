@@ -29,6 +29,11 @@ public class PlayerArcher extends Player{
         setState(downState);
     }
     
+    public PlayerArcher(Player player){
+        this(player.getHandler(), player.getX(), player.getY(), new PlayerAssets(), player.getNumLives());
+        setHealth(player.getHealth());
+    }
+    
     
     
     

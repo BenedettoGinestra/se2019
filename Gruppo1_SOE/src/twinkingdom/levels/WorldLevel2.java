@@ -6,7 +6,10 @@
 package twinkingdom.levels;
 
 import java.awt.Graphics;
+import java.util.Observable;
 import twinkingdom.Handler;
+import twinkingdom.gui.Health;
+import twinkingdom.utils.GrabbableStarCollection;
 import twinkingdom.world.Garden;
 
 
@@ -16,6 +19,7 @@ import twinkingdom.world.Garden;
  */
 public class WorldLevel2 extends Level{
 private Garden world;
+private int numLives = 0;
 
     public WorldLevel2(int id, Garden world, Handler handler) {
         super(id, handler);
@@ -42,11 +46,29 @@ private Garden world;
         world.init();
         world.setPortalObserver(lh);
         world.setHealthObserver(lh);
+        world.getStarCollection().addObserver(this);
     }
 
     @Override
     public void stop() {
         world.clearWorld();
+    }
+    
+    @Override
+    public void update(Observable o, Object arg) {
+        try {
+            GrabbableStarCollection gsc = (GrabbableStarCollection) o;
+            if (gsc.getSize() == 3) {
+                world.getPortal().setUnblocked(true);
+            }
+        } catch (Exception ex) {
+            Health h = (Health) o;
+            numLives = h.getLives();
+
+            if (numLives == 0) {
+                world.getPortal().setUnblocked(true);
+            }
+        }
     }
 }  
 

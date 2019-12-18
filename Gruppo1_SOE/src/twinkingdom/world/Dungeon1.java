@@ -9,6 +9,7 @@ import twinkingdom.Game;
 import twinkingdom.Handler;
 import twinkingdom.entities.enemy.level1.ArcherBoss;
 import twinkingdom.gfx.ArcherAssets;
+import twinkingdom.levels.Level;
 import twinkingdom.saves.Checkpoint;
 import twinkingdom.staticentities.Portal;
 import twinkingdom.utils.Utils;
@@ -80,8 +81,8 @@ public class Dungeon1 extends World {
         entityManager.clearEntities();
     }
     
-    public void setBossHealthObserver(Portal p) {
-        ab.getLifeObservable().addObserver(p);
+    public void setBossHealthObserver(Level l) {
+        ab.getLifeObservable().addObserver(l);
     }
 
     

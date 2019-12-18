@@ -2,9 +2,10 @@ package twinkingdom.levels;
 
 
 import java.awt.Graphics;
+import java.util.Observer;
 import twinkingdom.Handler;
 
-public abstract class Level {
+public abstract class Level implements Observer{
 
     private int ID;
     protected Handler handler;

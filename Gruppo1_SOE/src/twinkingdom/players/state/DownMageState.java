@@ -24,9 +24,10 @@ public class DownMageState extends DownMovementState{
     
     @Override
     public void attack(){
-        super.attack();
-        //attacca con le frecce a destra
         if(timer.isTimeOver()){
+
+            super.attack();
+        //attacca con le frecce a destra
             FireBall fire = new FireBall(creature.getHandler(), creature.getX() + 20, creature.getY()+64, 64, 64);
             fire.setState(fire.getDownState());
             creature.getHandler().getWorld().getEntityManager().addEntity(fire);

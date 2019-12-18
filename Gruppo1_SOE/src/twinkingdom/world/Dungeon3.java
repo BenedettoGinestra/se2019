@@ -13,6 +13,7 @@ import twinkingdom.entities.enemy.level1.ArcherBoss;
 import twinkingdom.entities.enemy.level3.Ghost;
 import twinkingdom.gfx.ArcherAssets;
 import twinkingdom.gfx.GhostAssets;
+import twinkingdom.levels.Level;
 import twinkingdom.policy.HorizontalPolicy;
 import twinkingdom.saves.Checkpoint;
 import twinkingdom.utils.Utils;
@@ -23,7 +24,7 @@ import twinkingdom.utils.Utils;
  */
 
 public class Dungeon3 extends World {
-
+    private ArcherBoss ab;
     public Dungeon3(Handler handler, String path, Game game, Checkpoint ck) {
         super(handler, path, game, ck);
 
@@ -33,7 +34,8 @@ public class Dungeon3 extends World {
     public void setCreatures() {
 
         // entities.add(new EnchantedTree(handler,150,400,90,90));
-        entities.add(new ArcherBoss(handler, 732, 752, new /*Boss2Assets()*/ ArcherAssets()));
+        ab=new ArcherBoss(handler, 732,752, new /*Boss2Assets()*/ ArcherAssets());
+        entities.add(ab);
         /*
          StarsPanel starsPanel = handler.getGame().getGui().getStarsPanel();
          starCollection.addObserver(starsPanel);
@@ -88,6 +90,9 @@ public class Dungeon3 extends World {
         entityManager.clearEntities();
     }
    
-  
+     public void setBossHealthObserver(Level l) {
+        ab.getLifeObservable().addObserver(l);
+    }
+
     
 }
