@@ -94,5 +94,5 @@ public class Dungeon3 extends World {
         ab.getLifeObservable().addObserver(l);
     }
 
-    
+
 }
