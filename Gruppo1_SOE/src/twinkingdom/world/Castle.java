@@ -15,6 +15,7 @@ import twinkingdom.entities.enemy.level1.Wolf;
 import twinkingdom.entities.enemy.level3.EnchantedArmor;
 import twinkingdom.entities.enemy.level3.Ghost;
 import twinkingdom.gfx.BatAssets;
+import twinkingdom.gfx.ArmorAssets;
 import twinkingdom.gfx.Boss2Assets;
 import twinkingdom.gfx.GhostAssets;
 import twinkingdom.gfx.WolfAssets;
@@ -117,7 +118,7 @@ public class Castle extends World {
         entities.add(g1);
         
         //entities.add(new EnchantedArmor(handler, 190, 160, 32, 32, new BatAssets()));
-        EnchantedArmor enarm = new EnchantedArmor(handler, 200, 200, 32, 32, new BatAssets());
+        EnchantedArmor enarm = new EnchantedArmor(handler, 200, 200, 64, 64, new ArmorAssets());
         enarm.setMovementPolicy(new VerticalPolicy(enarm, (int) enarm.getY() - 200, (int) enarm.getY() + 200));
         entities.add(enarm);
         

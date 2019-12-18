@@ -8,14 +8,14 @@ package twinkingdom.entities.enemy.level3;
 import java.awt.Graphics;
 import twinkingdom.Handler;
 import twinkingdom.entities.enemies.Enemy;
-import twinkingdom.gfx.BatAssets;
+import twinkingdom.gfx.ArmorAssets;
 
 /**
  *
  * @author Angelica
  */
 public class EnchantedArmor extends Enemy{
-    public EnchantedArmor(Handler handler, float x, float y, int width, int height, BatAssets entityAssets) {
+    public EnchantedArmor(Handler handler, float x, float y, int width, int height, ArmorAssets entityAssets) {
         super(handler, x, y, width, height, entityAssets);
         bounds.x = 1;
         bounds.y = 1;
