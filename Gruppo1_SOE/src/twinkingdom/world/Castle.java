@@ -118,7 +118,7 @@ public class Castle extends World {
         entities.add(g1);
         
         //entities.add(new EnchantedArmor(handler, 190, 160, 32, 32, new BatAssets()));
-        EnchantedArmor enarm = new EnchantedArmor(handler, 200, 200, 32, 32, new ArmorAssets());
+        EnchantedArmor enarm = new EnchantedArmor(handler, 200, 200, 64, 64, new ArmorAssets());
         enarm.setMovementPolicy(new VerticalPolicy(enarm, (int) enarm.getY() - 200, (int) enarm.getY() + 200));
         entities.add(enarm);
         
